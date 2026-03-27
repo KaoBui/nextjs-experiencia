@@ -1,6 +1,10 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import type { CSSProperties } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { useRef } from "react";
 
 type ServiceCardProps = {
   imgSrc: string;
@@ -21,13 +25,31 @@ export default function ServiceCard({
     "--service-card-color": cardColor,
   } as CSSProperties;
 
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  useGSAP(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top bottom",
+        end: "50% bottom",
+        scrub: true,
+      },
+    });
+    tl.from(containerRef.current, {
+      opacity: 0,
+      filter: "blur(12px)",
+      yPercent: 10,
+    });
+  });
+
   return (
     <div
-      className="flex min-h-[360px] flex-col items-start justify-between rounded-3xl border-2 border-white bg-white/60 p-6 backdrop-blur-xl"
+      ref={containerRef}
+      className="flex min-h-[360px] flex-col items-start justify-between rounded-3xl border-2 border-white bg-white/75 p-6 backdrop-blur-xl"
       style={accentStyle}
     >
       <div className="flex w-full justify-end">
-        <div className="flex h-20 w-20 rounded-full bg-white p-5 shadow-2xl/10">
+        <div className="flex h-16 w-16 rounded-full bg-white p-4 shadow-2xl/10">
           <Image src={imgSrc} width={100} height={100} alt="" />
         </div>
       </div>
@@ -42,7 +64,7 @@ export default function ServiceCard({
           style={{
             color: "var(--service-card-color)",
             backgroundColor:
-              "color-mix(in srgb, var(--service-card-color) 10%, transparent)",
+              "color-mix(in srgb, var(--service-card-color) 8%, transparent)",
           }}
         >
           Voir l'offre <span className="uppercase">{offerName}</span>

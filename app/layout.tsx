@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
-import { Instrument_Serif, Plus_Jakarta_Sans } from "next/font/google";
+import { Instrument_Serif, Plus_Jakarta_Sans, Geist } from "next/font/google";
 import "./globals.css";
 import { LenisProvider } from "./providers/lenis-provider";
 import NavBar from "@/components/NavBar";
+import { cn } from "@/lib/utils";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta-sans",
@@ -28,7 +31,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${plusJakartaSans.variable} ${instrumentSerif.variable} h-full antialiased`}
+      className={cn("h-full", "antialiased", plusJakartaSans.variable, instrumentSerif.variable, "font-sans", geist.variable)}
     >
       <body className="bg-background">
         <LenisProvider>
