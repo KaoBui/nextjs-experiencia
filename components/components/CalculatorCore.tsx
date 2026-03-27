@@ -1,15 +1,16 @@
 "use client";
+
+import { useState } from "react";
+import NumberFlow, { continuous } from "@number-flow/react";
+
+import { Button } from "@/components/ui/button";
 import {
   Field,
   FieldContent,
   FieldDescription,
-  FieldError,
   FieldGroup,
   FieldLabel,
-  FieldLegend,
-  FieldSeparator,
   FieldSet,
-  FieldTitle,
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import {
@@ -23,97 +24,165 @@ import {
 } from "@/components/ui/select";
 
 export default function CalculatorCore() {
+  const [churnValue, setChurnValue] = useState("");
+  const [calculatedValue, setCalculatedValue] = useState(0);
+
   return (
     <div className="flex flex-col justify-between gap-[15vh]">
       <FieldSet>
-        <FieldGroup>
-          <Field orientation="horizontal">
-            <FieldLabel htmlFor="name">Secteur d'activité</FieldLabel>
+        <FieldGroup className="gap-space-base">
+          <Field className="grid grid-cols-[minmax(0,1fr)_minmax(0,16rem)] items-start gap-6">
+            <FieldContent className="flex h-full justify-center">
+              <FieldLabel htmlFor="activity-sector">
+                Secteur d'activite
+              </FieldLabel>
+            </FieldContent>
             <Select>
-              <SelectTrigger className="w-full max-w-48">
+              <SelectTrigger id="activity-sector" className="w-full">
                 <SelectValue placeholder="Choisir un secteur" />
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup>
-                  <SelectLabel>Fruits</SelectLabel>
-                  <SelectItem value="apple">Apple</SelectItem>
-                  <SelectItem value="banana">Banana</SelectItem>
-                  <SelectItem value="blueberry">Blueberry</SelectItem>
-                  <SelectItem value="grapes">Grapes</SelectItem>
-                  <SelectItem value="pineapple">Pineapple</SelectItem>
+                  <SelectLabel>Secteur</SelectLabel>
+                  <SelectItem value="apple">Conseil aux entreprises</SelectItem>
+                  <SelectItem value="banana">
+                    Industrie manufacturière
+                  </SelectItem>
+                  <SelectItem value="blueberry">
+                    Commerce physique / PGC
+                  </SelectItem>
+                  <SelectItem value="grapes">E-commerce / retail</SelectItem>
+                  <SelectItem value="pineapple">Commerce de gros </SelectItem>
+                  <SelectItem value="pineapple">Autres</SelectItem>
                 </SelectGroup>
               </SelectContent>
             </Select>
           </Field>
-          <Field orientation="horizontal">
+
+          <Field className="grid grid-cols-[minmax(0,1fr)_minmax(0,16rem)] items-start gap-6">
             <FieldContent>
-              <FieldLabel htmlFor="name">Votre taux de churn</FieldLabel>
+              <FieldLabel htmlFor="churn-rate">Votre taux de churn</FieldLabel>
               <FieldDescription>
-                Enter your 16-digit card number
+                moyen en %, une seule décimale
               </FieldDescription>
             </FieldContent>
-            <div className="flex flex-col gap-1">
+            <div className="flex w-full gap-2">
               <Select>
-                <SelectTrigger className="w-full max-w-48">
+                <SelectTrigger id="churn-rate" className="h-full w-full">
                   <SelectValue placeholder="Choisir un secteur" />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectGroup>
-                    <SelectLabel>Fruits</SelectLabel>
-                    <SelectItem value="apple">Apple</SelectItem>
-                    <SelectItem value="banana">Banana</SelectItem>
-                    <SelectItem value="blueberry">Blueberry</SelectItem>
-                    <SelectItem value="grapes">Grapes</SelectItem>
-                    <SelectItem value="pineapple">Pineapple</SelectItem>
+                    <SelectLabel>Fréquence</SelectLabel>
+                    <SelectItem value="apple">Mensuel</SelectItem>
+                    <SelectItem value="banana">Annuel</SelectItem>
                   </SelectGroup>
                 </SelectContent>
               </Select>
-              <Select>
-                <SelectTrigger className="w-full max-w-48">
-                  <SelectValue placeholder="Choisir un secteur" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectGroup>
-                    <SelectLabel>Fruits</SelectLabel>
-                    <SelectItem value="apple">Apple</SelectItem>
-                    <SelectItem value="banana">Banana</SelectItem>
-                    <SelectItem value="blueberry">Blueberry</SelectItem>
-                    <SelectItem value="grapes">Grapes</SelectItem>
-                    <SelectItem value="pineapple">Pineapple</SelectItem>
-                  </SelectGroup>
-                </SelectContent>
-              </Select>
+              <Input
+                type="text"
+                inputMode="decimal"
+                placeholder="Ex: 6,4"
+                value={churnValue}
+                onChange={(event) => {
+                  const normalizedValue = event.target.value
+                    .replace(/\./g, ",")
+                    .replace(/[^0-9,]/g, "");
+                  const [integerPart, ...decimalParts] =
+                    normalizedValue.split(",");
+
+                  setChurnValue(
+                    decimalParts.length > 0
+                      ? `${integerPart},${decimalParts.join("")}`
+                      : integerPart,
+                  );
+                }}
+                className="w-full"
+              />
             </div>
           </Field>
-          <Field orientation="horizontal">
+
+          <Field className="grid grid-cols-[minmax(0,1fr)_minmax(0,16rem)] items-start gap-6">
             <FieldContent>
-              <FieldLabel htmlFor="name">Votre CA du mois dernier</FieldLabel>
+              <FieldLabel htmlFor="last-revenue">
+                Votre CA du mois dernier
+              </FieldLabel>
               <FieldDescription>
-                Enter your 16-digit card number
+                fourchette, CA mensuel HT en €
               </FieldDescription>
             </FieldContent>
             <Select>
-              <SelectTrigger className="w-full max-w-48">
-                <SelectValue placeholder="Choisir un secteur" />
+              <SelectTrigger id="last-revenue" className="w-full">
+                <SelectValue placeholder="Sélectionnez votre CA (HT)" />
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup>
-                  <SelectLabel>Fruits</SelectLabel>
-                  <SelectItem value="apple">Apple</SelectItem>
-                  <SelectItem value="banana">Banana</SelectItem>
-                  <SelectItem value="blueberry">Blueberry</SelectItem>
-                  <SelectItem value="grapes">Grapes</SelectItem>
-                  <SelectItem value="pineapple">Pineapple</SelectItem>
+                  <SelectItem value="apple">{"< 10 000€ / mois"}</SelectItem>
+                  <SelectItem value="banana">
+                    {"11 - 50 000€ / mois"}
+                  </SelectItem>
+                  <SelectItem value="blueberry">
+                    {"51 - 100 000€ / mois"}
+                  </SelectItem>
+                  <SelectItem value="pineapple">
+                    {"> 100 000€ / mois"}
+                  </SelectItem>
                 </SelectGroup>
               </SelectContent>
             </Select>
           </Field>
         </FieldGroup>
+        <div className="flex flex-col gap-2 pt-space-sm">
+          <div className="flex items-center justify-between">
+            <p className="text-secondary text-sm">
+              Ce que ca vous coute le moise dernier :
+            </p>
+            <NumberFlow
+              value={calculatedValue}
+              plugins={[continuous]}
+              trend={1}
+              prefix="-"
+              locales="fr-FR"
+              format={{
+                style: "currency",
+                currency: "EUR",
+                maximumFractionDigits: 0,
+              }}
+              className="font-head text-2xl"
+            />
+          </div>
+          <div className="flex items-center justify-between">
+            <p className="text-secondary text-sm">
+              Le CA gagné chaque mois si on travaille ensemble
+            </p>
+            <NumberFlow
+              value={calculatedValue}
+              plugins={[continuous]}
+              trend={1}
+              locales="fr-FR"
+              format={{
+                style: "currency",
+                currency: "EUR",
+                maximumFractionDigits: 0,
+              }}
+              className="font-head text-2xl"
+            />
+          </div>
+        </div>
       </FieldSet>
-      <div className="pt-space-base flex flex-col items-end">
-        <p className="text-sm">Ce que ca vous coute le moise dernier</p>
-        <p className="font-head text-4xl">24,000</p>
-      </div>
+      <Button
+        type="button"
+        className="w-fit self-end text-sm p-3 px-4 h-10 rounded-full"
+        onClick={() => {
+          const parsedValue = Number.parseFloat(churnValue.replace(",", "."));
+
+          setCalculatedValue(
+            Number.isNaN(parsedValue) ? 0 : parsedValue * 10000,
+          );
+        }}
+      >
+        Calculer mon CA perdu
+      </Button>
     </div>
   );
 }

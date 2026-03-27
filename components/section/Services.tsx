@@ -20,35 +20,28 @@ export default function Services() {
         return;
       }
 
-      gsap.fromTo(
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: servicesRef.current,
+          start: "top top",
+          end: "bottom 50%",
+          scrub: 1,
+        },
+      });
+
+      tl.fromTo(
         ".service-wave__path",
         { drawSVG: "0% 0%" },
         {
           drawSVG: "0% 100%",
-          duration: 2,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: servicesRef.current,
-            start: "top top",
-            toggleActions: "play none none reverse",
-          },
-        },
-      );
-
-      gsap.fromTo(
-        ".service-wave__path",
-        { drawSVG: "0% 100%" },
-        {
-          drawSVG: "100% 100%",
           duration: 1,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: servicesRef.current,
-            start: "bottom bottom",
-            toggleActions: "play none none reverse",
-          },
+          ease: "none",
         },
-      );
+      ).to(".service-wave__path", {
+        drawSVG: "100% 100%",
+        duration: 1,
+        ease: "none",
+      });
     },
     { scope: servicesRef },
   );

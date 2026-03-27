@@ -40,11 +40,11 @@ export default function Hero() {
         { drawSVG: "0% 100%" },
         {
           drawSVG: "100% 100%",
-          duration: 1.2,
-          ease: "power3.inOut",
+          duration: 1,
+          ease: "power1.inOut",
           scrollTrigger: {
-            trigger: containerRef.current,
-            start: "50% top",
+            trigger: heroRef.current,
+            start: "bottom 80%",
             toggleActions: "play none none reverse",
           },
         },
@@ -173,7 +173,7 @@ export default function Hero() {
               </Heading>
             </h2>
 
-            <p className="leading-body text-base">
+            <p className="leading-body text-base flex flex-col gap-2">
               <Heading splitType="lines">
                 Bonjour, je suis Eva, fondatrice d&apos;Experiencia Consulting.
               </Heading>

@@ -45,7 +45,6 @@ export default function Reasons() {
           start: "top bottom",
           end: "bottom top",
           scrub: true,
-          markers: true,
         },
       });
       tl.to(wavePathRef.current, {

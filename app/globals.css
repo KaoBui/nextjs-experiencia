@@ -172,6 +172,12 @@
     @apply bg-background text-foreground;
   }
 
+  body[data-scroll-locked] {
+    --removed-body-scroll-bar-size: 0px !important;
+    margin-right: 0 !important;
+    padding-right: 0 !important;
+  }
+
   h1,
   h2,
   h3,
@@ -182,6 +188,19 @@
   }
   * {
     @apply border-border outline-ring/50;
+  }
+
+  number-flow-react {
+    --number-flow-mask-height: 0em;
+    --number-flow-mask-width: 0em;
+    line-height: 0.85;
+  }
+
+  number-flow-react::part(currency) {
+    margin-left: -0.05em;
+    font-weight: normal;
+    font-size: 0.6em;
+    color: var(--color-tertiary);
   }
 }
 

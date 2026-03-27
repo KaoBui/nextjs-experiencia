@@ -61,7 +61,7 @@ export default function Calculator() {
               estimation en live !
             </p>
           </div>
-          <div className="flex-1 rounded-2xl bg-white p-8">
+          <div className="w-[55%] rounded-2xl bg-white p-8">
             <CalculatorCore />
           </div>
         </div>

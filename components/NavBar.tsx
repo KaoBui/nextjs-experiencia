@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const navItems = [
   { href: "/", label: "Accueil" },
@@ -20,7 +21,12 @@ function NavContent({ floating = false }: { floating?: boolean }) {
       ].join(" ")}
     >
       <Link href="/" className="font-serif text-lg pl-2">
-        Experiencia
+        <Image
+        src="/logo.png"
+        alt="Experiencia Consulting Logo"
+        width={100}
+        height={100}
+        />
       </Link>
       <div className="flex items-center gap-6 text-sm">
         {navItems.map((item) => (
