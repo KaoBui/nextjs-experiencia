@@ -2,25 +2,27 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
-@custom-variant dark (&:is(.dark *));
-
 :root {
   --site--margin: clamp(1rem, calc(0.261rem + 2.75vw), 4rem);
   --section-padding: clamp(1.5rem, calc(0.35rem + 2.75vw), 2rem);
-  --font-base: max(1rem, 16px);
-  --type--text-xs: 0.64rem;
-  --type--text-sm: 0.8rem;
-  --type--text-base: 1rem;
-  --type--text-md: 1.25rem;
-  --type--text-xl: 1.563rem;
-  --type--text-2xl: 1.953rem;
-  --type--text-3xl: 2.441rem;
-  --type--text-4xl: 3.052rem;
-  --type--text-5xl: 3.815rem;
-  --type--text-6xl: 4.768rem;
-  --type--text-7xl: 5.96rem;
-  --type--text-8xl: 7.451rem;
+  --font-size-base: max(1rem, 16px);
+  --font-scale-ratio: 1.125;
+  --font-base: var(--font-size-base);
+  --type--text-xs: calc(var(--font-size-base) / 1.125 / 1.125);
+  --type--text-sm: calc(var(--font-size-base) / 1.125);
+  --type--text-base: var(--font-size-base);
+  --type--text-md: calc(var(--font-size-base) * var(--font-scale-ratio));
+  --type--text-lg: calc(var(--type--text-md) * var(--font-scale-ratio));
+  --type--text-xl: calc(var(--type--text-lg) * var(--font-scale-ratio));
+  --type--text-2xl: calc(var(--type--text-xl) * var(--font-scale-ratio));
+  --type--text-3xl: calc(var(--type--text-2xl) * var(--font-scale-ratio));
+  --type--text-4xl: calc(var(--type--text-3xl) * var(--font-scale-ratio));
+  --type--text-5xl: calc(var(--type--text-4xl) * var(--font-scale-ratio));
+  --type--text-6xl: calc(var(--type--text-5xl) * var(--font-scale-ratio));
+  --type--text-7xl: calc(var(--type--text-6xl) * var(--font-scale-ratio));
+  --type--text-8xl: calc(var(--type--text-7xl) * var(--font-scale-ratio));
   --space-base: 1rem;
+  --space-xs: calc(var(--space-base) * 0.25);
   --space-sm: calc(var(--space-base) * 0.5);
   --space-2x: calc(var(--space-base) * 2);
   --space-3x: calc(var(--space-base) * 3);
@@ -61,28 +63,24 @@
 
 @media (min-width: 1280px) {
   :root {
+    --font-size-base: 1.0625rem;
+    --font-scale-ratio: 1.25;
     --type--lh-body: 1.6;
     --type--lh-head: 1;
-    --type--text-xs: 0.6rem;
-    --type--text-sm: 0.75rem;
-    --type--text-base: 1rem;
-    --type--text-lg: 1.25rem;
-    --type--text-xl: 1.5rem;
-    --type--text-2xl: 2rem;
-    --type--text-3xl: 2.5rem;
-    --type--text-4xl: 3rem;
-    --type--text-5xl: 3.75rem;
-    --type--text-6xl: 4.75rem;
-    --type--text-7xl: 6rem;
-    --type--text-8xl: 7.5rem;
-    --space-base: 1.5rem;
-    --letter-spacing-sm: -0.5%;
-    --letter-spacing-md: -1%;
-    --letter-spacing-lg: -1.5%;
-    --letter-spacing-xl: -2%;
+    --space-base: 1.2rem;
+  }
+}
+@media (min-width: 1900px) {
+  :root {
+    --font-size-base: 1.125rem;
+    --font-scale-ratio: 1.33;
+    --type--lh-body: 1.6;
+    --type--lh-head: 1;
+    --space-base: 1.6rem;
   }
 }
 @theme {
+  --breakpoint-3xl: 120rem;
   --color-indigo: #4008c3;
   --color-indigo-dark: #220842;
   --color-lila: #7b63fa;
@@ -110,10 +108,12 @@
   --text-3xl: var(--type--text-3xl);
   --text-2xl: var(--type--text-2xl);
   --text-xl: var(--type--text-xl);
+  --text-lg: var(--type--text-lg);
   --text-md: var(--type--text-md);
   --text-base: var(--type--text-base);
   --text-sm: var(--type--text-sm);
   --text-xs: var(--type--text-xs);
+  --spacing-space-xs: var(--space-xs);
   --spacing-space-sm: var(--space-sm);
   --spacing-space-base: var(--space-base);
   --spacing-space-2x: var(--space-2x);
@@ -202,38 +202,4 @@
     font-size: 0.6em;
     color: var(--color-tertiary);
   }
-}
-
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
 }

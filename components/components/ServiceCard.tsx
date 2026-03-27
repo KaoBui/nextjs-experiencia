@@ -54,7 +54,7 @@ export default function ServiceCard({
         </div>
       </div>
       <div className="flex flex-col items-start">
-        <h3 className="text-3xl" style={{ color: "var(--service-card-color)" }}>
+        <h3 className="text-2xl" style={{ color: "var(--service-card-color)" }}>
           {offerName}
         </h3>
         <p className="text-base text-secondary">{description}</p>

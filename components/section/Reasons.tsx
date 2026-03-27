@@ -71,13 +71,13 @@ export default function Reasons() {
   );
 
   return (
-    <section ref={reasonsRef} id="reasons" className="relative my-[15vh] px-4">
+    <section ref={reasonsRef} id="reasons" className="relative my-[20vh] px-4">
       <ReasonsWave
         pathRef={wavePathRef}
         className="pointer-events-none absolute -top-[10%] right-0 -z-10 hidden h-full w-full"
       />
-      <div className="mx-site-margin space-gap-base grid grid-cols-12">
-        <div className="col-start-1 col-end-5">
+      <div className="mx-site-margin py-space-base space-gap-base grid grid-cols-12">
+        <div className="col-start-1 col-end-6">
           <div ref={leftColRef} className="gap-space-base flex flex-col">
             <h2 className="text-3xl">
               <Heading splitType="words">

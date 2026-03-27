@@ -43,7 +43,7 @@ const Heading = forwardRef<HTMLSpanElement, HeadingProps>(
           scrollTrigger: {
             trigger: headingRef.current,
             start: "top bottom",
-            end: "top 60%",
+            end: "+=40%",
             toggleActions: "play none none reverse",
             scrub: true,
           },

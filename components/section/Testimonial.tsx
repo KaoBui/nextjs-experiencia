@@ -39,7 +39,7 @@ const clientLogos = [
 
 export default function Testimonials() {
   return (
-    <section className="relative overflow-hidden px-4 py-[15vh]">
+    <section className="relative overflow-hidden px-4 py-[15vh] ">
       <div className="mx-site-margin gap-space-2x flex flex-col items-center justify-center">
         <h1 className="max-w-[20ch] text-center text-3xl">
           <Heading splitType="words">

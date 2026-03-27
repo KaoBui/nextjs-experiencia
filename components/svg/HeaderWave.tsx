@@ -6,7 +6,7 @@ export default function HeaderWave({ className }: HeaderWaveProps) {
   return (
     <svg
       className={className}
-      viewBox="0 0 737 659"
+      viewBox="-40 30 737 659"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"

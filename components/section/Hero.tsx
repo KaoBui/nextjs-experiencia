@@ -40,11 +40,13 @@ export default function Hero() {
         { drawSVG: "0% 100%" },
         {
           drawSVG: "100% 100%",
-          duration: 1,
+          duration: 0.8,
           ease: "power1.inOut",
           scrollTrigger: {
-            trigger: heroRef.current,
-            start: "bottom 80%",
+            trigger: aboutRef.current,
+            start: "bottom bottom",
+            end: "bottom top",
+            scrub: true,
             toggleActions: "play none none reverse",
           },
         },
@@ -72,7 +74,7 @@ export default function Hero() {
           start: "top top",
           end: "bottom top",
           scrub: true,
-          pin: rightColRef.current,
+          pin: heroRef.current,
           pinSpacing: false,
         },
       });
@@ -93,7 +95,7 @@ export default function Hero() {
 
   return (
     <section ref={containerRef}>
-      <HeaderWave className="pointer-events-none fixed top-0 right-0 h-auto w-[42rem]" />
+      <HeaderWave className="pointer-events-none fixed top-0 right-0 h-auto w-1/2" />
       <div ref={heroRef} className="relative isolate h-screen py-4">
         <div
           ref={leftColRef}
@@ -106,7 +108,7 @@ export default function Hero() {
                 disponibilité - <strong>mai 2026</strong>
               </p>
             </div>
-            <h1 className="text-5xl leading-[1.1]">
+            <h1 className="text-4xl leading-[1.1]">
               Augmentez votre chiffre d'affaires
               <span className="text-indigo">
                 <em> sans vous épuiser </em>
@@ -173,7 +175,7 @@ export default function Hero() {
               </Heading>
             </h2>
 
-            <p className="leading-body text-base flex flex-col gap-2">
+            <p className="leading-body flex flex-col gap-2 text-base">
               <Heading splitType="lines">
                 Bonjour, je suis Eva, fondatrice d&apos;Experiencia Consulting.
               </Heading>

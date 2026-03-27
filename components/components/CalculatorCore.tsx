@@ -28,10 +28,10 @@ export default function CalculatorCore() {
   const [calculatedValue, setCalculatedValue] = useState(0);
 
   return (
-    <div className="flex flex-col justify-between gap-[15vh]">
+    <div className="gap-space-2x flex flex-col justify-between">
       <FieldSet>
         <FieldGroup className="gap-space-base">
-          <Field className="grid grid-cols-[minmax(0,1fr)_minmax(0,16rem)] items-start gap-6">
+          <Field className="gap-space-sm grid grid-cols-[minmax(0,1fr)_minmax(0,16rem)] items-start">
             <FieldContent className="flex h-full justify-center">
               <FieldLabel htmlFor="activity-sector">
                 Secteur d'activite
@@ -60,11 +60,11 @@ export default function CalculatorCore() {
           </Field>
 
           <Field className="grid grid-cols-[minmax(0,1fr)_minmax(0,16rem)] items-start gap-6">
-            <FieldContent>
+            <FieldContent className="justify-center h-full">
               <FieldLabel htmlFor="churn-rate">Votre taux de churn</FieldLabel>
-              <FieldDescription>
+              {/* <FieldDescription className="text-xs">
                 moyen en %, une seule décimale
-              </FieldDescription>
+              </FieldDescription> */}
             </FieldContent>
             <div className="flex w-full gap-2">
               <Select>
@@ -103,13 +103,10 @@ export default function CalculatorCore() {
           </Field>
 
           <Field className="grid grid-cols-[minmax(0,1fr)_minmax(0,16rem)] items-start gap-6">
-            <FieldContent>
+            <FieldContent className="flex h-full justify-center">
               <FieldLabel htmlFor="last-revenue">
                 Votre CA du mois dernier
               </FieldLabel>
-              <FieldDescription>
-                fourchette, CA mensuel HT en €
-              </FieldDescription>
             </FieldContent>
             <Select>
               <SelectTrigger id="last-revenue" className="w-full">
@@ -132,8 +129,8 @@ export default function CalculatorCore() {
             </Select>
           </Field>
         </FieldGroup>
-        <div className="flex flex-col gap-2 pt-space-sm">
-          <div className="flex items-center justify-between">
+        <div className="pt-space-sm flex flex-col gap-2">
+          <div className="gap-space-base flex items-center justify-between">
             <p className="text-secondary text-sm">
               Ce que ca vous coute le moise dernier :
             </p>
@@ -151,7 +148,7 @@ export default function CalculatorCore() {
               className="font-head text-2xl"
             />
           </div>
-          <div className="flex items-center justify-between">
+          <div className="gap-space-base flex items-center justify-between">
             <p className="text-secondary text-sm">
               Le CA gagné chaque mois si on travaille ensemble
             </p>
@@ -172,7 +169,7 @@ export default function CalculatorCore() {
       </FieldSet>
       <Button
         type="button"
-        className="w-fit self-end text-sm p-3 px-4 h-10 rounded-full"
+        className="h-10 w-fit self-end rounded-full p-3 px-4 text-sm"
         onClick={() => {
           const parsedValue = Number.parseFloat(churnValue.replace(",", "."));
 
