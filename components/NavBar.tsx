@@ -37,19 +37,22 @@ export default function NavBar() {
       backdropFilter: "blur(0px)",
     });
 
-    gsap.timeline({
-      scrollTrigger: {
-        trigger: document.documentElement,
-        start: "top top",
-        end: "+=180",
-        scrub: true,
-      },
-    })
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: document.documentElement,
+          start: "top top",
+          end: "+=300vh",
+          scrub: true,
+        },
+        defaults: {
+          ease: "power2.inOut",
+        },
+      })
       .to(
         headerRef.current,
         {
           top: "1rem",
-          ease: "none",
         },
         0,
       )
@@ -58,7 +61,6 @@ export default function NavBar() {
         {
           paddingLeft: "0px",
           paddingRight: "0px",
-          ease: "none",
         },
         0,
       )
@@ -70,7 +72,6 @@ export default function NavBar() {
           borderRadius: "9999px",
           boxShadow: "0 4px 4px rgba(0,0,0,0.04)",
           backdropFilter: "blur(12px)",
-          ease: "none",
         },
         0,
       );
@@ -82,10 +83,7 @@ export default function NavBar() {
       className="fixed left-1/2 z-60 w-full -translate-x-1/2"
     >
       <div ref={navInnerRef} className="mx-site-margin flex justify-center">
-        <nav
-          ref={navRef}
-          className="flex items-center justify-between p-2"
-        >
+        <nav ref={navRef} className="flex items-center justify-between p-2">
           <Link href="/" className="pl-2 font-serif text-lg">
             <Image
               src="/logo.png"

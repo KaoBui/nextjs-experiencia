@@ -4,6 +4,7 @@ import "./globals.css";
 import { LenisProvider } from "./providers/lenis-provider";
 import NavBar from "@/components/NavBar";
 import { cn } from "@/lib/utils";
+import Footer from "@/components/Footer";
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
@@ -37,6 +38,7 @@ export default function RootLayout({
         <LenisProvider>
           <NavBar />
           <main>{children}</main>
+          <Footer />
         </LenisProvider>
       </body>
     </html>

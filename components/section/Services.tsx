@@ -57,7 +57,7 @@ export default function Services() {
         <div className="col-start-1 col-end-7 flex flex-col items-start pb-space-2x">
           <p className="text-md pb-2">Vous sentez que ça coince?</p>
           <h2>
-            <Heading className="text-tertiary text-3xl" splitType="words">
+            <Heading className="text-tertiary text-4xl" splitType="lines">
               Je vous montre
               <span className="text-primary">
                 <em> où, pourquoi et comment y remédier</em>

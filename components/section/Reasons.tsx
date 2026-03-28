@@ -76,10 +76,10 @@ export default function Reasons() {
         pathRef={wavePathRef}
         className="pointer-events-none absolute -top-[10%] right-0 -z-10 hidden h-full w-full"
       />
-      <div className="mx-site-margin py-space-base space-gap-base grid grid-cols-12">
-        <div className="col-start-1 col-end-6">
+      <div className="mx-site-margin py-space-base gap-space-base grid grid-cols-12">
+        <div className="col-start-2 col-end-6">
           <div ref={leftColRef} className="gap-space-base flex flex-col">
-            <h2 className="text-3xl">
+            <h2 className="text-4xl">
               <Heading splitType="words">
                 Pourquoi faire confiance à Experiencia ?
               </Heading>
@@ -94,7 +94,7 @@ export default function Reasons() {
         </div>
         <div
           ref={rightColRef}
-          className="gap-space-base pb-space-2x col-start-7 col-end-13 row-start-2 flex"
+          className="gap-space-base pb-space-2x col-start-6 col-end-12 row-start-2 flex"
         >
           <div className="gap-space-base flex flex-1 flex-col">
             <HoverCard

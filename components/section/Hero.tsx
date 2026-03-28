@@ -84,8 +84,8 @@ export default function Hero() {
       }).to(
         portraitRef.current,
         {
-          scale: 1.2,
-          transformOrigin: "right bottom",
+          yPercent: -15,
+          ease: "none",
         },
         0,
       );
@@ -96,19 +96,19 @@ export default function Hero() {
   return (
     <section ref={containerRef}>
       <HeaderWave className="pointer-events-none fixed top-0 right-0 h-auto w-1/2" />
-      <div ref={heroRef} className="relative isolate h-screen py-4">
+      <div ref={heroRef} className="px-space-base relative isolate h-screen py-4">
         <div
           ref={leftColRef}
-          className="bg-indigo/5 gap-space-base p-site-margin relative z-1 mx-4 flex grid h-full grid-cols-12 rounded-4xl border-1 border-white backdrop-blur-md"
+          className="bg-indigo/5 gap-space-base p-site-margin relative z-1 flex grid h-full grid-cols-12 rounded-4xl border-1 border-white backdrop-blur-md"
         >
           <div className="gap-space-base col-start-1 col-end-8 flex h-full flex-col justify-end">
-            <div className="gap-space-sm flex w-fit items-center rounded-full bg-white p-2 px-4">
+            <div className="gap-space-sm flex w-fit items-center rounded-full bg-white/50 p-2 px-3">
               <div className="bg-indigo h-1 w-1 rounded-full"></div>
               <p className="text-xs uppercase">
                 disponibilité - <strong>mai 2026</strong>
               </p>
             </div>
-            <h1 className="text-4xl leading-[1.1]">
+            <h1 className="text-5xl leading-[1.1]">
               Augmentez votre chiffre d'affaires
               <span className="text-indigo">
                 <em> sans vous épuiser </em>
@@ -133,7 +133,7 @@ export default function Hero() {
         <div className="gap-space-base p-site-margin absolute inset-0 z-2 m-4 grid grid-cols-12">
           <div
             ref={rightColRef}
-            className="relative col-start-10 col-end-13 flex items-end"
+            className="relative col-start-9 col-end-13 flex items-end justify-center px-space-3x"
           >
             <StatLabel
               className="charts absolute bottom-1/4 -left-1/4 rotate-5"
@@ -163,9 +163,9 @@ export default function Hero() {
           </div>
         </div>
       </div>
-      <div ref={aboutRef} className="mx-4 h-screen">
+      <div ref={aboutRef} className="h-screen mx-space-base">
         <div className="mx-site-margin gap-space-base grid h-full grid-cols-12">
-          <div className="gap-space-base col-start-1 col-end-7 flex flex-col items-start justify-center">
+          <div className="gap-space-2x col-start-2 col-end-8 flex flex-col items-start justify-center">
             <h2 className="">
               <Heading className="text-secondary text-4xl" splitType="words">
                 À propos de{" "}
@@ -175,7 +175,7 @@ export default function Hero() {
               </Heading>
             </h2>
 
-            <p className="leading-body flex flex-col gap-2 text-base">
+            <p className="leading-body flex flex-col gap-2 text-md">
               <Heading splitType="lines">
                 Bonjour, je suis Eva, fondatrice d&apos;Experiencia Consulting.
               </Heading>
