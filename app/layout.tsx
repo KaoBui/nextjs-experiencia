@@ -5,11 +5,10 @@ import { LenisProvider } from "./providers/lenis-provider";
 import NavBar from "@/components/NavBar";
 import { cn } from "@/lib/utils";
 import Footer from "@/components/Footer";
-import PageTransitionContent, {
-  PageTransitionProvider,
-} from "@/components/PageTransition";
+import PageTransitionContent from "@/components/page-transition/PageTransitionContent";
+import PageTransitionProvider from "@/components/page-transition/PageTransitionProvider";
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta-sans",
@@ -35,16 +34,24 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn("h-full", "antialiased", plusJakartaSans.variable, instrumentSerif.variable, "font-sans", geist.variable)}
+      className={cn(
+        "h-full",
+        "antialiased",
+        plusJakartaSans.variable,
+        instrumentSerif.variable,
+        "font-sans",
+        geist.variable,
+      )}
     >
       <body className="bg-background">
         <LenisProvider>
           <PageTransitionProvider>
+            {" "}
             <NavBar />
-            <main>
-              <PageTransitionContent>{children}</PageTransitionContent>
-            </main>
-            <Footer />
+            <PageTransitionContent>
+              <main>{children}</main>
+              <Footer />{" "}
+            </PageTransitionContent>
           </PageTransitionProvider>
         </LenisProvider>
       </body>

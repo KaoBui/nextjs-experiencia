@@ -10,104 +10,100 @@ import TransitionLink from "@/components/TransitionLink";
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 const navItems = [
-  { href: "/", label: "Accueil" },
   { href: "/services", label: "Services" },
   { href: "/a-propos", label: "A propos" },
-  { href: "/contact", label: "Contact" },
 ];
 
+function NavContent({ compact = false }: { compact?: boolean }) {
+  return (
+    <div className={compact ? "mx-site-margin flex justify-center" : ""}>
+      <nav
+        className={[
+          "flex items-center justify-between p-2",
+          compact
+            ? "w-full max-w-[50rem] rounded-full bg-white/70 shadow-[0_4px_4px_rgba(0,0,0,0.04)] backdrop-blur-md"
+            : "w-full",
+        ].join(" ")}
+      >
+        <TransitionLink href="/" className="pl-2 font-serif text-lg">
+          <Image
+            src="/logo.png"
+            alt="Experiencia Consulting Logo"
+            width={100}
+            height={100}
+          />
+        </TransitionLink>
+        <div className="flex items-center gap-6 text-sm">
+          {navItems.map((item) => (
+            <TransitionLink key={item.href} href={item.href}>
+              {item.label}
+            </TransitionLink>
+          ))}
+        </div>
+        <TransitionLink
+          href="/contact"
+          className="bg-indigo rounded-full p-2 px-4"
+        >
+          <p className="text-sm text-white">Prendre RDV</p>
+        </TransitionLink>
+      </nav>
+    </div>
+  );
+}
+
 export default function NavBar() {
-  const headerRef = useRef<HTMLElement | null>(null);
-  const navRef = useRef<HTMLElement | null>(null);
-  const navInnerRef = useRef<HTMLDivElement | null>(null);
+  const stickyHeaderRef = useRef<HTMLElement | null>(null);
 
   useGSAP(() => {
-    if (!headerRef.current || !navRef.current || !navInnerRef.current) {
+    if (!stickyHeaderRef.current) {
       return;
     }
 
-    gsap.set(headerRef.current, {
-      top: "2rem",
+    gsap.set(stickyHeaderRef.current, {
+      yPercent: -100,
+      autoAlpha: 0,
     });
 
-    gsap.set(navRef.current, {
-      width: "100%",
-      backgroundColor: "rgba(255,255,255,0)",
-      borderRadius: "0px",
-      boxShadow: "0 0 0 rgba(0,0,0,0)",
-      backdropFilter: "blur(0px)",
+    const timeline = gsap.timeline({
+      paused: true,
+      defaults: {
+        duration: 0.2,
+        ease: "power2.out",
+      },
     });
 
-    gsap
-      .timeline({
-        scrollTrigger: {
-          trigger: document.documentElement,
-          start: "top top",
-          end: "+=300vh",
-          scrub: true,
-        },
-        defaults: {
-          ease: "power2.inOut",
-        },
-      })
-      .to(
-        headerRef.current,
-        {
-          top: "1rem",
-        },
-        0,
-      )
-      .to(
-        navInnerRef.current,
-        {
-          paddingLeft: "0px",
-          paddingRight: "0px",
-        },
-        0,
-      )
-      .to(
-        navRef.current,
-        {
-          width: "50%",
-          backgroundColor: "rgba(255,255,255,0.7)",
-          borderRadius: "9999px",
-          boxShadow: "0 4px 4px rgba(0,0,0,0.04)",
-          backdropFilter: "blur(12px)",
-        },
-        0,
-      );
-  });
+    timeline.to(stickyHeaderRef.current, {
+      yPercent: 0,
+      autoAlpha: 1,
+    });
+
+    ScrollTrigger.create({
+      trigger: document.documentElement,
+      start: () => window.innerHeight * 0.5,
+      invalidateOnRefresh: true,
+      onEnter: () => timeline.play(),
+      onLeaveBack: () => timeline.reverse(),
+    });
+
+    return () => {
+      timeline.kill();
+    };
+  }, []);
 
   return (
-    <header
-      ref={headerRef}
-      className="fixed left-1/2 z-60 w-full -translate-x-1/2"
-    >
-      <div ref={navInnerRef} className="mx-site-margin flex justify-center">
-        <nav ref={navRef} className="flex items-center justify-between p-2">
-          <TransitionLink href="/" className="pl-2 font-serif text-lg">
-            <Image
-              src="/logo.png"
-              alt="Experiencia Consulting Logo"
-              width={100}
-              height={100}
-            />
-          </TransitionLink>
-          <div className="flex items-center gap-6 text-sm">
-            {navItems.map((item) => (
-              <TransitionLink key={item.href} href={item.href}>
-                {item.label}
-              </TransitionLink>
-            ))}
-          </div>
-          <TransitionLink
-            href="/contact"
-            className="bg-indigo rounded-full p-2 px-4"
-          >
-            <p className="text-sm text-white">Calculer mon CA perdu</p>
-          </TransitionLink>
-        </nav>
-      </div>
-    </header>
+    <>
+      <header className="absolute top-8 left-1/2 z-50 w-full -translate-x-1/2">
+        <div className="mx-site-margin">
+          <NavContent />
+        </div>
+      </header>
+
+      <header
+        ref={stickyHeaderRef}
+        className="fixed top-4 left-1/2 z-60 w-full -translate-x-1/2"
+      >
+        <NavContent compact />
+      </header>
+    </>
   );
 }

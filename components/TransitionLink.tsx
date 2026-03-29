@@ -2,7 +2,7 @@
 
 import Link, { type LinkProps } from "next/link";
 import { forwardRef, type ComponentPropsWithoutRef, type MouseEvent } from "react";
-import { usePageTransition } from "@/components/PageTransition";
+import { usePageTransition } from "@/components/page-transition/usePageTransition";
 
 type TransitionLinkProps = LinkProps &
   Omit<ComponentPropsWithoutRef<typeof Link>, keyof LinkProps>;
