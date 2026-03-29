@@ -26,7 +26,7 @@ export default function DarkWave({
           d="M1553 763C1553 763 1475.05 444.04 1085.83 602.124C696.604 760.207 847.498 248.531 1148.79 312.211C1450.07 375.891 1417.6 -105.621 844 -114"
           fill="none"
           stroke="#966CF9"
-          strokeWidth="177"
+          strokeWidth="120"
           strokeLinecap="round"
         />
       </g>

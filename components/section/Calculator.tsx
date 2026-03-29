@@ -29,20 +29,28 @@ export default function Calculator() {
         return;
       }
 
-      gsap.fromTo(
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 50%",
+          end: "bottom 50%",
+          scrub: 1,
+        },
+      });
+
+      tl.fromTo(
         wavePathRef.current,
         { drawSVG: "100% 100%" },
         {
           drawSVG: "0% 100%",
-          duration: 2,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 25%",
-            toggleActions: "play none none reverse",
-          },
+          duration: 1,
+          ease: "none",
         },
-      );
+      ).to(wavePathRef.current, {
+        drawSVG: "0% 0%",
+        duration: 1,
+        ease: "none",
+      });
 
       // gsap.to(topWavePathRef.current, {
       //   morphSVG: {
@@ -69,15 +77,20 @@ export default function Calculator() {
       className="relative overflow-hidden"
     >
       <TopWave
-        className="-mb-[1px]"
+        className="absolute -top-1 z-1 w-[100vw] rotate-180"
+        svgRef={topWaveSvgRef}
+        pathRef={topWavePathRef}
+      />
+      <TopWave
+        className="absolute -bottom-1 z-1 w-[100vw] rotate-0"
         svgRef={topWaveSvgRef}
         pathRef={topWavePathRef}
       />
       <DarkWave
-        className="pointer-events-none absolute -top-4 right-0 w-full"
+        className="pointer-events-none absolute -right-[10%] h-full"
         pathRef={wavePathRef}
       />
-      <div className="bg-indigo-dark py-space-2x flex min-h-screen items-center justify-center px-4">
+      <div className="bg-indigo-dark py-space-2x flex h-[140vh] items-center justify-center px-4">
         <div className="mx-site-margin z-1 flex h-full items-center justify-center">
           <div className="gap-space-2x p-space-base flex max-w-4xl rounded-4xl border-1 border-white/25 bg-white/10 backdrop-blur-lg xl:max-w-5xl">
             <div className="gap-space-base flex flex-1 flex-col justify-center p-4">

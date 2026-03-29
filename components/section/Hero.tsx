@@ -96,26 +96,29 @@ export default function Hero() {
   return (
     <section ref={containerRef}>
       <HeaderWave className="pointer-events-none fixed top-0 right-0 h-auto w-1/2" />
-      <div ref={heroRef} className="px-space-base relative isolate h-screen py-4">
-        <div
-          ref={leftColRef}
-          className="bg-indigo/5 gap-space-base p-site-margin relative z-1 flex grid h-full grid-cols-12 rounded-4xl border-1 border-white backdrop-blur-md"
-        >
-          <div className="gap-space-base col-start-1 col-end-8 flex h-full flex-col justify-end">
+      <div
+        ref={heroRef}
+        className="px-space-base relative isolate h-screen py-4"
+      >
+        <div className="bg-indigo/5 gap-space-base p-site-margin relative flex grid h-full grid-cols-12 rounded-4xl border-1 border-white backdrop-blur-md">
+          <div
+            ref={leftColRef}
+            className="col-start-1 col-end-8 flex h-full flex-col justify-end"
+          >
             <div className="gap-space-sm flex w-fit items-center rounded-full bg-white/50 p-2 px-3">
               <div className="bg-indigo h-1 w-1 rounded-full"></div>
               <p className="text-xs uppercase">
                 disponibilité - <strong>mai 2026</strong>
               </p>
             </div>
-            <h1 className="text-5xl leading-[1.1]">
+            <h1 className="pt-[2vh] pb-[4vh] text-5xl leading-[1.1]">
               Augmentez votre chiffre d'affaires
               <span className="text-indigo">
                 <em> sans vous épuiser </em>
               </span>
-              à courir après plus de clients
+              à courir après des clients
             </h1>
-            <p className="text-sm">
+            <p className="max-w-[56ch] pb-[6vh] text-base">
               Grâce à des stratégies de fidélisation structurées et mesurables,
               nous aidons les TPE et PME à maximiser la valeur de chaque client
               et à sécuriser leur croissance.
@@ -129,24 +132,22 @@ export default function Hero() {
               </div>
             </div>
           </div>
-        </div>
-        <div className="gap-space-base p-site-margin absolute inset-0 z-2 m-4 grid grid-cols-12">
           <div
             ref={rightColRef}
-            className="relative col-start-9 col-end-13 flex items-end justify-center px-space-3x"
+            className="px-space-3x absolute relative inset-0 col-start-9 col-end-13 flex items-end justify-center"
           >
             <StatLabel
-              className="charts absolute bottom-1/4 -left-1/4 rotate-5"
+              className="charts absolute bottom-1/4 left-0 rotate-2"
               label="Croissance"
-              stat="+42%"
+              stat="+52%"
             />
             <StatLabel
               className="charts absolute top-1/3 left-1/2 rotate-5"
               label="Croissance"
               stat="+42%"
             />
-            <Graph className="charts absolute top-1/4 -left-12 h-30 w-30 -rotate-4" />
-            <NumberBlock className="charts absolute bottom-4 -left-12 w-1/2 -rotate-4 gap-4" />
+            <Graph className="charts absolute top-1/4 -left-6 h-30 w-30 -rotate-4" />
+            <NumberBlock className="charts absolute bottom-4 -left-4 -rotate-4 gap-4" />
             <div
               ref={portraitRef}
               className="-z-1 aspect-4/5 h-auto w-full overflow-hidden rounded-3xl border-1 border-white bg-violet-50 p-2"
@@ -163,9 +164,9 @@ export default function Hero() {
           </div>
         </div>
       </div>
-      <div ref={aboutRef} className="h-screen mx-space-base">
+      <div ref={aboutRef} className="mx-space-base h-screen">
         <div className="mx-site-margin gap-space-base grid h-full grid-cols-12">
-          <div className="gap-space-2x col-start-2 col-end-8 flex flex-col items-start justify-center">
+          <div className="gap-space-2x col-start-1 col-end-7 flex flex-col items-start justify-center">
             <h2 className="">
               <Heading className="text-secondary text-4xl" splitType="words">
                 À propos de{" "}
@@ -174,8 +175,7 @@ export default function Hero() {
                 </span>
               </Heading>
             </h2>
-
-            <p className="leading-body flex flex-col gap-2 text-md">
+            <p className="leading-body text-md flex flex-col gap-2">
               <Heading splitType="lines">
                 Bonjour, je suis Eva, fondatrice d&apos;Experiencia Consulting.
               </Heading>
@@ -184,7 +184,7 @@ export default function Hero() {
                 leur expérience client et leur stratégie de fidélisation .
               </Heading>
             </p>
-            <div className="border-indigo rounded-full border p-2 px-4">
+            <div className="border-indigo z-2 rounded-full border p-2 px-4">
               <p className="text-indigo text-base">En savoir plus</p>
             </div>
           </div>

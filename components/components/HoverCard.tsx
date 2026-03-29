@@ -66,7 +66,7 @@ export default function HoverCard({
   return (
     <div
       ref={containerRef}
-      className="relative flex flex-col items-end justify-between min-h-[220px] rounded-3xl border-2 border-white bg-white/75 p-space-base backdrop-blur-md shadow-sm overflow-hidden"
+      className="relative flex flex-col items-end gap-[15vh] rounded-3xl border-2 border-white bg-white/75 p-space-base backdrop-blur-md shadow-sm overflow-hidden"
       style={colorStyle}
     >
       <button

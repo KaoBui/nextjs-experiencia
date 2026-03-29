@@ -28,7 +28,7 @@ export default function CalculatorCore() {
   const [calculatedValue, setCalculatedValue] = useState(0);
 
   return (
-    <div className="gap-space-2x flex flex-col justify-between">
+    <div className="flex flex-col justify-between gap-[6vh]">
       <FieldSet>
         <FieldGroup className="gap-space-base">
           <Field className="gap-space-sm grid grid-cols-[minmax(0,1fr)_minmax(0,16rem)] items-start">
@@ -60,7 +60,7 @@ export default function CalculatorCore() {
           </Field>
 
           <Field className="grid grid-cols-[minmax(0,1fr)_minmax(0,16rem)] items-start gap-6">
-            <FieldContent className="justify-center h-full">
+            <FieldContent className="h-full justify-center">
               <FieldLabel htmlFor="churn-rate">Votre taux de churn</FieldLabel>
               {/* <FieldDescription className="text-xs">
                 moyen en %, une seule décimale
@@ -129,7 +129,7 @@ export default function CalculatorCore() {
             </Select>
           </Field>
         </FieldGroup>
-        <div className="pt-space-sm flex flex-col gap-2">
+        <div className="pt-[6vh] flex flex-col gap-2">
           <div className="gap-space-base flex items-center justify-between">
             <p className="text-secondary text-sm">
               Ce que ca vous coute le moise dernier :

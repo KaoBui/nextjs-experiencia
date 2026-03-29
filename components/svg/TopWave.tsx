@@ -23,7 +23,7 @@ export default function TopWave({ className, svgRef, pathRef }: TopWaveProps) {
         id={TOP_WAVE_PATH_ID}
         ref={pathRef}
         d="M463.5 18.9008C240.5 -53.1214 -1 103.9 -1 103.9H1536V46.4002C1124 -20.0998 962 179.901 463.5 18.9008Z"
-        fill="#220842"
+        fill="var(--background)"
       />
       <path
         id={TOP_WAVE_FLAT_PATH_ID}

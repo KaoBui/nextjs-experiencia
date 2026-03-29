@@ -6,32 +6,32 @@ export default function ServiceWave({ className }: ServiceWaveProps) {
   return (
     <svg
       className={className}
-      viewBox="0 0 1341 1794"
+      viewBox="0 0 1327 1563"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
     >
       <path
         className="service-wave__path"
-        d="M1474.95 21.8658C1474.95 40.8658 1526.66 3.51036 1233.16 277.51C939.655 551.51 391.861 658.155 661.656 440.011C931.45 221.866 1449.45 378.866 953.45 703.866C457.45 1028.87 -105.072 974.615 89.45 1234.37C256.45 1457.37 973.45 1260.37 1019.45 1463.37C1065.45 1666.37 197.95 1722.37 177.95 1750.37"
+        d="M1460.03 32.8489C1460.03 51.8489 1511.74 14.4935 1218.24 288.494C924.739 562.494 376.946 669.138 646.74 450.994C916.535 232.849 1418.54 354.849 938.534 714.849C458.533 1074.85 -152.84 1489.39 151.533 1376.85C449.033 1266.85 1521.03 1115.85 1104.53 1376.85C688.033 1637.85 1438.03 1376.85 1438.03 1376.85"
         stroke="url(#service-wave-gradient)"
         strokeOpacity="0.4"
-        strokeWidth="120"
+        strokeWidth="140"
         strokeLinecap="round"
       />
       <defs>
         <linearGradient
           id="service-wave-gradient"
-          x1="1145.15"
-          y1="-166.952"
-          x2="1145.15"
-          y2="1582.35"
+          x1="1130.24"
+          y1="-155.969"
+          x2="1130.24"
+          y2="1593.33"
           gradientUnits="userSpaceOnUse"
         >
           <stop stopColor="#4008C3" />
           <stop offset="0.355769" stopColor="#7B63FA" />
           <stop offset="0.764423" stopColor="#AC6CFF" />
-          <stop offset="1" stopColor="#c1b6da" />
+          <stop offset="1" stopColor="#E9E0FE" />
         </linearGradient>
       </defs>
     </svg>

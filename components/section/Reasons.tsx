@@ -2,43 +2,53 @@
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
+import { DrawSVGPlugin } from "gsap/DrawSVGPlugin";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import HoverCard from "../components/HoverCard";
-import ReasonsWave from "../svg/ReasonsWave";
 import Heading from "../components/Heading";
+import LongWave from "../svg/LongWave";
+
+gsap.registerPlugin(useGSAP, DrawSVGPlugin, ScrollTrigger);
 
 export default function Reasons() {
-  const reasonsRef = useRef<HTMLDivElement | null>(null);
+  const reasonsRef = useRef<HTMLElement | null>(null);
   const rightColRef = useRef<HTMLDivElement | null>(null);
   const leftColRef = useRef<HTMLDivElement | null>(null);
   const wavePathRef = useRef<SVGPathElement | null>(null);
 
   useGSAP(
     () => {
-      if (
-        !reasonsRef.current ||
-        !leftColRef.current ||
-        !rightColRef.current ||
-        !wavePathRef.current
-      ) {
+      if (!reasonsRef.current || !leftColRef.current || !rightColRef.current) {
         return;
       }
 
-      gsap.fromTo(
-        wavePathRef.current,
-        {
-          drawSVG: "0% 0%",
+      const drawTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: reasonsRef.current,
+          start: "top 50%",
+          end: "bottom top",
+          scrub: 1,
         },
-        {
-          drawSVG: "0% 100%",
-          duration: 2,
-          ease: "power3.inOut",
-          scrollTrigger: {
-            trigger: reasonsRef.current,
-            start: "top top",
+      });
+
+      drawTl
+        .fromTo(
+          wavePathRef.current,
+          {
+            drawSVG: "0% 0%",
           },
-        },
-      );
+          {
+            drawSVG: "0% 100%",
+            duration: 1,
+            ease: "none",
+          },
+        )
+        .to(wavePathRef.current, {
+          drawSVG: "100% 100%",
+          duration: 1,
+          ease: "none",
+        });
+
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: reasonsRef.current,
@@ -47,9 +57,7 @@ export default function Reasons() {
           scrub: true,
         },
       });
-      tl.to(wavePathRef.current, {
-        yPercent: 50,
-      }).to(
+      tl.to(
         leftColRef.current,
         {
           yPercent: 200,
@@ -57,24 +65,15 @@ export default function Reasons() {
         },
         0,
       );
-      // ScrollTrigger.create({
-      //   trigger: leftColRef.current,
-      //   start: "50% 50%",
-      //   pin: leftColRef.current,
-      //   endTrigger: rightColRef.current,
-      //   end: "bottom bottom",
-      //   scrub: true,
-      //   pinSpacing: false,
-      // });
     },
     { scope: reasonsRef },
   );
 
   return (
     <section ref={reasonsRef} id="reasons" className="relative my-[20vh] px-4">
-      <ReasonsWave
+      <LongWave
+        className="pointer-events-none absolute -top-[10%] right-0 -z-10 w-full opacity-50"
         pathRef={wavePathRef}
-        className="pointer-events-none absolute -top-[10%] right-0 -z-10 hidden h-full w-full"
       />
       <div className="mx-site-margin py-space-base gap-space-base grid grid-cols-12">
         <div className="col-start-2 col-end-6">
@@ -94,7 +93,7 @@ export default function Reasons() {
         </div>
         <div
           ref={rightColRef}
-          className="gap-space-base pb-space-2x col-start-6 col-end-12 row-start-2 flex"
+          className="gap-space-base pb-space-2x col-start-7 col-end-12 row-start-2 flex"
         >
           <div className="gap-space-base flex flex-1 flex-col">
             <HoverCard

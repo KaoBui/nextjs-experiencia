@@ -15,7 +15,7 @@ export default function HeaderWave({ className }: HeaderWaveProps) {
         d="M224.533 -75C553.034 -131.5 -141.467 323 103.534 248C348.534 173 744.034 129.5 672.034 242C600.034 354.5 122.534 770.5 783.534 540"
         stroke="#733BF7"
         strokeOpacity="0.4"
-        strokeWidth="100"
+        strokeWidth="120"
         strokeLinecap="round"
       />
     </svg>
