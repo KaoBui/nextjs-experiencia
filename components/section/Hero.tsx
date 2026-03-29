@@ -10,6 +10,7 @@ import StatLabel from "../components/StatLabel";
 import Heading from "../components/Heading";
 import Graph from "../components/Graph";
 import NumberBlock from "../components/NumberBlock";
+import TransitionLink from "@/components/TransitionLink";
 
 gsap.registerPlugin(useGSAP, DrawSVGPlugin, ScrollTrigger);
 
@@ -98,7 +99,7 @@ export default function Hero() {
       <HeaderWave className="pointer-events-none fixed top-0 right-0 h-auto w-1/2" />
       <div
         ref={heroRef}
-        className="px-space-base relative isolate h-screen py-4"
+        className="px-section-padding relative isolate h-screen py-4"
       >
         <div className="bg-indigo/5 gap-space-base p-site-margin relative flex grid h-full grid-cols-12 rounded-4xl border-1 border-white backdrop-blur-md">
           <div
@@ -111,8 +112,8 @@ export default function Hero() {
                 disponibilité - <strong>mai 2026</strong>
               </p>
             </div>
-            <h1 className="pt-[2vh] pb-[4vh] text-5xl leading-[1.1]">
-              Augmentez votre chiffre d'affaires
+            <h1 className="pt-[2vh] pb-[4vh] text-6xl leading-[1.1]">
+              Augmentez votre chiffre d&apos;affaires
               <span className="text-indigo">
                 <em> sans vous épuiser </em>
               </span>
@@ -124,12 +125,18 @@ export default function Hero() {
               et à sécuriser leur croissance.
             </p>
             <div className="pt-space-base flex gap-4">
-              <div className="border-indigo rounded-full border p-2 px-4">
-                <p className="text-indigo text-base">Calculer mon CA perdu</p>
-              </div>
-              <div className="bg-indigo border-indigo rounded-full border p-2 px-4">
-                <p className="text-base text-white">Prendre rendez-vous</p>
-              </div>
+              <TransitionLink
+                href="/contact"
+                className="text-indigo border-indigo rounded-full border p-2 px-4 text-base"
+              >
+                Calculer mon CA perdu
+              </TransitionLink>
+              <TransitionLink
+                href="/contact"
+                className="bg-indigo border-indigo rounded-full border p-2 px-4 text-base text-white"
+              >
+                Prendre rendez-vous
+              </TransitionLink>
             </div>
           </div>
           <div
@@ -164,7 +171,7 @@ export default function Hero() {
           </div>
         </div>
       </div>
-      <div ref={aboutRef} className="mx-space-base h-screen">
+      <div ref={aboutRef} className="mx-section-padding h-screen">
         <div className="mx-site-margin gap-space-base grid h-full grid-cols-12">
           <div className="gap-space-2x col-start-1 col-end-7 flex flex-col items-start justify-center">
             <h2 className="">
@@ -184,9 +191,12 @@ export default function Hero() {
                 leur expérience client et leur stratégie de fidélisation .
               </Heading>
             </p>
-            <div className="border-indigo z-2 rounded-full border p-2 px-4">
-              <p className="text-indigo text-base">En savoir plus</p>
-            </div>
+            <TransitionLink
+              href="/a-propos"
+              className="text-indigo border-indigo z-2 rounded-full border p-2 px-4 text-base"
+            >
+              En savoir plus
+            </TransitionLink>
           </div>
         </div>
       </div>

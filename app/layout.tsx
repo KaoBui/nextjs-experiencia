@@ -5,6 +5,9 @@ import { LenisProvider } from "./providers/lenis-provider";
 import NavBar from "@/components/NavBar";
 import { cn } from "@/lib/utils";
 import Footer from "@/components/Footer";
+import PageTransitionContent, {
+  PageTransitionProvider,
+} from "@/components/PageTransition";
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
@@ -36,9 +39,13 @@ export default function RootLayout({
     >
       <body className="bg-background">
         <LenisProvider>
-          <NavBar />
-          <main>{children}</main>
-          <Footer />
+          <PageTransitionProvider>
+            <NavBar />
+            <main>
+              <PageTransitionContent>{children}</PageTransitionContent>
+            </main>
+            <Footer />
+          </PageTransitionProvider>
         </LenisProvider>
       </body>
     </html>

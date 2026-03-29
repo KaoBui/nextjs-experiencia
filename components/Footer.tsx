@@ -1,11 +1,11 @@
 import Image from "next/image";
-import Link from "next/link";
+import TransitionLink from "@/components/TransitionLink";
 
 const navigationLinks = [
   { href: "/", label: "Accueil" },
   { href: "/services", label: "Services" },
-  { href: "/about", label: "A propos" },
-  { href: "/#form", label: "Contact" },
+  { href: "/a-propos", label: "A propos" },
+  { href: "/contact", label: "Contact" },
 ];
 
 const contactDetails = [
@@ -16,7 +16,7 @@ const contactDetails = [
 
 const infoLinks = [
   { href: "/#testimonials", label: "Témoignages" },
-  { href: "/#form", label: "Prendre rendez-vous" },
+  { href: "/contact", label: "Prendre rendez-vous" },
   { href: "/services", label: "Accompagnement" },
 ];
 
@@ -35,14 +35,14 @@ export default function Footer() {
       <div className="mx-site-margin">
         <div className="grid gap-12 border-b border-white/10 pb-10 md:grid-cols-2 xl:grid-cols-12">
           <div className="col-start-1 col-end-6 flex max-w-xs flex-col gap-4">
-            <Link href="/" className="flex justify-center">
+            <TransitionLink href="/" className="flex justify-center">
               <Image
                 src="/logo-vertical.png"
                 alt="Experiencia Consulting Logo"
                 width={120}
                 height={120}
               />
-            </Link>
+            </TransitionLink>
             <p className="text-center text-sm leading-6 text-white/70">
               Conseil stratégique pour renforcer l&apos;expérience client et la
               performance durable.
@@ -53,13 +53,13 @@ export default function Footer() {
               <h3 className="text-md text-white/75">Navigation</h3>
               <div className="flex flex-col gap-3 text-sm text-white/80">
                 {navigationLinks.map((link) => (
-                  <Link
+                  <TransitionLink
                     key={link.href}
                     href={link.href}
                     className="w-fit transition hover:text-white"
                   >
                     {link.label}
-                  </Link>
+                  </TransitionLink>
                 ))}
               </div>
             </div>
@@ -77,13 +77,13 @@ export default function Footer() {
               <h3 className="text-md text-white/75">Information</h3>
               <div className="flex flex-col gap-3 text-sm text-white/80">
                 {infoLinks.map((link) => (
-                  <Link
+                  <TransitionLink
                     key={link.href}
                     href={link.href}
                     className="w-fit transition hover:text-white"
                   >
                     {link.label}
-                  </Link>
+                  </TransitionLink>
                 ))}
               </div>
             </div>
@@ -94,13 +94,13 @@ export default function Footer() {
           <p>© 2026 Experiencia Consulting. Tous droits réservés.</p>
           <div className="flex flex-wrap gap-4">
             {legalLinks.map((link) => (
-              <Link
+              <TransitionLink
                 key={link.href}
                 href={link.href}
                 className="transition hover:text-white/80"
               >
                 {link.label}
-              </Link>
+              </TransitionLink>
             ))}
             <p className="text-xs">Website by Kao</p>
           </div>

@@ -50,11 +50,11 @@ export default function Services() {
     <section
       ref={servicesRef}
       id="services"
-      className="relative px-4 py-[15vh] mb-[10vh]"
+      className="relative mb-[10vh] px-section-padding py-[15vh]"
     >
       <ServiceWave className="pointer-events-none absolute top-0 right-0 -z-10 h-full w-auto" />
       <div className="mx-site-margin gap-space-2x grid grid-cols-12">
-        <div className="col-start-1 col-end-7 flex flex-col items-start pb-space-2x">
+        <div className="pb-space-2x col-start-1 col-end-7 flex flex-col items-start">
           <p className="text-md pb-2">Vous sentez que ça coince?</p>
           <h2>
             <Heading className="text-tertiary text-4xl" splitType="lines">

@@ -1,10 +1,10 @@
 "use client";
 import Image from "next/image";
-import Link from "next/link";
 import type { CSSProperties } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
+import TransitionLink from "@/components/TransitionLink";
 
 type ServiceCardProps = {
   imgSrc: string;
@@ -58,7 +58,7 @@ export default function ServiceCard({
           {offerName}
         </h3>
         <p className="text-base text-secondary">{description}</p>
-        <Link
+        <TransitionLink
           href={href}
           className="mt-space-base rounded-xl px-6 py-3 text-sm font-semibold"
           style={{
@@ -67,8 +67,8 @@ export default function ServiceCard({
               "color-mix(in srgb, var(--service-card-color) 8%, transparent)",
           }}
         >
-          Voir l'offre <span className="uppercase">{offerName}</span>
-        </Link>
+          Voir l&apos;offre <span className="uppercase">{offerName}</span>
+        </TransitionLink>
       </div>
     </div>
   );

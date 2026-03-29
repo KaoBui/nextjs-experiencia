@@ -1,18 +1,19 @@
 "use client";
 
 import { useRef } from "react";
-import Link from "next/link";
 import Image from "next/image";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import TransitionLink from "@/components/TransitionLink";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 const navItems = [
   { href: "/", label: "Accueil" },
   { href: "/services", label: "Services" },
-  { href: "/about", label: "A propos" },
+  { href: "/a-propos", label: "A propos" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export default function NavBar() {
@@ -84,24 +85,27 @@ export default function NavBar() {
     >
       <div ref={navInnerRef} className="mx-site-margin flex justify-center">
         <nav ref={navRef} className="flex items-center justify-between p-2">
-          <Link href="/" className="pl-2 font-serif text-lg">
+          <TransitionLink href="/" className="pl-2 font-serif text-lg">
             <Image
               src="/logo.png"
               alt="Experiencia Consulting Logo"
               width={100}
               height={100}
             />
-          </Link>
+          </TransitionLink>
           <div className="flex items-center gap-6 text-sm">
             {navItems.map((item) => (
-              <Link key={item.href} href={item.href}>
+              <TransitionLink key={item.href} href={item.href}>
                 {item.label}
-              </Link>
+              </TransitionLink>
             ))}
           </div>
-          <div className="bg-indigo rounded-full p-2 px-4">
+          <TransitionLink
+            href="/contact"
+            className="bg-indigo rounded-full p-2 px-4"
+          >
             <p className="text-sm text-white">Calculer mon CA perdu</p>
-          </div>
+          </TransitionLink>
         </nav>
       </div>
     </header>
