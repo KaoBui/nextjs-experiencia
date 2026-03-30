@@ -12,10 +12,11 @@ import {
 import { usePathname, useRouter } from "next/navigation";
 import gsap from "gsap";
 import { DrawSVGPlugin } from "gsap/DrawSVGPlugin";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useLenis } from "@/app/providers/lenis-provider";
 import { PageTransitionContext } from "@/components/page-transition/context";
 
-gsap.registerPlugin(DrawSVGPlugin);
+gsap.registerPlugin(DrawSVGPlugin, ScrollTrigger);
 
 const START_STROKE_WIDTH = 140;
 
@@ -23,8 +24,8 @@ function getStrokeWidths() {
   const viewportDiagonal = Math.hypot(window.innerWidth, window.innerHeight);
 
   return {
-    mid: viewportDiagonal * 0.18,
-    end: viewportDiagonal * 0.4,
+    mid: viewportDiagonal * 0.2,
+    end: viewportDiagonal * 0.06,
   };
 }
 
@@ -76,6 +77,9 @@ export default function PageTransitionProvider({
 
     setIsTransitioning(false);
     lenis?.start();
+    window.requestAnimationFrame(() => {
+      ScrollTrigger.refresh();
+    });
   }, [lenis]);
 
   const navigate = useCallback(

@@ -74,7 +74,7 @@
 @media (min-width: 1900px) {
   :root {
     --font-size-base: 1.125rem;
-    --font-scale-ratio: 1.33;
+    --font-scale-ratio: 1.25;
     --type--lh-body: 1.6;
     --type--lh-head: 1;
     --space-base: 1.6rem;
