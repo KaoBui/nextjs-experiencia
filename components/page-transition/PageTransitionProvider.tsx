@@ -3,7 +3,7 @@
 import {
   startTransition,
   useCallback,
-  useLayoutEffect,
+  useEffect,
   useMemo,
   useRef,
   useState,
@@ -11,11 +11,22 @@ import {
 } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import gsap from "gsap";
+import { DrawSVGPlugin } from "gsap/DrawSVGPlugin";
 import { useLenis } from "@/app/providers/lenis-provider";
-import {
-  PageTransitionContext,
-  type TransitionLayer,
-} from "@/components/page-transition/context";
+import { PageTransitionContext } from "@/components/page-transition/context";
+
+gsap.registerPlugin(DrawSVGPlugin);
+
+const START_STROKE_WIDTH = 140;
+
+function getStrokeWidths() {
+  const viewportDiagonal = Math.hypot(window.innerWidth, window.innerHeight);
+
+  return {
+    mid: viewportDiagonal * 0.18,
+    end: viewportDiagonal * 0.4,
+  };
+}
 
 export default function PageTransitionProvider({
   children,
@@ -25,216 +36,171 @@ export default function PageTransitionProvider({
   const pathname = usePathname();
   const router = useRouter();
   const lenis = useLenis();
-  const containerRef = useRef<HTMLDivElement | null>(null);
-  const enteringRef = useRef<HTMLDivElement | null>(null);
-  const exitingRef = useRef<HTMLDivElement | null>(null);
-  const previousLayerRef = useRef<TransitionLayer | null>(null);
-  const navigationModeRef = useRef<"idle" | "controlled">("idle");
-  const [activeLayer, setActiveLayer] = useState<TransitionLayer>({
-    key: pathname,
-    children: null,
-  });
-  const [displayedChildren, setDisplayedChildren] = useState<ReactNode>(null);
-  const [exitingLayer, setExitingLayer] = useState<TransitionLayer | null>(null);
+  const overlayRef = useRef<HTMLDivElement | null>(null);
+  const pathRef = useRef<SVGPathElement | null>(null);
+  const previousPathnameRef = useRef(pathname);
+  const pendingHrefRef = useRef<string | null>(null);
+  const waitingForRouteChangeRef = useRef(false);
+  const routeChangedUnderCoverRef = useRef(false);
+  const coverPhaseCompleteRef = useRef(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const [transitionStage, setTransitionStage] = useState<
-    "idle" | "enter-only" | "overlap"
-  >("idle");
+
+  const registerOverlay = useCallback((node: HTMLDivElement | null) => {
+    overlayRef.current = node;
+
+    if (node) {
+      gsap.set(node, {
+        autoAlpha: 0,
+      });
+    }
+  }, []);
+
+  const registerPath = useCallback((node: SVGPathElement | null) => {
+    pathRef.current = node;
+  }, []);
 
   const finishTransition = useCallback(() => {
-    setExitingLayer(null);
+    if (pathRef.current) {
+      gsap.set(pathRef.current, {
+        drawSVG: "0% 0%",
+        strokeWidth: START_STROKE_WIDTH,
+        autoAlpha: 0,
+      });
+    }
+
+    if (overlayRef.current) {
+      gsap.set(overlayRef.current, {
+        autoAlpha: 0,
+      });
+    }
+
     setIsTransitioning(false);
-    setTransitionStage("idle");
     lenis?.start();
   }, [lenis]);
 
   const navigate = useCallback(
     (href: string) => {
-      if (isTransitioning || href === pathname || !enteringRef.current) {
+      if (
+        isTransitioning ||
+        href === pathname ||
+        !overlayRef.current ||
+        !pathRef.current
+      ) {
         return;
       }
 
-      navigationModeRef.current = "controlled";
+      const { mid, end } = getStrokeWidths();
+
+      pendingHrefRef.current = href;
+      waitingForRouteChangeRef.current = true;
+      routeChangedUnderCoverRef.current = false;
+      coverPhaseCompleteRef.current = false;
       setIsTransitioning(true);
       lenis?.stop();
 
-      gsap.killTweensOf(enteringRef.current);
-      gsap.to(enteringRef.current, {
-        opacity: 0,
-        y: 32,
-        filter: "blur(14px)",
-        duration: 0.5,
-        ease: "power3.inOut",
-        onComplete: () => {
-          window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-          router.push(href);
-        },
+      gsap.set(overlayRef.current, {
+        autoAlpha: 1,
+        clearProps: "display",
       });
-    },
-    [isTransitioning, lenis, pathname, router],
-  );
-
-  const syncLayer = useCallback(
-    (children: ReactNode) => {
-      const nextLayer = {
-        key: pathname,
-        children,
-      };
-
-      if (!previousLayerRef.current) {
-        previousLayerRef.current = nextLayer;
-        startTransition(() => {
-          setActiveLayer(nextLayer);
-          setDisplayedChildren(children);
-        });
-        return;
-      }
-
-      if (previousLayerRef.current.key === pathname) {
-        previousLayerRef.current = nextLayer;
-        setDisplayedChildren(children);
-        return;
-      }
-
-      if (navigationModeRef.current === "controlled") {
-        navigationModeRef.current = "idle";
-        previousLayerRef.current = nextLayer;
-        startTransition(() => {
-          setActiveLayer(nextLayer);
-          setDisplayedChildren(nextLayer.children);
-          setTransitionStage("enter-only");
-        });
-        return;
-      }
-
-      lenis?.stop();
-      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-      const previousLayer = previousLayerRef.current;
-      previousLayerRef.current = nextLayer;
-      startTransition(() => {
-        setIsTransitioning(true);
-        setExitingLayer(previousLayer);
-        setActiveLayer(nextLayer);
-        setDisplayedChildren(nextLayer.children);
-        setTransitionStage("overlap");
-      });
-    },
-    [lenis, pathname],
-  );
-
-  const registerContainer = useCallback((node: HTMLDivElement | null) => {
-    containerRef.current = node;
-  }, []);
-
-  const registerEntering = useCallback((node: HTMLDivElement | null) => {
-    enteringRef.current = node;
-  }, []);
-
-  const registerExiting = useCallback((node: HTMLDivElement | null) => {
-    exitingRef.current = node;
-  }, []);
-
-  useLayoutEffect(() => {
-    if (!enteringRef.current || !containerRef.current) {
-      return;
-    }
-
-    if (transitionStage === "enter-only") {
-      const enteringNode = enteringRef.current;
-      const ctx = gsap.context(() => {
-        gsap.set(enteringNode, {
-          opacity: 0,
-          y: 40,
-          filter: "blur(14px)",
-        });
-
-        gsap.to(enteringNode, {
-          opacity: 1,
-          y: 0,
-          filter: "blur(0px)",
-          duration: 0.65,
-          ease: "power3.inOut",
-          onComplete: finishTransition,
-        });
-      }, containerRef);
-
-      return () => {
-        ctx.revert();
-      };
-    }
-
-    if (transitionStage !== "overlap" || !exitingLayer) {
-      return;
-    }
-
-    const enteringNode = enteringRef.current;
-    const exitingNode = exitingRef.current;
-    const ctx = gsap.context(() => {
-      gsap.set(enteringNode, {
-        opacity: 0,
-        y: 40,
-        filter: "blur(14px)",
+      gsap.set(pathRef.current, {
+        drawSVG: "0% 0%",
+        strokeWidth: START_STROKE_WIDTH,
+        autoAlpha: 1,
       });
 
-      const timeline = gsap.timeline({
-        defaults: {
-          duration: 0.65,
-          ease: "power3.inOut",
-        },
-        onComplete: finishTransition,
-      });
-
-      if (exitingNode) {
-        timeline.to(
-          exitingNode,
-          {
-            opacity: 0,
-            y: 32,
-            filter: "blur(14px)",
+      gsap
+        .timeline({
+          defaults: {
+            ease: "power3.inOut",
           },
-          0,
-        );
-      }
+        })
+        .to(pathRef.current, {
+          drawSVG: "0% 100%",
+          strokeWidth: mid,
+          duration: 0.95,
+        })
+        .to(pathRef.current, {
+          drawSVG: "100% 100%",
+          strokeWidth: end,
+          duration: 0.75,
+          onStart: () => {
+            const nextHref = pendingHrefRef.current;
 
-      timeline.to(
-        enteringNode,
-        {
-          opacity: 1,
-          y: 0,
-          filter: "blur(0px)",
-        },
-        0.08,
-      );
-    }, containerRef);
+            if (!nextHref) {
+              return;
+            }
 
-    return () => {
-      ctx.revert();
-    };
-  }, [exitingLayer, finishTransition, transitionStage]);
+            pendingHrefRef.current = null;
+            window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+            router.push(nextHref);
+          },
+          onComplete: () => {
+            coverPhaseCompleteRef.current = true;
+
+            if (!routeChangedUnderCoverRef.current || !pathRef.current) {
+              return;
+            }
+
+            gsap.to(overlayRef.current, {
+              autoAlpha: 0,
+              duration: 0.9,
+              ease: "power3.inOut",
+              onComplete: finishTransition,
+            });
+          },
+        });
+    },
+    [finishTransition, isTransitioning, lenis, pathname, router],
+  );
+
+  useEffect(() => {
+    if (previousPathnameRef.current === pathname) {
+      return;
+    }
+
+    previousPathnameRef.current = pathname;
+
+    if (
+      !waitingForRouteChangeRef.current ||
+      !overlayRef.current ||
+      !pathRef.current
+    ) {
+      pendingHrefRef.current = null;
+      waitingForRouteChangeRef.current = false;
+      startTransition(() => {
+        setIsTransitioning(false);
+      });
+      lenis?.start();
+      return;
+    }
+
+    waitingForRouteChangeRef.current = false;
+    routeChangedUnderCoverRef.current = true;
+
+    if (!coverPhaseCompleteRef.current) {
+      return;
+    }
+
+    gsap.set(overlayRef.current, {
+      autoAlpha: 1,
+    });
+
+    gsap.to(overlayRef.current, {
+      autoAlpha: 0,
+      duration: 0.9,
+      ease: "power3.inOut",
+      onComplete: finishTransition,
+    });
+  }, [finishTransition, lenis, pathname]);
 
   const contextValue = useMemo(
     () => ({
-      activeLayer,
-      displayedChildren,
-      exitingLayer,
       isTransitioning,
       navigate,
-      registerContainer,
-      registerEntering,
-      registerExiting,
-      syncLayer,
+      registerOverlay,
+      registerPath,
     }),
-    [
-      activeLayer,
-      displayedChildren,
-      exitingLayer,
-      isTransitioning,
-      navigate,
-      registerContainer,
-      registerEntering,
-      registerExiting,
-      syncLayer,
-    ],
+    [isTransitioning, navigate, registerOverlay, registerPath],
   );
 
   return (

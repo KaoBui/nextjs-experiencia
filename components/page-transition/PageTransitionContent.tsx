@@ -1,6 +1,7 @@
 "use client";
 
-import { useLayoutEffect, type ReactNode } from "react";
+import type { ReactNode } from "react";
+import PageCover from "@/components/svg/PageCover";
 import { usePageTransition } from "@/components/page-transition/usePageTransition";
 
 export default function PageTransitionContent({
@@ -8,44 +9,21 @@ export default function PageTransitionContent({
 }: {
   children: ReactNode;
 }) {
-  const {
-    activeLayer,
-    displayedChildren,
-    exitingLayer,
-    isTransitioning,
-    registerContainer,
-    registerEntering,
-    registerExiting,
-    syncLayer,
-  } = usePageTransition();
-
-  useLayoutEffect(() => {
-    syncLayer(children);
-  }, [children, syncLayer]);
+  const { registerOverlay, registerPath } = usePageTransition();
 
   return (
-    <div
-      ref={registerContainer}
-      className="relative"
-      data-transitioning={isTransitioning}
-    >
-      {exitingLayer ? (
-        <div
-          ref={registerExiting}
-          className="pointer-events-none absolute inset-0 z-10"
-          aria-hidden="true"
-        >
-          {exitingLayer.children}
-        </div>
-      ) : null}
-
+    <>
+      {children}
       <div
-        key={activeLayer.key}
-        ref={registerEntering}
-        className={isTransitioning ? "pointer-events-none" : undefined}
+        ref={registerOverlay}
+        className="pointer-events-none invisible fixed inset-0 z-[200] overflow-hidden opacity-0"
+        aria-hidden="true"
       >
-        {displayedChildren ?? children}
+        <PageCover
+          pathRef={registerPath}
+          className="absolute top-1/2 left-1/2 h-[120vh] w-[120vw] -translate-x-1/2 -translate-y-1/2"
+        />
       </div>
-    </div>
+    </>
   );
 }
