@@ -46,11 +46,10 @@ export default function RootLayout({
       <body className="bg-background">
         <LenisProvider>
           <PageTransitionProvider>
-            {" "}
-            <NavBar />
             <PageTransitionContent>
+              <NavBar />
               <main>{children}</main>
-              <Footer />{" "}
+              <Footer />
             </PageTransitionContent>
           </PageTransitionProvider>
         </LenisProvider>
