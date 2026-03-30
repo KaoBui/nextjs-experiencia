@@ -50,7 +50,7 @@ export default function Services() {
     <section
       ref={servicesRef}
       id="services"
-      className="relative mb-[10vh] px-section-padding py-[15vh]"
+      className="px-section-padding relative mb-[10vh] py-[15vh]"
     >
       <ServiceWave className="pointer-events-none absolute top-0 right-0 -z-10 h-full w-auto" />
       <div className="mx-site-margin gap-space-2x grid grid-cols-12">

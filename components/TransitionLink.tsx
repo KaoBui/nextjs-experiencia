@@ -1,7 +1,11 @@
 "use client";
 
 import Link, { type LinkProps } from "next/link";
-import { forwardRef, type ComponentPropsWithoutRef, type MouseEvent } from "react";
+import {
+  forwardRef,
+  type ComponentPropsWithoutRef,
+  type MouseEvent,
+} from "react";
 import { usePageTransition } from "@/components/page-transition/usePageTransition";
 
 type TransitionLinkProps = LinkProps &
