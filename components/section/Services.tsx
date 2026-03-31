@@ -55,33 +55,33 @@ export default function Services() {
       <ServiceWave className="pointer-events-none absolute top-0 right-0 -z-10 h-full w-auto" />
       <div className="mx-site-margin gap-space-2x grid grid-cols-12">
         <div className="pb-space-2x col-start-1 col-end-7 flex flex-col items-start">
-          <p className="text-md pb-2">Vous sentez que ça coince?</p>
+          <p className="text-md pb-2">Vous sentez que ca coince?</p>
           <h2>
             <Heading className="text-tertiary text-4xl" splitType="lines">
               Je vous montre
               <span className="text-primary">
-                <em> où, pourquoi et comment y remédier</em>
+                <em> ou, pourquoi et comment y remedier</em>
               </span>
             </Heading>
           </h2>
           <p className="pt-space-base text-base">
             <Heading className="" splitType="lines">
-              Aucune entreprise n'est identique et par conséquent aucune
-              stratégie de fidélisation ne devrait l'être.
+              Aucune entreprise n&apos;est identique et par consequent aucune
+              strategie de fidelisation ne devrait l&apos;etre.
             </Heading>
             <Heading className="" splitType="lines">
-              Ce que je vous propose c'est une solution sur mesure, adaptée à
-              vos problématiques pour stopper l'hémorragie et accélérer votre
-              croissance.
+              Ce que je vous propose c&apos;est une solution sur mesure, adaptee
+              a vos problematiques pour stopper l&apos;hemorragie et accelerer
+              votre croissance.
             </Heading>
           </p>
         </div>
         <div className="col-start-5 col-end-9">
           <ServiceCard
             imgSrc="/reactiver-icon.svg"
-            offerName="Réactiver"
-            description="Vous galérez à créer du réachat"
-            href=""
+            offerName="Reactiver"
+            description="Vous galerez a creer du reachat"
+            href="/reactiver"
             cardColor="var(--color-indigo)"
           />
         </div>
@@ -90,16 +90,16 @@ export default function Services() {
             imgSrc="/captiver-icon.svg"
             offerName="Captiver"
             description="Vous perdez des clients"
-            href=""
+            href="/captiver"
             cardColor="var(--color-lila)"
           />
         </div>
         <div className="col-start-1 col-end-5">
           <ServiceCard
             imgSrc="/fideliser-icon.svg"
-            offerName="Fidéliser"
-            description="Vous avez une carte de fidélité mais pas de stratégie structurée"
-            href=""
+            offerName="Fideliser"
+            description="Vous avez une carte de fidelite mais pas de strategie structuree"
+            href="/fideliser"
             cardColor="var(--color-mauve)"
           />
         </div>
@@ -107,8 +107,8 @@ export default function Services() {
           <ServiceCard
             imgSrc="/piloter-icon.svg"
             offerName="Piloter"
-            description="Vous voulez bâtir ou affiner votre plan de fidélisation vous-même"
-            href=""
+            description="Vous voulez batir ou affiner votre plan de fidelisation vous-meme"
+            href="/piloter"
             cardColor="var(--color-jaune)"
           />
         </div>

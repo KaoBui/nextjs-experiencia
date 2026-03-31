@@ -3,7 +3,7 @@ import TransitionLink from "@/components/TransitionLink";
 
 const navigationLinks = [
   { href: "/", label: "Accueil" },
-  { href: "/services", label: "Services" },
+  { href: "/#services", label: "Services" },
   { href: "/a-propos", label: "A propos" },
   { href: "/contact", label: "Contact" },
 ];
@@ -17,7 +17,7 @@ const contactDetails = [
 const infoLinks = [
   { href: "/#testimonials", label: "Témoignages" },
   { href: "/contact", label: "Prendre rendez-vous" },
-  { href: "/services", label: "Accompagnement" },
+  { href: "/#services", label: "Accompagnement" },
 ];
 
 const legalLinks = [

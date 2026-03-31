@@ -6,13 +6,27 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import TransitionLink from "@/components/TransitionLink";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu";
+import { cn } from "@/lib/utils";
+import { servicePages, serviceSlugs } from "@/lib/service-pages";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
-const navItems = [
-  { href: "/services", label: "Services" },
-  { href: "/a-propos", label: "A propos" },
-];
+const navItems = [{ href: "/a-propos", label: "A propos" }];
+
+const serviceNavItems = serviceSlugs.map((slug) => ({
+  href: `/${slug}`,
+  label: servicePages[slug].name,
+  color: servicePages[slug].color,
+}));
 
 function NavContent({ compact = false }: { compact?: boolean }) {
   return (
@@ -31,15 +45,52 @@ function NavContent({ compact = false }: { compact?: boolean }) {
             alt="Experiencia Consulting Logo"
             width={100}
             height={100}
+            className="h-full w-auto"
           />
         </TransitionLink>
-        <div className="flex items-center gap-6 text-sm">
+
+        <div className="flex items-center gap-4 text-sm">
+          <NavigationMenu viewport={false} className="flex-none">
+            <NavigationMenuList className="gap-4">
+              <NavigationMenuItem>
+                <NavigationMenuTrigger className="bg-transparent px-0 hover:bg-transparent focus:bg-transparent data-[state=open]:bg-transparent data-[state=open]:hover:bg-transparent">
+                  Services
+                </NavigationMenuTrigger>
+                <NavigationMenuContent className="left-1/2 w-[18rem] -translate-x-1/2 rounded-[1.5rem] border border-white/70 bg-white/92 p-3 shadow-[0_20px_60px_rgba(34,8,66,0.12)] backdrop-blur-md md:absolute">
+                  <div className="flex flex-col gap-1">
+                    {serviceNavItems.map((item) => (
+                      <NavigationMenuLink
+                        key={item.href}
+                        asChild
+                        className="rounded-[1rem] px-4 py-3 hover:bg-black/[0.03] focus:bg-black/[0.03]"
+                      >
+                        <TransitionLink href={item.href}>
+                          <span className="text-sm">
+                            {item.label}
+                          </span>
+                        </TransitionLink>
+                      </NavigationMenuLink>
+                    ))}
+                  </div>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
+
           {navItems.map((item) => (
-            <TransitionLink key={item.href} href={item.href}>
+            <TransitionLink
+              key={item.href}
+              href={item.href}
+              className={cn(
+                navigationMenuTriggerStyle(),
+                "bg-transparent px-0",
+              )}
+            >
               {item.label}
             </TransitionLink>
           ))}
         </div>
+
         <TransitionLink
           href="/contact"
           className="bg-indigo rounded-full p-2 px-4"
