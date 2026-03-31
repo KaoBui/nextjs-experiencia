@@ -3,7 +3,6 @@ import TransitionLink from "@/components/TransitionLink";
 
 const navigationLinks = [
   { href: "/", label: "Accueil" },
-  { href: "/#services", label: "Services" },
   { href: "/a-propos", label: "A propos" },
   { href: "/contact", label: "Contact" },
 ];
@@ -15,9 +14,10 @@ const contactDetails = [
 ];
 
 const infoLinks = [
-  { href: "/#testimonials", label: "Témoignages" },
-  { href: "/contact", label: "Prendre rendez-vous" },
-  { href: "/#services", label: "Accompagnement" },
+  { href: "/reactiver", label: "Réactiver" },
+  { href: "/captiver", label: "Captiver" },
+  { href: "/fideliser", label: "Fideliser" },
+  { href: "/piloter", label: "Piloter" },
 ];
 
 const legalLinks = [
@@ -41,6 +41,7 @@ export default function Footer() {
                 alt="Experiencia Consulting Logo"
                 width={120}
                 height={120}
+                className="h-auto w-24"
               />
             </TransitionLink>
             <p className="text-center text-sm leading-6 text-white/70">
@@ -65,16 +66,7 @@ export default function Footer() {
             </div>
 
             <div className="flex flex-1 flex-col gap-4">
-              <h3 className="text-md text-white/75">Contact</h3>
-              <div className="flex flex-col gap-3 text-sm text-white/80">
-                {contactDetails.map((detail) => (
-                  <p key={detail}>{detail}</p>
-                ))}
-              </div>
-            </div>
-
-            <div className="flex flex-1 flex-col gap-4">
-              <h3 className="text-md text-white/75">Information</h3>
+              <h3 className="text-md text-white/75">Services</h3>
               <div className="flex flex-col gap-3 text-sm text-white/80">
                 {infoLinks.map((link) => (
                   <TransitionLink
@@ -84,6 +76,14 @@ export default function Footer() {
                   >
                     {link.label}
                   </TransitionLink>
+                ))}
+              </div>
+            </div>
+            <div className="flex flex-1 flex-col gap-4">
+              <h3 className="text-md text-white/75">Contact</h3>
+              <div className="flex flex-col gap-3 text-sm text-white/80">
+                {contactDetails.map((detail) => (
+                  <p key={detail}>{detail}</p>
                 ))}
               </div>
             </div>

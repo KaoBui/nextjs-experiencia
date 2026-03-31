@@ -4,10 +4,17 @@ import { notFound } from "next/navigation";
 import FormCore from "@/components/components/FormCore";
 import TransitionLink from "@/components/TransitionLink";
 import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import {
   servicePages,
   serviceSlugs,
   type ServiceSlug,
 } from "@/lib/service-pages";
+import { contactFaqs } from "@/lib/faqs";
 import Arrow from "@/components/svg/Arrow";
 
 type ServicePageProps = {
@@ -63,23 +70,21 @@ export default async function ServicePage({ params }: ServicePageProps) {
 
   return (
     <>
-      <section className="px-section-padding overflow-hidden py-[18vh]">
+      <section className="px-section-padding overflow-hidden py-24">
         <header
-          className="mx-site-margin grid gap-8 rounded-[2rem] border border-white/70 bg-white/70 p-8 shadow-[0_20px_80px_rgba(34,8,66,0.08)] backdrop-blur-md lg:grid-cols-[1.35fr_0.75fr]"
+          className="mx-site-margin grid gap-8 rounded-[2rem] border border-white/70 bg-white/70 p-8 pt-[15vh] shadow-[0_20px_80px_rgba(34,8,66,0.08)] backdrop-blur-md lg:grid-cols-[1.35fr_0.75fr]"
           style={{
             backgroundImage: `linear-gradient(135deg, color-mix(in srgb, ${service.color} 10%, white) 0%, rgba(255,255,255,0.82) 55%)`,
           }}
         >
-          <div className="flex flex-col gap-6">
-            <SectionLabel color={service.color}>{service.eyebrow}</SectionLabel>
-            <h1 className="max-w-[11ch] text-5xl leading-[1.02] md:text-6xl">
-              {service.name}
+          <div className="gap-space-2x flex flex-col">
+            <SectionLabel color={service.color}>OFFRE REACTIVER</SectionLabel>
+            <h1 className="text-4xl leading-[1.02] md:text-5xl">
+              Augmentez la fréquence d’achat de vos clients en moins de 3 mois
             </h1>
-            <p className="text-secondary max-w-[56ch] text-lg leading-8">
-              {service.problem}
-            </p>
             <p className="text-secondary max-w-[62ch] text-base leading-7">
-              {service.intro}
+              Faites revenir vos clients plus souvent : transformez vos
+              acheteurs ponctuels en clients réguliers{" "}
             </p>
             <div className="flex flex-wrap gap-4">
               <TransitionLink
@@ -88,13 +93,6 @@ export default async function ServicePage({ params }: ServicePageProps) {
                 style={{ backgroundColor: service.color }}
               >
                 Demarrer un echange
-              </TransitionLink>
-              <TransitionLink
-                href="/#services"
-                className="rounded-full border px-5 py-3 text-sm transition"
-                style={{ borderColor: service.color, color: service.color }}
-              >
-                Retour aux offres
               </TransitionLink>
             </div>
           </div>
@@ -195,7 +193,10 @@ export default async function ServicePage({ params }: ServicePageProps) {
           ))}
         </div>
       </section>
-      <section className="px-section-padding bg-indigo-dark overflow-hidden py-[18vh]">
+      <section
+        id="form"
+        className="px-section-padding bg-indigo-dark overflow-hidden py-[18vh]"
+      >
         <div className="mx-site-margin rounded-[2rem] border-1 border-white/25 bg-white/10 p-8 backdrop-blur-lg md:p-10">
           <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
             <div className="flex flex-col gap-6">
@@ -213,15 +214,12 @@ export default async function ServicePage({ params }: ServicePageProps) {
                     key={step.title}
                     className="grid gap-3 rounded-[1.5rem] p-5 md:grid-cols-[56px_1fr]"
                   >
-                    <p
-                      className="font-head text-lg"
-                      style={{ color: service.color }}
-                    >
-                      {`0${index + 1}`}
-                    </p>
+                    <p className="font-head text-lg text-white">{`0${index + 1}`}</p>
                     <div>
-                      <h3 className="text-md font-body">{step.title}</h3>
-                      <p className="text-secondary mt-2 text-sm leading-7">
+                      <h3 className="text-md font-body text-white">
+                        {step.title}
+                      </h3>
+                      <p className="mt-2 text-sm leading-7 text-neutral-300">
                         {step.description}
                       </p>
                     </div>
@@ -257,20 +255,28 @@ export default async function ServicePage({ params }: ServicePageProps) {
         </div>
       </section>
 
-      <section className="rounded-[2rem] border border-black/6 bg-white/80 p-8">
+      <section className="mx-site-margin rounded-[2rem] border border-black/6 bg-white/80 p-8">
         <SectionLabel color={service.color}>FAQ</SectionLabel>
-        <div className="mt-6 space-y-4">
-          {service.faq.map((item) => (
-            <article
-              key={item.question}
-              className="rounded-[1.5rem] border border-black/6 bg-white p-6"
-            >
-              <h2 className="text-2xl leading-tight">{item.question}</h2>
-              <p className="text-secondary mt-3 max-w-[70ch] text-sm leading-7">
-                {item.answer}
-              </p>
-            </article>
-          ))}
+        <div className="mt-6 flex flex-col items-center gap-space-2x">
+          <div className="max-w-[48ch]">
+            <h2 className="text-center text-3xl leading-tight md:text-4xl">
+              Les questions les plus frequentes avant de prendre contact
+            </h2>
+          </div>
+          <div className="w-full max-w-2xl">
+            <Accordion type="single" collapsible className="w-full gap-space-base">
+              {contactFaqs.map((item, index) => (
+                <AccordionItem key={item.question} value={`item-${index}`}>
+                  <AccordionTrigger className="text-primary font-body text-md hover:no-underline">
+                    {item.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-secondary leading-body">
+                    <p className="text-base">{item.answer}</p>
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
         </div>
       </section>
     </>
