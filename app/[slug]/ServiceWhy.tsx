@@ -35,7 +35,7 @@ type ReasonCardProps = {
   description: string;
   index: number;
   color: string;
-  cardRef?: (element: HTMLArticleElement | null) => void;
+  cardRef?: (element: HTMLElement | null) => void;
 };
 
 function ReasonCard({
@@ -64,9 +64,9 @@ export default function ServiceWhy({ service }: ServiceWhyProps) {
   const sectionRef = useRef<HTMLElement | null>(null);
   const firstBlockRef = useRef<HTMLDivElement | null>(null);
   const titleRef = useRef<HTMLDivElement | null>(null);
-  const firstCardRef = useRef<HTMLArticleElement | null>(null);
+  const firstCardRef = useRef<HTMLElement | null>(null);
   const otherBlockRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const otherCardRefs = useRef<(HTMLArticleElement | null)[]>([]);
+  const otherCardRefs = useRef<(HTMLElement | null)[]>([]);
 
   useGSAP(
     () => {
@@ -81,9 +81,7 @@ export default function ServiceWhy({ service }: ServiceWhyProps) {
       const otherBlocks = otherBlockRefs.current.filter(
         Boolean,
       ) as HTMLDivElement[];
-      const otherCards = otherCardRefs.current.filter(
-        Boolean,
-      ) as HTMLArticleElement[];
+      const otherCards = otherCardRefs.current.filter(Boolean) as HTMLElement[];
       const lastBlock = otherBlocks.at(-1) ?? firstBlockRef.current;
 
       if (titleRef.current) {
