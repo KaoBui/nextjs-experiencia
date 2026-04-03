@@ -14,10 +14,14 @@ export default function AboutPage() {
       <div className="mx-site-margin gap-space-3x grid items-start lg:grid-cols-12">
         <div className="gap-space-2x flex flex-col lg:col-span-7">
           <div className="flex flex-col gap-6">
-            <p className="text-indigo text-xs font-bold tracking-[0.2em] uppercase">
-              A propos
-            </p>
-            <h1 className="max-w-[12ch] text-5xl leading-[1.02] md:text-6xl">
+            <div className="gap-space-sm flex w-fit items-center rounded-full bg-white/50 p-2 px-3">
+              <div className="bg-indigo h-1 w-1 rounded-full"></div>
+              <p className="text-xs uppercase">
+                À <strong> propos</strong>
+              </p>
+            </div>
+
+            <h1 className="max-w-[24ch] text-5xl leading-[1.02] md:text-6xl">
               <Heading splitType="words">
                 Une approche humaine pour faire grandir votre activite
               </Heading>

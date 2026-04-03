@@ -34,24 +34,25 @@ export const servicePages: Record<ServiceSlug, ServicePageData> = {
     slug: "reactiver",
     name: "Reactiver",
     eyebrow: "Relancer le reachat",
-    problem: "Vos clients connaissent votre entreprise, mais ne pensent plus a revenir.",
+    problem:
+      "Vos clients connaissent votre entreprise, mais ne pensent plus a revenir.",
     intro:
       "Cette offre sert a remettre du mouvement dans votre base client avec des relances utiles, un meilleur timing et une logique de recurrence plus claire.",
     icon: "/reactiver-icon.svg",
     color: "var(--color-indigo)",
     symptoms: [
       {
-        title: "Des clients qui dorment",
+        title: "Votre CA stagne alors que vos clients sont satisfaits",
         description:
           "Votre base existe, mais une partie importante ne commande plus ou ne repasse plus en point de vente.",
       },
       {
-        title: "Une frequence d'achat trop faible",
+        title: "Vous ne connaissez pas la fréquence d’achat de vos clients ",
         description:
           "Vous manquez d'occasions de reachat et votre chiffre depend trop de nouvelles acquisitions.",
       },
       {
-        title: "Aucun scenario de relance clair",
+        title: "Beaucoup de vos clients n’achètent qu’une seule fois ",
         description:
           "Les actions partent de facon ponctuelle sans segmentation ni priorite entre les profils clients.",
       },
@@ -74,9 +75,10 @@ export const servicePages: Record<ServiceSlug, ServicePageData> = {
       },
     ],
     whoFor: [
-      "Entreprises avec une base client inactive ou sous-exploitee",
-      "Equipes qui veulent augmenter la frequence d'achat sans sursolliciter",
+      "Vous ne savez pas par où commencer",
+      "Ce que vous avez mis en place n'a pas fonctionné ",
       "Structures qui ont besoin d'un plan de relance simple a executer",
+      "Vous voulez un regard neuf et avisé sur votre stratégie ",
     ],
     steps: [
       {
@@ -126,7 +128,8 @@ export const servicePages: Record<ServiceSlug, ServicePageData> = {
     slug: "captiver",
     name: "Captiver",
     eyebrow: "Retenir l'attention",
-    problem: "Vous attirez des clients, mais l'experience ne donne pas assez envie de rester, revenir ou recommander.",
+    problem:
+      "Vous attirez des clients, mais l'experience ne donne pas assez envie de rester, revenir ou recommander.",
     intro:
       "Cette offre permet de renforcer l'impact de votre experience client sur les moments decisifs, la ou se joue l'envie de poursuivre la relation.",
     icon: "/captiver-icon.svg",
@@ -218,7 +221,8 @@ export const servicePages: Record<ServiceSlug, ServicePageData> = {
     slug: "fideliser",
     name: "Fideliser",
     eyebrow: "Structurer la relation",
-    problem: "Vous avez deja des actions de fidelite, mais elles ne s'inscrivent pas dans une strategie durable et lisible.",
+    problem:
+      "Vous avez deja des actions de fidelite, mais elles ne s'inscrivent pas dans une strategie durable et lisible.",
     intro:
       "Cette offre sert a passer d'initiatives dispersees a un dispositif de fidelisation coherent, adapte a vos clients et a votre realite terrain.",
     icon: "/fideliser-icon.svg",
@@ -310,7 +314,8 @@ export const servicePages: Record<ServiceSlug, ServicePageData> = {
     slug: "piloter",
     name: "Piloter",
     eyebrow: "Prendre la main",
-    problem: "Vous voulez garder la maitrise de votre plan de fidelisation avec une methode de pilotage claire.",
+    problem:
+      "Vous voulez garder la maitrise de votre plan de fidelisation avec une methode de pilotage claire.",
     intro:
       "Cette offre vous aide a structurer vos decisions, choisir les bons indicateurs et faire avancer votre strategie de facon autonome.",
     icon: "/piloter-icon.svg",

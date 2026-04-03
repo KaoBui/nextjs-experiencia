@@ -7,6 +7,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import HoverCard from "../components/HoverCard";
 import Heading from "../components/Heading";
 import LongWave from "../svg/LongWave";
+import Image from "next/image";
 
 gsap.registerPlugin(useGSAP, DrawSVGPlugin, ScrollTrigger);
 
@@ -60,7 +61,7 @@ export default function Reasons() {
       tl.to(
         leftColRef.current,
         {
-          yPercent: 200,
+          yPercent: 150,
           ease: "power1.inOut",
         },
         0,
@@ -70,7 +71,7 @@ export default function Reasons() {
   );
 
   return (
-    <section ref={reasonsRef} id="reasons" className="relative my-[20vh] px-4">
+    <section ref={reasonsRef} id="reasons" className="relative my-[6vh] px-4">
       <LongWave
         className="pointer-events-none absolute -top-[10%] right-0 -z-10 w-full opacity-50"
         pathRef={wavePathRef}
@@ -89,6 +90,44 @@ export default function Reasons() {
                 Mais j'ai surtout une méthode, une vision et un plan.{" "}
               </Heading>
             </p>
+            <div className="flex flex-col gap-4">
+              <div className="flex items-center gap-4">
+                <div className="h-20 w-20 overflow-hidden rounded-full">
+                  <Image src="/portrait.jpg" width={100} height={100} alt="" />
+                </div>
+                <div>
+                  <p className="font-head text-xl">Eva Riccobene</p>
+                  <p className="text-tertiary text-sm">
+                    Experte en Fidelisation client
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-end gap-2">
+                <Image
+                  src="mail-icon.svg"
+                  width={50}
+                  height={50}
+                  alt=""
+                  className="h-5 w-5"
+                />
+                <p className="text-primary text-base">
+                  eva.experiencia@gmail.com
+                </p>
+              </div>
+              <div className="flex items-end gap-2">
+                <Image
+                  src="phone-icon.svg"
+                  width={50}
+                  height={50}
+                  alt=""
+                  className="h-5 w-5"
+                />
+                <p className="text-primary text-base">06 06 66 60 52</p>
+              </div>
+              <p className="text-secondary text-sm">
+                Disponible en distanciel ou presentiel sur demande
+              </p>
+            </div>
           </div>
         </div>
         <div

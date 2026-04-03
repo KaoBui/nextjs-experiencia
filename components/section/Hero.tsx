@@ -153,7 +153,7 @@ export default function Hero() {
               label="Croissance"
               stat="+42%"
             />
-            <Graph className="charts absolute top-1/4 -left-6 h-30 w-30 -rotate-4" />
+            <Graph className="charts absolute bottom-1/2 -left-6 h-30 w-30 -rotate-4" />
             <NumberBlock className="charts absolute bottom-4 -left-4 -rotate-4 gap-4" />
             <div
               ref={portraitRef}
