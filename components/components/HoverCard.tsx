@@ -66,19 +66,29 @@ export default function HoverCard({
   return (
     <div
       ref={containerRef}
-      className="relative flex flex-col items-end gap-[15vh] rounded-3xl border-2 border-white bg-white/75 p-space-base backdrop-blur-md shadow-sm overflow-hidden"
+      className="group p-space-base relative flex flex-col items-end gap-[15vh] overflow-hidden rounded-3xl border-2 border-white bg-white/75 shadow-sm backdrop-blur-md"
       style={colorStyle}
     >
       <button
         type="button"
         aria-pressed={isOpen}
         aria-label={isOpen ? "Close card details" : "Open card details"}
-        className="h-8 w-8 rounded-full flex items-center justify-center p-1 z-1 cursor-pointer"
+        className="z-1 flex cursor-pointer items-center justify-center gap-1 rounded-full p-2 text-sm"
         style={{
           backgroundColor: isOpen ? "#fff" : "var(--hover-card-color)",
+          color: isOpen ? "var(--hover-card-color)" : "#fff",
         }}
         onClick={handleImageContainerClick}
       >
+        <span
+          className={`overflow-hidden whitespace-nowrap transition-all duration-300 ease-out ${
+            isOpen
+              ? "max-w-24 translate-x-0 opacity-100"
+              : "max-w-0 -translate-x-2 opacity-0 group-hover:max-w-24 group-hover:translate-x-0 group-hover:opacity-100"
+          }`}
+        >
+          {isOpen ? "Voir moins" : "Voir plus"}
+        </span>
         <svg
           width="20"
           height="20"
@@ -105,13 +115,13 @@ export default function HoverCard({
       </button>
       <div
         ref={overlayRef}
-        className="absolute inset-0 bg-indigo flex flex-col justify-end p-space-base"
+        className="bg-indigo p-space-base absolute inset-0 flex flex-col justify-end"
         style={{ clipPath: "circle(0% at 85% 14%)" }}
       >
         <p className="text-sm text-white">{description}</p>
       </div>
       <div className="w-full">
-        <p className="text-base text-primary ">{heading}</p>
+        <p className="text-primary text-base">{heading}</p>
       </div>
     </div>
   );

@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import Footer from "@/components/Footer";
 import PageTransitionContent from "@/components/page-transition/PageTransitionContent";
 import PageTransitionProvider from "@/components/page-transition/PageTransitionProvider";
+import IntroOverlay from "@/components/IntroOverlay";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -44,6 +45,7 @@ export default function RootLayout({
       )}
     >
       <body className="bg-background">
+        <IntroOverlay />
         <LenisProvider>
           <PageTransitionProvider>
             <PageTransitionContent>

@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
 import { servicePages, serviceSlugs } from "@/lib/service-pages";
+import Button from "./components/Button";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -65,9 +66,7 @@ function NavContent({ compact = false }: { compact?: boolean }) {
                         className="rounded-[1rem] px-4 py-3 hover:bg-black/[0.03] focus:bg-black/[0.03]"
                       >
                         <TransitionLink href={item.href}>
-                          <span className="text-sm">
-                            {item.label}
-                          </span>
+                          <span className="text-sm">{item.label}</span>
                         </TransitionLink>
                       </NavigationMenuLink>
                     ))}
@@ -91,12 +90,7 @@ function NavContent({ compact = false }: { compact?: boolean }) {
           ))}
         </div>
 
-        <TransitionLink
-          href="/contact"
-          className="bg-indigo rounded-full p-2 px-4"
-        >
-          <p className="text-sm text-white">Prendre RDV</p>
-        </TransitionLink>
+        <Button href="/contact">Prendre rendez-vous</Button>
       </nav>
     </div>
   );

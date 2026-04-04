@@ -37,7 +37,20 @@ export function LenisProvider({
 
     setLenis(lenisInstance);
 
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+
+    window.requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+      lenisInstance.scrollTo(0, { immediate: false });
+    });
+
     return () => {
+      if ("scrollRestoration" in window.history) {
+        window.history.scrollRestoration = "auto";
+      }
+
       lenisInstance.destroy();
       setLenis(null);
     };

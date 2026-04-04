@@ -10,6 +10,7 @@ import StatLabel from "../components/StatLabel";
 import Heading from "../components/Heading";
 import Graph from "../components/Graph";
 import NumberBlock from "../components/NumberBlock";
+import Button from "../components/Button";
 import TransitionLink from "@/components/TransitionLink";
 
 gsap.registerPlugin(useGSAP, DrawSVGPlugin, ScrollTrigger);
@@ -25,9 +26,10 @@ export default function Hero() {
   useGSAP(
     () => {
       const charts = gsap.utils.toArray<HTMLElement>(".charts");
+      const heroPaths = gsap.utils.toArray<SVGPathElement>(".header-wave-path");
 
       gsap.fromTo(
-        "path",
+        heroPaths,
         { drawSVG: "0% 0%" },
         {
           drawSVG: "0% 100%",
@@ -37,7 +39,7 @@ export default function Hero() {
       );
 
       gsap.fromTo(
-        "path",
+        heroPaths,
         { drawSVG: "0% 100%" },
         {
           drawSVG: "100% 100%",
@@ -96,7 +98,10 @@ export default function Hero() {
 
   return (
     <section ref={containerRef}>
-      <HeaderWave className="pointer-events-none fixed top-0 right-0 h-auto w-1/2" />
+      <HeaderWave
+        className="pointer-events-none fixed top-0 right-0 h-auto w-1/2"
+        pathClassName="header-wave-path"
+      />
       <div
         ref={heroRef}
         className="px-section-padding relative isolate h-screen py-4"
@@ -131,12 +136,7 @@ export default function Hero() {
               >
                 Calculer mon CA perdu
               </TransitionLink>
-              <TransitionLink
-                href="/contact"
-                className="bg-indigo border-indigo rounded-full border p-2 px-4 text-base text-white"
-              >
-                Prendre rendez-vous
-              </TransitionLink>
+              <Button href="/contact">Prendre rendez-vous</Button>
             </div>
           </div>
           <div

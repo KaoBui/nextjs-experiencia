@@ -13,6 +13,7 @@ import Heading from "@/components/components/Heading";
 import Graph from "@/components/components/Graph";
 import StatLabel from "@/components/components/StatLabel";
 import NumberBlock from "@/components/components/NumberBlock";
+import Button from "@/components/components/Button";
 
 gsap.registerPlugin(useGSAP, DrawSVGPlugin, ScrollTrigger);
 
@@ -89,7 +90,7 @@ export default function ServiceHeader({ service }: ServiceHeaderProps) {
             backgroundImage: `linear-gradient(135deg, color-mix(in srgb, ${service.color} 10%, white) 0%, rgba(255,255,255,0.60) 90%)`,
           }}
         >
-          <div className="gap-space-base flex flex-col justify-end">
+          <div className="gap-space-base flex flex-col items-start justify-end">
             <div className="gap-space-sm flex w-fit items-center rounded-full bg-white/50 p-2 px-3">
               <div
                 className="bg-indigo h-1 w-1 rounded-full"
@@ -106,15 +107,9 @@ export default function ServiceHeader({ service }: ServiceHeaderProps) {
               Faites revenir vos clients plus souvent : transformez vos
               acheteurs ponctuels en clients réguliers
             </p>
-            <div className="flex flex-wrap gap-4">
-              <TransitionLink
-                href="/contact"
-                className="rounded-full px-5 py-3 text-sm font-semibold text-white transition hover:opacity-90"
-                style={{ backgroundColor: service.color }}
-              >
-                Demarrer un echange
-              </TransitionLink>
-            </div>
+            <Button href="/contact" color={service.color}>
+              Prendre rendez-vous
+            </Button>
           </div>
 
           <div className="relative flex items-center justify-end">
