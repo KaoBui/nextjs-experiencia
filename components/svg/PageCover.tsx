@@ -1,4 +1,4 @@
-import type { Ref } from "react";
+import { useId, type Ref } from "react";
 
 export const PAGE_COVER_PATH_ID = "page-cover-path";
 
@@ -13,6 +13,10 @@ export default function PageCover({
   svgRef,
   pathRef,
 }: PageCoverProps) {
+  const instanceId = useId();
+  const pathId = `page-cover-path-${instanceId}`;
+  const gradientId = `page-cover-gradient-${instanceId}`;
+
   return (
     <svg
       ref={svgRef}
@@ -24,17 +28,17 @@ export default function PageCover({
       aria-hidden="true"
     >
       <path
-        id={PAGE_COVER_PATH_ID}
+        id={pathId}
         ref={pathRef}
         d="M70.6621 270.225C741.421 128.573 1743.15 36.496 1694.38 152.93C1645.6 269.364 381.646 397.966 126.162 585.225C-129.322 772.485 1564.66 351.225 1814.66 488.725C2064.66 626.225 -78.1283 872.535 138.662 950.725C355.452 1028.92 1502.16 919.225 1827.16 805.225"
-        stroke="url(#page-cover-gradient)"
+        stroke={`url(#${gradientId})`}
         strokeWidth="200"
         strokeLinecap="round"
         opacity="0"
       />
       <defs>
         <linearGradient
-          id="page-cover-gradient"
+          id={gradientId}
           x1="381.168"
           y1="2.0956"
           x2="1814.42"
