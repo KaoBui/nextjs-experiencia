@@ -44,13 +44,13 @@ function NavContent({ compact = false }: { compact?: boolean }) {
           <Image
             src="/logo.png"
             alt="Experiencia Consulting Logo"
-            width={100}
-            height={100}
+            width={300}
+            height={300}
             className="h-full w-auto"
           />
         </TransitionLink>
 
-        <div className="flex items-center gap-4 text-sm">
+        <div className="flex items-center gap-4 text-base">
           <NavigationMenu viewport={false} className="flex-none">
             <NavigationMenuList className="gap-4">
               <NavigationMenuItem>
@@ -63,7 +63,7 @@ function NavContent({ compact = false }: { compact?: boolean }) {
                       <NavigationMenuLink
                         key={item.href}
                         asChild
-                        className="rounded-[1rem] px-4 py-3 hover:bg-black/[0.03] focus:bg-black/[0.03]"
+                        className="rounded-[1rem] px-4 py-3 pr-12 hover:bg-black/[0.03] focus:bg-black/[0.03]"
                       >
                         <TransitionLink href={item.href}>
                           <span className="text-sm">{item.label}</span>
@@ -82,7 +82,7 @@ function NavContent({ compact = false }: { compact?: boolean }) {
               href={item.href}
               className={cn(
                 navigationMenuTriggerStyle(),
-                "bg-transparent px-0",
+                "bg-transparent px-4 hover:bg-white",
               )}
             >
               {item.label}

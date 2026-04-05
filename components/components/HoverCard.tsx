@@ -81,7 +81,7 @@ export default function HoverCard({
         onClick={handleImageContainerClick}
       >
         <span
-          className={`overflow-hidden whitespace-nowrap transition-all duration-300 ease-out ${
+          className={`overflow-hidden pl-2 whitespace-nowrap transition-all duration-300 ease-out ${
             isOpen
               ? "max-w-24 translate-x-0 opacity-100"
               : "max-w-0 -translate-x-2 opacity-0 group-hover:max-w-24 group-hover:translate-x-0 group-hover:opacity-100"

@@ -1,6 +1,12 @@
 "use client";
 import Image from "next/image";
+import { useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Heading from "../components/Heading";
+
+gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 const clientLogos = [
   {
@@ -38,8 +44,40 @@ const clientLogos = [
 ];
 
 export default function Testimonials() {
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const cardRef = useRef<HTMLDivElement | null>(null);
+
+  useGSAP(
+    () => {
+      if (!sectionRef.current || !cardRef.current) {
+        return;
+      }
+
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "50% 50%",
+            end: "+=100%",
+            pin: true,
+            scrub: true,
+          },
+        })
+        .from(cardRef.current, {
+          yPercent: 100,
+          opacity: 0,
+          filter: "blur(12px)",
+          ease: "power2.inOut",
+        });
+    },
+    { scope: sectionRef },
+  );
+
   return (
-    <section className="relative overflow-hidden px-4 py-[15vh]">
+    <section
+      ref={sectionRef}
+      className="relative overflow-hidden px-4 py-[15vh]"
+    >
       <div className="mx-site-margin gap-space-2x flex flex-col items-center justify-center">
         <h1 className="max-w-[20ch] text-center text-4xl">
           <Heading splitType="words">
@@ -47,7 +85,10 @@ export default function Testimonials() {
           </Heading>
         </h1>
         <div className="relative flex w-full justify-center">
-          <div className="p-space-base pt-space-2x gap-space-base z-1 flex max-w-2xl flex-col items-end rounded-3xl bg-white/75 shadow-2xl/5 backdrop-blur-md">
+          <div
+            ref={cardRef}
+            className="p-space-base pt-space-2x gap-space-base z-1 flex max-w-2xl flex-col items-end rounded-3xl bg-white/75 shadow-2xl/5 backdrop-blur-md"
+          >
             <p className="text-secondary text-base">
               Nous avions un bon chiffre d’affaires, mais une forte instabilité
               client. Nous pensions que c’était "normal" dans notre secteur.

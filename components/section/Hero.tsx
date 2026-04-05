@@ -109,30 +109,32 @@ export default function Hero() {
         <div className="bg-indigo/5 gap-space-base p-site-margin relative flex grid h-full grid-cols-12 rounded-4xl border-1 border-white backdrop-blur-md">
           <div
             ref={leftColRef}
-            className="col-start-1 col-end-8 flex h-full flex-col justify-end"
+            className="gap-space-2x col-start-1 col-end-8 flex h-full flex-col justify-end"
           >
-            <div className="gap-space-sm flex w-fit items-center rounded-full bg-white/50 p-2 px-3">
-              <div className="bg-indigo h-1 w-1 rounded-full"></div>
-              <p className="text-xs uppercase">
-                disponibilité - <strong>mai 2026</strong>
-              </p>
+            <div>
+              <div className="gap-space-sm flex w-fit items-center rounded-full bg-white/50 p-2 px-3">
+                <div className="bg-indigo h-1 w-1 rounded-full"></div>
+                <p className="text-xs uppercase">
+                  disponibilité - <strong>mai 2026</strong>
+                </p>
+              </div>
+              <h1 className="text-6xl leading-[1.1]">
+                Augmentez votre chiffre d&apos;affaires
+                <span className="text-indigo">
+                  <em> sans vous épuiser </em>
+                </span>
+                à courir après des clients
+              </h1>
             </div>
-            <h1 className="pt-[2vh] pb-[4vh] text-6xl leading-[1.1]">
-              Augmentez votre chiffre d&apos;affaires
-              <span className="text-indigo">
-                <em> sans vous épuiser </em>
-              </span>
-              à courir après des clients
-            </h1>
-            <p className="max-w-[56ch] pb-[6vh] text-base">
+            <p className="max-w-[56ch] text-base">
               Grâce à des stratégies de fidélisation structurées et mesurables,
               nous aidons les TPE et PME à maximiser la valeur de chaque client
               et à sécuriser leur croissance.
             </p>
-            <div className="pt-space-base flex gap-4">
+            <div className="flex gap-4">
               <TransitionLink
-                href="/contact"
-                className="text-indigo border-indigo rounded-full border p-2 px-4 text-base"
+                href="#calculateur"
+                className="text-indigo border-indigo hover:bg-indigo/5 flex items-center rounded-full border px-5 py-3 text-base transition"
               >
                 Calculer mon CA perdu
               </TransitionLink>
@@ -157,7 +159,7 @@ export default function Hero() {
             <NumberBlock className="charts absolute bottom-4 -left-4 -rotate-4 gap-4" />
             <div
               ref={portraitRef}
-              className="-z-1 aspect-4/5 h-auto w-full overflow-hidden rounded-3xl border-1 border-white bg-violet-50 p-2"
+              className="-z-1 aspect-4/5 h-auto w-full max-w-3xl overflow-hidden rounded-3xl border-1 border-white bg-violet-50 p-2"
             >
               <Image
                 src="/portrait.jpg"
@@ -175,11 +177,8 @@ export default function Hero() {
         <div className="mx-site-margin gap-space-base grid h-full grid-cols-12">
           <div className="gap-space-2x col-start-1 col-end-7 flex flex-col items-start justify-center">
             <h2 className="">
-              <Heading className="text-secondary text-4xl" splitType="words">
-                À propos de{" "}
-                <span className="text-primary">
-                  <em>moi</em>
-                </span>
+              <Heading className="text-primary text-4xl" splitType="lines">
+                À propos de <em>moi</em>
               </Heading>
             </h2>
             <p className="leading-body text-md flex flex-col gap-2">
@@ -191,9 +190,10 @@ export default function Hero() {
                 leur expérience client et leur stratégie de fidélisation .
               </Heading>
             </p>
+
             <TransitionLink
               href="/a-propos"
-              className="text-indigo border-indigo z-2 rounded-full border p-2 px-4 text-base"
+              className="text-indigo border-indigo hover:bg-indigo/5 z-2 flex items-center rounded-full border px-5 py-3 text-base transition"
             >
               En savoir plus
             </TransitionLink>

@@ -139,7 +139,7 @@ export default function ContactPage() {
           <Accordion type="single" collapsible className="w-full gap-space-base">
             {contactFaqs.map((faq, index) => (
               <AccordionItem key={faq.question} value={`item-${index}`}>
-                <AccordionTrigger className="text-primary font-body text-md hover:no-underline">
+                <AccordionTrigger className="text-primary font-body text-base hover:no-underline">
                   {faq.question}
                 </AccordionTrigger>
                 <AccordionContent className="text-secondary leading-body">

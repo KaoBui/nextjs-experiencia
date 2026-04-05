@@ -16,7 +16,7 @@ function getStrokeWidths() {
 
   return {
     mid: viewportDiagonal * 0.18,
-    end: viewportDiagonal * 0.4,
+    end: viewportDiagonal * 0.04,
   };
 }
 

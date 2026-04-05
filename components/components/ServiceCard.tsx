@@ -45,7 +45,7 @@ export default function ServiceCard({
   return (
     <div
       ref={containerRef}
-      className="flex min-h-[360px] flex-col items-start justify-between rounded-3xl border-2 border-white bg-white/75 p-6 backdrop-blur-xl"
+      className="flex min-h-[45vh] flex-col items-start justify-between rounded-3xl border-2 border-white bg-white/75 p-6 backdrop-blur-xl"
       style={accentStyle}
     >
       <div className="flex w-full justify-end">
@@ -54,18 +54,20 @@ export default function ServiceCard({
         </div>
       </div>
       <div className="flex flex-col items-start">
-        <h3 className="text-2xl" style={{ color: "var(--service-card-color)" }}>
+        <h3 className="text-3xl" style={{ color: "var(--service-card-color)" }}>
           {offerName}
         </h3>
-        <p className="text-base text-secondary">{description}</p>
+        <p className="text-primary text-base font-semibold">{description}</p>
+        <p className="text-secondary text-base">
+          Vos clients achètent moins qu’ils le pourrient
+        </p>
+        <p className="text-secondary hidden py-4 text-sm">
+          Je vous aide à transformer vos acheteurs ponctuels en clients
+          réguliers grâce à l’analyse de vos données de vente.
+        </p>
         <TransitionLink
           href={href}
-          className="mt-space-base rounded-xl px-6 py-3 text-sm font-semibold"
-          style={{
-            color: "var(--service-card-color)",
-            backgroundColor:
-              "color-mix(in srgb, var(--service-card-color) 8%, transparent)",
-          }}
+          className="mt-space-base rounded-xl bg-[color-mix(in_srgb,var(--service-card-color)_8%,transparent)] px-6 py-3 text-sm font-semibold text-[var(--service-card-color)] transition-colors hover:bg-[var(--service-card-color)] hover:text-white"
         >
           Voir l&apos;offre <span className="uppercase">{offerName}</span>
         </TransitionLink>

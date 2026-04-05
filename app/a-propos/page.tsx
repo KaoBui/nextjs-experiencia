@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Heading from "@/components/components/Heading";
 import TransitionLink from "@/components/TransitionLink";
+import Button from "@/components/components/Button";
 
 const strengths = [
   "Audit du parcours client et des points de friction",
@@ -53,32 +54,35 @@ export default function AboutPage() {
           </div>
 
           <div className="flex flex-wrap gap-4">
-            <TransitionLink
-              href="/contact"
-              className="bg-indigo border-indigo rounded-full border px-5 py-3 text-sm text-white transition hover:opacity-90"
-            >
-              Prendre contact
-            </TransitionLink>
+            <Button href="/contact">Prendre contact</Button>
             <TransitionLink
               href="/"
-              className="text-indigo border-indigo hover:bg-indigo/5 rounded-full border px-5 py-3 text-sm transition"
+              className="text-indigo border-indigo hover:bg-indigo/5 flex items-center rounded-full border px-5 py-3 text-base transition"
             >
               Retour a l&apos;accueil
             </TransitionLink>
           </div>
         </div>
 
-        <div className="lg:col-span-5">
-          <div className="ml-[20%] rounded-[2rem] border border-white bg-white/60 p-3 shadow-[0_20px_80px_rgba(34,8,66,0.08)] backdrop-blur-md">
-            <div className="aspect-[4/5] overflow-hidden rounded-[1.5rem] bg-violet-50">
-              <Image
-                src="/portrait.jpg"
-                alt="Portrait de la fondatrice d'Experiencia Consulting"
-                width={1000}
-                height={1250}
-                className="h-full w-full object-cover"
-              />
-            </div>
+        <div className="relative h-full lg:col-span-5">
+          <div className="absolute top-0 left-1/2 aspect-square w-1/2 max-w-[300px] -translate-x-1/4  overflow-hidden rounded-[2rem] border border-white bg-white/60 p-3 backdrop-blur-md">
+            <Image
+              src="/portrait.jpg"
+              alt="Portrait de la fondatrice d'Experiencia Consulting"
+              width={1000}
+              height={1250}
+              className="h-full w-full rounded-[1.5rem] object-cover"
+            />
+          </div>
+
+          <div className="absolute relative top-1/2 left-1/2 aspect-square w-2/3 max-w-[360px] -translate-x-2/3 -translate-y-1/3 overflow-hidden rounded-[2rem] border border-white bg-violet-50 bg-white/60 p-3 backdrop-blur-md">
+            <Image
+              src="/a-propos.jpg"
+              width={1200}
+              height={1250}
+              alt="a-propos"
+              className="h-full w-full rounded-[1.5rem] object-cover"
+            />
           </div>
         </div>
       </div>

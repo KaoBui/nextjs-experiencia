@@ -55,13 +55,11 @@ export default function Services() {
       <ServiceWave className="pointer-events-none absolute top-0 right-0 -z-10 h-full w-auto" />
       <div className="mx-site-margin gap-space-2x grid grid-cols-12">
         <div className="pb-space-2x col-start-1 col-end-7 flex flex-col items-start">
-          <p className="text-md pb-2">Vous sentez que ca coince?</p>
-          <h2>
-            <Heading className="text-tertiary text-4xl" splitType="lines">
+          <p className="pb-2 text-lg">Vous sentez que ca coince?</p>
+          <h2 className="text-primary max-w-[24ch] text-4xl">
+            <Heading className="" splitType="lines">
               Je vous montre
-              <span className="text-primary">
-                <em> ou, pourquoi et comment y remedier</em>
-              </span>
+              <em> ou, pourquoi et comment y remedier</em>
             </Heading>
           </h2>
           <p className="pt-space-base text-base">
