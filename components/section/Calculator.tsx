@@ -90,28 +90,26 @@ export default function Calculator() {
         className="pointer-events-none absolute -right-[10%] h-full"
         pathRef={wavePathRef}
       />
-      <div className="bg-indigo-dark py-space-2x flex h-[140vh] items-center justify-center px-4">
-        <div className="mx-site-margin z-1 flex h-full items-center justify-center">
-          <div className="gap-space-2x p-space-base flex max-w-4xl rounded-4xl border-1 border-white/25 bg-white/10 backdrop-blur-lg xl:max-w-5xl">
-            <div className="gap-space-base flex flex-1 flex-col justify-center p-4">
-              <h2 className="text-2xl text-white">
-                <Heading splitType="words">
-                  {" "}
-                  Calculez le CA que vous perdez chaque mois{" "}
-                </Heading>
-              </h2>
-              <p className="text-base text-neutral-200">
-                <Heading splitType="lines">
-                  à cause des clients qui ne reviennent pas et faites une
-                  estimation rapide de
-                  <strong> ce que vous pourriez regagner</strong> si on
-                  travaille ensemble !
-                </Heading>
-              </p>
-            </div>
-            <div className="w-[55%] rounded-2xl bg-white p-8">
-              <CalculatorCore />
-            </div>
+      <div className="bg-indigo-dark py-space-2x px-section-padding flex h-[140vh] items-center justify-center">
+        <div className="gap-space-2x p-space-base flex md:h-[80vh] max-w-full flex-1 flex-col rounded-4xl border-1 border-white/25 bg-white/10 backdrop-blur-lg md:max-w-4xl md:flex-row xl:max-w-5xl">
+          <div className="gap-space-base flex flex-1 flex-col justify-center p-4">
+            <h2 className="text-3xl text-white">
+              <Heading splitType="words">
+                {" "}
+                Calculez le CA que vous perdez chaque mois{" "}
+              </Heading>
+            </h2>
+            <p className="text-base text-neutral-200">
+              <Heading splitType="lines">
+                à cause des clients qui ne reviennent pas et faites une
+                estimation rapide de
+                <strong> ce que vous pourriez regagner</strong> si on travaille
+                ensemble !
+              </Heading>
+            </p>
+          </div>
+          <div className="w-full rounded-2xl bg-white p-8 md:w-[55%]">
+            <CalculatorCore />
           </div>
         </div>
       </div>

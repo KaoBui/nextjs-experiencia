@@ -138,7 +138,7 @@ export default function NavBar() {
   return (
     <>
       <header className="absolute top-8 left-1/2 z-50 w-full -translate-x-1/2">
-        <div className="mx-site-margin">
+        <div className="mx-site-margin px-section-padding">
           <NavContent />
         </div>
       </header>

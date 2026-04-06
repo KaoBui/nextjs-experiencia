@@ -53,7 +53,7 @@ export default function Services() {
       className="px-section-padding relative mb-[10vh] py-[15vh]"
     >
       <ServiceWave className="pointer-events-none absolute top-0 right-0 -z-10 h-full w-auto" />
-      <div className="mx-site-margin gap-space-2x grid grid-cols-12">
+      <div className="mx-site-margin gap-space-2x flex flex-col md:grid grid-cols-12">
         <div className="pb-space-2x col-start-1 col-end-7 flex flex-col items-start">
           <p className="pb-2 text-lg">Vous sentez que ca coince?</p>
           <h2 className="text-primary max-w-[24ch] text-4xl">
@@ -62,7 +62,7 @@ export default function Services() {
               <em> ou, pourquoi et comment y remedier</em>
             </Heading>
           </h2>
-          <p className="pt-space-base text-base">
+          <p className="pt-space-base max-w-[48ch] text-base">
             <Heading className="" splitType="lines">
               Aucune entreprise n&apos;est identique et par consequent aucune
               strategie de fidelisation ne devrait l&apos;etre.

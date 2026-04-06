@@ -50,22 +50,36 @@ export default function Reasons() {
           ease: "none",
         });
 
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: reasonsRef.current,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: true,
-        },
+      const mm = gsap.matchMedia();
+
+      mm.add("(min-width: 768px)", () => {
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: reasonsRef.current,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true,
+          },
+        });
+
+        tl.to(
+          leftColRef.current,
+          {
+            yPercent: 150,
+            ease: "power1.inOut",
+          },
+          0,
+        );
+
+        return () => {
+          tl.scrollTrigger?.kill();
+          tl.kill();
+        };
       });
-      tl.to(
-        leftColRef.current,
-        {
-          yPercent: 150,
-          ease: "power1.inOut",
-        },
-        0,
-      );
+
+      return () => {
+        mm.revert();
+      };
     },
     { scope: reasonsRef },
   );
@@ -76,7 +90,7 @@ export default function Reasons() {
         className="pointer-events-none absolute -top-[10%] right-0 -z-10 w-full opacity-50"
         pathRef={wavePathRef}
       />
-      <div className="mx-site-margin py-space-base gap-space-base grid grid-cols-12">
+      <div className="mx-site-margin py-space-base gap-space-base flex grid-cols-12 flex-col md:grid">
         <div className="col-start-2 col-end-6">
           <div ref={leftColRef} className="gap-space-base flex flex-col">
             <h2 className="text-4xl">

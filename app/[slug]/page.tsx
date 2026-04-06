@@ -75,7 +75,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
       <ServiceHeader service={service} />
       <ServiceWhy service={service} />
       <ServiceWhoFor service={service} />
-      <section
+      <sectionw
         id="form"
         className="px-section-padding bg-indigo-dark overflow-hidden py-[8vh]"
       >
@@ -91,7 +91,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
             </h2>
           </div>
           <div className="gap-space-4x grid lg:grid-cols-[0.9fr_1.1fr]">
-            <div className="flex flex-col gap-0">
+            <div className="flex flex-col gap-0 justify-center">
               {service.steps.map((step, index) => (
                 <div
                   key={step.title}

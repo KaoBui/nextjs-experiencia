@@ -28,7 +28,7 @@ export default function CalculatorCore() {
   const [calculatedValue, setCalculatedValue] = useState(0);
 
   return (
-    <div className="flex flex-col justify-between gap-[6vh]">
+    <div className="flex flex-col justify-between gap-[6vh] h-full">
       <FieldSet>
         <FieldGroup className="gap-space-base">
           <Field className="gap-space-sm grid grid-cols-[minmax(0,1fr)_minmax(0,16rem)] items-start">

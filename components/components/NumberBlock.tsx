@@ -6,7 +6,7 @@ type NumberBlockProps = {
 export default function NumberBlock({ className = "" }: NumberBlockProps) {
   return (
     <div
-      className={`flex flex-col items-start justify-between rounded-xl border-2 border-white bg-white/80 p-3 px-2 backdrop-blur-sm ${className}`.trim()}
+      className={`flex flex-col items-start justify-between rounded-xl border-2 border-white bg-white/75 p-3 px-2 backdrop-blur-sm ${className}`.trim()}
     >
       <p className="text-tertiary text-xs font-medium uppercase">Activité</p>
       <div className="flex items-start gap-1">

@@ -5,11 +5,11 @@ type GraphProps = {
 export default function Graph({ className = "" }: GraphProps) {
   return (
     <div
-      className={`rounded-xl border-2 border-white bg-white/80 backdrop-blur-sm flex items-end gap-2 p-2 ${className}`.trim()}
+      className={`bg-white/50 flex items-end gap-2 rounded-4xl border-2 border-white p-2 backdrop-blur-md ${className}`.trim()}
     >
-      <div className="flex-1 bg-mauve rounded-md h-1/3"></div>
-      <div className="flex-1 bg-lila rounded-md h-2/3"></div>
-      <div className="flex-1 bg-indigo rounded-md h-full"></div>
+      <div className="bg-mauve h-1/3 flex-1 rounded-3xl shadow-md"></div>
+      <div className="bg-lila h-2/3 flex-1 rounded-3xl shadow-md"></div>
+      <div className="bg-indigo h-full flex-1 rounded-3xl shadow-md"></div>
     </div>
   );
 }

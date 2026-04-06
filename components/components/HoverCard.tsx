@@ -8,12 +8,14 @@ type HoverCardProps = {
   heading: string;
   description: string;
   color: string;
+  className?: string;
 };
 
 export default function HoverCard({
   heading,
   description,
   color,
+  className = "",
 }: HoverCardProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
@@ -66,24 +68,25 @@ export default function HoverCard({
   return (
     <div
       ref={containerRef}
-      className="group p-space-base relative flex flex-col items-end gap-[15vh] overflow-hidden rounded-3xl border-2 border-white bg-white/75 shadow-sm backdrop-blur-md"
+      className={`group p-space-base relative flex flex-col items-end gap-[15vh] overflow-hidden rounded-3xl border-2 border-white bg-white/75 shadow-sm backdrop-blur-md ${className}`.trim()}
       style={colorStyle}
     >
       <button
         type="button"
         aria-pressed={isOpen}
         aria-label={isOpen ? "Close card details" : "Open card details"}
-        className="z-1 flex cursor-pointer items-center justify-center gap-1 rounded-full p-2 text-sm"
+        className="z-1 flex cursor-pointer items-center justify-center rounded-full p-2 text-sm"
         style={{
           backgroundColor: isOpen ? "#fff" : "var(--hover-card-color)",
           color: isOpen ? "var(--hover-card-color)" : "#fff",
+          gap: isOpen ? 1 : 0,
         }}
         onClick={handleImageContainerClick}
       >
         <span
-          className={`overflow-hidden pl-2 whitespace-nowrap transition-all duration-300 ease-out ${
+          className={`overflow-hidden whitespace-nowrap transition-all duration-300 ease-out ${
             isOpen
-              ? "max-w-24 translate-x-0 opacity-100"
+              ? "max-w-24 translate-x-0 pl-2 opacity-100"
               : "max-w-0 -translate-x-2 opacity-0 group-hover:max-w-24 group-hover:translate-x-0 group-hover:opacity-100"
           }`}
         >

@@ -4,7 +4,7 @@ import FormCore from "../components/FormCore";
 export default function Form() {
   return (
     <section id="form" className="relative overflow-hidden px-4 py-[15vh]">
-      <div className="mx-site-margin gap-space-base grid h-full grid-cols-12">
+      <div className="mx-site-margin gap-space-base flex h-full grid-cols-12 flex-col md:grid">
         <div className="gap-space-base pb-space-base col-start-2 col-end-7 flex flex-col">
           <div className="flex flex-col gap-4">
             <h2>

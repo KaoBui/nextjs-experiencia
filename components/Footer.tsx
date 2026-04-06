@@ -33,7 +33,7 @@ export default function Footer() {
   return (
     <footer className="bg-indigo-dark p-space-base pt-16 text-white">
       <div className="mx-site-margin">
-        <div className="grid gap-12 border-b border-white/10 pb-10 md:grid-cols-2 xl:grid-cols-12">
+        <div className="flex flex-col gap-12 border-b border-white/10 pb-10 md:grid md:grid-cols-2 xl:grid-cols-12">
           <div className="col-start-1 col-end-6 flex max-w-xs flex-col gap-4">
             <TransitionLink href="/" className="flex justify-center">
               <Image
