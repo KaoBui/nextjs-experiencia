@@ -77,14 +77,14 @@ export default function Button({
     >
       <span
         ref={textRef}
-        className="relative z-0 block text-right will-change-transform"
+        className="relative z-0 block text-right text-sm md:text-base will-change-transform"
       >
         {children}
       </span>
       <div
         ref={iconRef}
         className={cn(
-          "relative z-10 aspect-square h-10 w-10 rounded-full bg-white p-3 will-change-transform",
+          "relative z-10 aspect-square w-6 md:w-10 rounded-full bg-white p-1 md:p-3 will-change-transform",
           iconClassName,
         )}
       >

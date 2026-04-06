@@ -75,7 +75,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
       <ServiceHeader service={service} />
       <ServiceWhy service={service} />
       <ServiceWhoFor service={service} />
-      <sectionw
+      <section
         id="form"
         className="px-section-padding bg-indigo-dark overflow-hidden py-[8vh]"
       >

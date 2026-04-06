@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
@@ -30,11 +30,13 @@ const serviceNavItems = serviceSlugs.map((slug) => ({
 }));
 
 function NavContent({ compact = false }: { compact?: boolean }) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
     <div className={compact ? "mx-site-margin flex justify-center" : ""}>
       <nav
         className={[
-          "flex items-center justify-between p-2",
+          "relative flex items-center justify-between p-2",
           compact
             ? "w-full max-w-[50rem] rounded-full bg-white/70 shadow-[0_4px_4px_rgba(0,0,0,0.04)] backdrop-blur-md"
             : "w-full",
@@ -50,7 +52,7 @@ function NavContent({ compact = false }: { compact?: boolean }) {
           />
         </TransitionLink>
 
-        <div className="flex items-center gap-4 text-base">
+        <div className="hidden items-center gap-4 text-base md:flex">
           <NavigationMenu viewport={false} className="flex-none">
             <NavigationMenuList className="gap-4">
               <NavigationMenuItem>
@@ -90,7 +92,71 @@ function NavContent({ compact = false }: { compact?: boolean }) {
           ))}
         </div>
 
-        <Button href="/contact">Prendre rendez-vous</Button>
+        <div className="flex items-center gap-2">
+          <Button href="/contact">Prendre rendez-vous</Button>
+          <button
+            type="button"
+            aria-expanded={isMenuOpen}
+            aria-controls={compact ? "mobile-nav-sticky" : "mobile-nav-main"}
+            aria-label={isMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-white/70 bg-white/80 backdrop-blur-md md:hidden"
+            onClick={() => setIsMenuOpen((open) => !open)}
+          >
+            <span className="sr-only">
+              {isMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
+            </span>
+            <span className="relative block h-4 w-5">
+              <span
+                className={`bg-indigo absolute top-0 left-0 h-0.5 w-5 rounded-full transition-transform duration-300 ${
+                  isMenuOpen ? "translate-y-[7px] rotate-45" : ""
+                }`}
+              />
+              <span
+                className={`bg-indigo absolute top-[7px] left-0 h-0.5 w-5 rounded-full transition-opacity duration-200 ${
+                  isMenuOpen ? "opacity-0" : "opacity-100"
+                }`}
+              />
+              <span
+                className={`bg-indigo absolute top-[14px] left-0 h-0.5 w-5 rounded-full transition-transform duration-300 ${
+                  isMenuOpen ? "-translate-y-[7px] -rotate-45" : ""
+                }`}
+              />
+            </span>
+          </button>
+        </div>
+
+        <div
+          id={compact ? "mobile-nav-sticky" : "mobile-nav-main"}
+          className={`absolute top-full left-0 right-0 mt-3 rounded-[1.75rem] border border-white/70 bg-white/92 p-3 shadow-[0_20px_60px_rgba(34,8,66,0.12)] backdrop-blur-md transition-all duration-300 md:hidden ${
+            isMenuOpen
+              ? "pointer-events-auto translate-y-0 opacity-100"
+              : "pointer-events-none -translate-y-2 opacity-0"
+          }`}
+        >
+          <div className="flex flex-col gap-1">
+            <p className="px-3 pt-1 text-xs font-medium tracking-[0.16em] uppercase text-neutral-500">
+              Services
+            </p>
+            {serviceNavItems.map((item) => (
+              <TransitionLink
+                key={item.href}
+                href={item.href}
+                className="rounded-[1rem] px-3 py-3 text-sm transition hover:bg-black/[0.03]"
+              >
+                {item.label}
+              </TransitionLink>
+            ))}
+            {navItems.map((item) => (
+              <TransitionLink
+                key={item.href}
+                href={item.href}
+                className="rounded-[1rem] px-3 py-3 text-sm transition hover:bg-black/[0.03]"
+              >
+                {item.label}
+              </TransitionLink>
+            ))}
+          </div>
+        </div>
       </nav>
     </div>
   );
