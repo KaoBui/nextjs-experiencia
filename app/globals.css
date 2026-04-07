@@ -64,7 +64,7 @@
 @media (min-width: 1280px) {
   :root {
     --font-size-base: clamp(1rem, calc(0.7419rem + 0.3226vw), 1.025rem);
-    --font-scale-ratio: 1.2;
+    --font-scale-ratio: 1.125;
     --type--lh-body: 1.6;
     --type--lh-head: 1;
     --space-base: 1.2rem;
