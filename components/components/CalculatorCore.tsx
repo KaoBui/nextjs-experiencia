@@ -28,10 +28,10 @@ export default function CalculatorCore() {
   const [calculatedValue, setCalculatedValue] = useState(0);
 
   return (
-    <div className="flex flex-col justify-between gap-[6vh] h-full">
+    <div className="flex h-full flex-col justify-between gap-[6vh]">
       <FieldSet>
         <FieldGroup className="gap-space-base">
-          <Field className="gap-space-sm grid grid-cols-[minmax(0,1fr)_minmax(0,16rem)] items-start">
+          <Field className="gap-space-sm flex flex-col md:grid grid-cols-[minmax(0,1fr)_minmax(0,16rem)] items-start">
             <FieldContent className="flex h-full justify-center">
               <FieldLabel htmlFor="activity-sector">
                 Secteur d'activite
@@ -59,7 +59,7 @@ export default function CalculatorCore() {
             </Select>
           </Field>
 
-          <Field className="grid grid-cols-[minmax(0,1fr)_minmax(0,16rem)] items-start gap-6">
+          <Field className="flex flex-col md:grid grid-cols-[minmax(0,1fr)_minmax(0,16rem)] items-start gap-space-sm">
             <FieldContent className="h-full justify-center">
               <FieldLabel htmlFor="churn-rate">Votre taux de churn</FieldLabel>
               {/* <FieldDescription className="text-xs">
@@ -102,7 +102,7 @@ export default function CalculatorCore() {
             </div>
           </Field>
 
-          <Field className="grid grid-cols-[minmax(0,1fr)_minmax(0,16rem)] items-start gap-6">
+          <Field className="flex flex-col md:grid grid-cols-[minmax(0,1fr)_minmax(0,16rem)] items-start gap-space-sm">
             <FieldContent className="flex h-full justify-center">
               <FieldLabel htmlFor="last-revenue">
                 Votre CA du mois dernier
@@ -129,7 +129,7 @@ export default function CalculatorCore() {
             </Select>
           </Field>
         </FieldGroup>
-        <div className="pt-[6vh] flex flex-col gap-2">
+        <div className="flex flex-col gap-2 pt-[6vh]">
           <div className="gap-space-base flex items-center justify-between">
             <p className="text-secondary text-sm">
               Ce que ca vous coute le moise dernier :

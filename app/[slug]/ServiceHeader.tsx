@@ -67,8 +67,8 @@ export default function ServiceHeader({ service }: ServiceHeaderProps) {
           drawSVG: "100% 100%",
           ease: "none",
           scrollTrigger: {
-            trigger: signauxRef.current,
-            start: "top bottom",
+            trigger: containerRef.current,
+            start: "top top",
             end: "50% 50%",
             scrub: true,
           },

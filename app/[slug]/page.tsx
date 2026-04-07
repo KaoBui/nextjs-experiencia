@@ -19,6 +19,7 @@ import ServiceWhoFor from "./ServiceWhoFor";
 import Heading from "@/components/components/Heading";
 import Image from "next/image";
 import Reasons from "@/components/section/Reasons";
+import TopWave from "@/components/svg/TopWave";
 type ServicePageProps = {
   params: Promise<{ slug: string }>;
 };
@@ -77,8 +78,10 @@ export default async function ServicePage({ params }: ServicePageProps) {
       <ServiceWhoFor service={service} />
       <section
         id="form"
-        className="px-section-padding bg-indigo-dark overflow-hidden py-[8vh]"
+        className="px-section-padding bg-indigo-dark relative border-b border-white py-[8vh]"
       >
+        <TopWave className="absolute -top-1 left-0 z-1 w-[110vw] rotate-180" />
+        <TopWave className="absolute -bottom-1 left-0 z-1 w-[110vw] rotate-0" />
         <div className="mx-site-margin rounded-[2rem] p-8 backdrop-blur-lg md:p-10">
           <div className="pb-space-2x flex flex-col items-center">
             <SectionLabel color="" light={true}>
@@ -91,7 +94,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
             </h2>
           </div>
           <div className="gap-space-4x grid lg:grid-cols-[0.9fr_1.1fr]">
-            <div className="flex flex-col gap-0 justify-center">
+            <div className="flex flex-col justify-center gap-0">
               {service.steps.map((step, index) => (
                 <div
                   key={step.title}

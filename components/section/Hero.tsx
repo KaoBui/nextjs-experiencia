@@ -164,7 +164,7 @@ export default function Hero({
             <div className="flex flex-col items-start gap-4 md:flex-row">
               <TransitionLink
                 href="#calculateur"
-                className="text-indigo border-indigo hover:bg-indigo/5 flex items-center rounded-full border px-5 py-3 text-base transition"
+                className="text-indigo border-indigo hover:bg-indigo/5 flex items-center rounded-full border px-5 py-3 text-sm transition md:text-base"
               >
                 Calculer mon CA perdu
               </TransitionLink>
@@ -176,17 +176,17 @@ export default function Hero({
             className="md:px-space-3x pt-space-3x relative col-start-9 col-end-13 flex items-end justify-center"
           >
             <StatLabel
-              className="charts absolute bottom-1/4 left-0 rotate-2"
+              className="charts absolute bottom-1/4 left-0 hidden rotate-2 md:block"
               label="Croissance"
               stat="+52%"
             />
             <StatLabel
-              className="charts absolute top-1/3 left-1/2 rotate-5"
+              className="charts absolute top-1/3 left-1/2 hidden rotate-5 md:block"
               label="Croissance"
               stat="+42%"
             />
-            <Graph className="charts absolute top-0 md:bottom-1/2 left-0 h-30 w-30 rotate-0 md:-left-6 md:-rotate-4" />
-            <NumberBlock className="charts absolute bottom-0 left-0 rotate-0 gap-4 md:bottom-4 md:-left-4 md:-rotate-4" />
+            <Graph className="charts absolute top-0 left-0 hidden h-30 w-30 rotate-0 md:top-1/3 md:-left-6 md:block md:-rotate-4 2xl:top-1/2" />
+            <NumberBlock className="charts absolute bottom-0 left-0 hidden rotate-0 gap-4 md:bottom-4 md:-left-4 md:block md:-rotate-4" />
             <div
               ref={portraitRef}
               className="-z-1 aspect-4/5 h-auto w-1/2 max-w-3xl overflow-hidden rounded-3xl border-1 border-white bg-violet-50 p-2 md:w-full"
@@ -203,8 +203,8 @@ export default function Hero({
           </div>
         </div>
       </div>
-      <div ref={aboutRef} className="mx-section-padding h-[75svh] md:h-screen">
-        <div className="mx-site-margin gap-space-base flex md:grid h-full grid-cols-12">
+      <div ref={aboutRef} className="mx-section-padding h-[50svh] md:h-screen">
+        <div className="mx-site-margin gap-space-base flex h-full grid-cols-12 md:grid">
           <div className="gap-space-2x col-start-1 col-end-7 flex flex-col items-start justify-center">
             <h2 className="">
               <Heading className="text-primary text-4xl" splitType="lines">
