@@ -45,7 +45,7 @@ export default function ServiceCard({
   return (
     <div
       ref={containerRef}
-      className="flex min-h-[45vh] flex-col items-start justify-between rounded-3xl border-2 border-white bg-white/75 p-6 backdrop-blur-xl"
+      className="flex min-h-[50vh] flex-col items-start justify-between rounded-3xl border-2 border-white bg-white/75 p-6 backdrop-blur-xl"
       style={accentStyle}
     >
       <div className="flex w-full justify-end">

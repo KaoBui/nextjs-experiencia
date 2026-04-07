@@ -45,7 +45,7 @@ const clientLogos = [
 
 export default function ContactPage() {
   return (
-    <section className="mx-site-margin px-section-padding gap-space-base grid grid-cols-1 pt-[18vh] pb-10 md:grid-cols-2">
+    <section className="mx-site-margin px-section-padding gap-space-base flex grid-cols-1 flex-col pt-[18vh] pb-10 md:grid md:grid-cols-2">
       <div className="gap-space-2x flex max-w-[70ch] flex-1 flex-col">
         <p className="text-indigo text-sm font-semibold tracking-[0.2em] uppercase">
           Contact
@@ -95,7 +95,7 @@ export default function ContactPage() {
           </p>
         </div>
       </div>
-      <div className="mx-space-base flex-1 pt-[30vh]">
+      <div className="md:mx-space-base mx-0 flex-1 p-0 md:pt-[30vh]">
         <div className="p-space-2x rounded-3xl bg-white">
           <div className="pb-space-base">
             <h3 className="text-xl">
@@ -126,7 +126,7 @@ export default function ContactPage() {
           ))}
         </div>
       </div>
-      <div className="pt-space-2x col-span-2 flex flex-col items-center gap-space-2x">
+      <div className="pt-space-2x gap-space-2x col-span-2 flex flex-col items-center">
         <div className="max-w-[48ch]">
           <p className="text-indigo text-center text-sm font-semibold tracking-[0.2em] uppercase">
             FAQ
@@ -136,7 +136,11 @@ export default function ContactPage() {
           </h2>
         </div>
         <div className="w-full max-w-2xl">
-          <Accordion type="single" collapsible className="w-full gap-space-base">
+          <Accordion
+            type="single"
+            collapsible
+            className="gap-space-base w-full"
+          >
             {contactFaqs.map((faq, index) => (
               <AccordionItem key={faq.question} value={`item-${index}`}>
                 <AccordionTrigger className="text-primary font-body text-base hover:no-underline">

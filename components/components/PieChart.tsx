@@ -62,7 +62,7 @@ export default function PieChart({
 
   return (
     <div
-      className={`bg-white/50 flex items-center justify-center rounded-4xl border-2 border-white p-[5%] backdrop-blur-md ${className}`.trim()}
+      className={`hidden items-center justify-center rounded-4xl border-2 border-white bg-white/50 p-[5%] backdrop-blur-md md:flex ${className}`.trim()}
     >
       <div
         className="relative aspect-square w-full rounded-full shadow-md"
@@ -73,7 +73,7 @@ export default function PieChart({
       >
         {donut ? (
           <div
-            className="absolute rounded-full border border-white/70 bg-white/90 backdrop-blur-lg shadow-md"
+            className="absolute rounded-full border border-white/70 bg-white/90 shadow-md backdrop-blur-lg"
             style={{
               inset: `${((1 - innerScale) / 2) * 100}%`,
             }}

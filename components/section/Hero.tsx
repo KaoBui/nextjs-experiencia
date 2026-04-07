@@ -176,17 +176,17 @@ export default function Hero({
             className="md:px-space-3x pt-space-3x relative col-start-9 col-end-13 flex items-end justify-center"
           >
             <StatLabel
-              className="charts absolute bottom-1/4 left-0 hidden rotate-2 md:block"
+              className="charts absolute bottom-1/4 left-0 hidden rotate-2 md:flex"
               label="Croissance"
               stat="+52%"
             />
             <StatLabel
-              className="charts absolute top-1/3 left-1/2 hidden rotate-5 md:block"
+              className="charts absolute top-1/3 left-1/2 hidden rotate-5 md:flex"
               label="Croissance"
               stat="+42%"
             />
-            <Graph className="charts absolute top-0 left-0 hidden h-30 w-30 rotate-0 md:top-1/3 md:-left-6 md:block md:-rotate-4 2xl:top-1/2" />
-            <NumberBlock className="charts absolute bottom-0 left-0 hidden rotate-0 gap-4 md:bottom-4 md:-left-4 md:block md:-rotate-4" />
+            <Graph className="charts absolute top-0 left-0 hidden h-30 w-30 rotate-0 md:top-1/3 md:-left-6 md:flex md:-rotate-4 2xl:top-1/2" />
+            <NumberBlock className="charts absolute bottom-0 left-0 hidden rotate-0 gap-4 md:bottom-4 md:-left-4 md:flex md:-rotate-4" />
             <div
               ref={portraitRef}
               className="-z-1 aspect-4/5 h-auto w-1/2 max-w-3xl overflow-hidden rounded-3xl border-1 border-white bg-violet-50 p-2 md:w-full"

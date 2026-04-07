@@ -80,7 +80,7 @@ export default function ServiceHeader({ service }: ServiceHeaderProps) {
 
   return (
     <div ref={containerRef}>
-      <section className="px-section-padding py-4">
+      <section className="px-section-padding overflow-hidden py-4 relative">
         <HeaderWave
           className="pointer-events-none fixed top-0 right-0 h-auto w-1/2"
           pathClassName="header-wave__path"
@@ -105,7 +105,7 @@ export default function ServiceHeader({ service }: ServiceHeaderProps) {
             <h1 className="max-w-[28ch] text-4xl leading-[1.02] md:text-6xl">
               Augmentez la fréquence d'achat de vos clients en moins de 3 mois
             </h1>
-            <p className="text-secondary max-w-[48ch] text-md leading-7 py-2">
+            <p className="text-secondary text-md max-w-[48ch] py-2 leading-7">
               Faites revenir vos clients plus souvent : transformez vos
               acheteurs ponctuels en clients réguliers
             </p>
@@ -114,11 +114,11 @@ export default function ServiceHeader({ service }: ServiceHeaderProps) {
             </Button>
           </div>
 
-          <div className="mx-space-2x relative flex items-center justify-end">
+          <div className="md:mx-space-2x relative m-0 flex items-center justify-start md:justify-end">
             <PieChart className="absolute top-1/3 left-1/2 aspect-square w-[60%] -translate-x-1/2 rotate-8 shadow-lg/5" />
             <Graph className="charts absolute bottom-0 left-1/5 aspect-square w-1/3 -rotate-10 shadow-lg/5" />
-            <div className="gap-space-base absolute bottom-0 flex flex-col items-end">
-              <div className="flex h-20 w-20 items-center justify-center rounded-full bg-white/50 backdrop-blur-md">
+            <div className="gap-space-base absolute bottom-0 flex flex-col items-start md:items-end">
+              <div className="hidden h-20 w-20 items-center justify-center rounded-full bg-white/50 backdrop-blur-md md:flex">
                 <Image
                   src={service.icon}
                   alt=""
@@ -141,7 +141,7 @@ export default function ServiceHeader({ service }: ServiceHeaderProps) {
         className="px-section-padding py-space-4x overflow-hidden"
       >
         <div className="mx-site-margin rounded-[2rem]">
-          <div className="flex items-end justify-between gap-2">
+          <div className="flex flex-col items-start justify-between gap-2 md:flex-row md:items-end">
             <div>
               <SectionLabel color={service.color}>symptomes</SectionLabel>
               <h2 className="max-w-[32ch] text-4xl">
@@ -160,14 +160,14 @@ export default function ServiceHeader({ service }: ServiceHeaderProps) {
               </Heading>
             </p>
           </div>
-          <div className="gap-space-2x mt-space-4x flex justify-start">
+          <div className="gap-space-2x mt-space-4x flex flex-col justify-start md:flex-row">
             {service.symptoms.map((item) => (
               <HoverCard
                 key={item.title}
                 heading={item.title}
                 description={item.description}
                 color={service.color}
-                className="w-1/4"
+                className="w-full md:w-1/4"
               />
             ))}
           </div>

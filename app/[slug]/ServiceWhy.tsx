@@ -48,7 +48,7 @@ function ReasonCard({
   return (
     <article
       ref={cardRef}
-      className="p-space-base col-span-4 col-start-4 flex h-[50vh] min-h-[200px] flex-col justify-between rounded-[1.5rem] border border-white/70"
+      className="p-space-base col-span-full col-start-1 flex h-[50vh] min-h-[200px] flex-col justify-between rounded-[1.5rem] border border-white/70 md:col-span-4 md:col-start-4"
       style={{ backgroundColor: color }}
     >
       <p className="font-head text-5xl text-white/60">{`0${index + 1}`}</p>
