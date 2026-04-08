@@ -189,7 +189,7 @@ export default function Hero({
             <NumberBlock className="charts absolute bottom-0 left-0 hidden rotate-0 gap-4 md:bottom-4 md:-left-4 md:flex md:-rotate-4" />
             <div
               ref={portraitRef}
-              className="-z-1 aspect-4/5 h-auto w-1/2 max-w-3xl overflow-hidden rounded-3xl border-1 border-white bg-violet-50 p-2 md:w-full"
+              className="-z-1 aspect-4/5 h-auto w-1/2 max-w-md overflow-hidden rounded-3xl border-1 border-white bg-violet-50 p-2 md:w-full"
             >
               <Image
                 src={heroImageUrl ?? "/portrait.jpg"}

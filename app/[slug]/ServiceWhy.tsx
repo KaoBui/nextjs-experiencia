@@ -53,7 +53,7 @@ function ReasonCard({
     >
       <p className="font-head text-5xl text-white/60">{`0${index + 1}`}</p>
       <div>
-        <h2 className="font-body text-2xl text-white">{title}</h2>
+        <h2 className="font-body text-lg text-white">{title}</h2>
         <p className="mt-3 text-base leading-7 text-white/80">{description}</p>
       </div>
     </article>

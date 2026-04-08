@@ -91,7 +91,7 @@ export default function Calculator() {
         pathRef={wavePathRef}
       />
       <div className="bg-indigo-dark py-space-2x px-section-padding flex h-[140vh] items-center justify-center">
-        <div className="gap-space-2x p-space-base flex md:h-[80vh] max-w-full flex-1 flex-col rounded-4xl border-1 border-white/25 bg-white/10 backdrop-blur-lg md:max-w-4xl md:flex-row xl:max-w-5xl">
+        <div className="gap-space-2x p-space-base flex md:h-[80vh] 2xl:h-[60vh] max-w-full flex-1 flex-col rounded-4xl border-1 border-white/25 bg-white/10 backdrop-blur-lg md:max-w-4xl md:flex-row xl:max-w-5xl">
           <div className="gap-space-base flex flex-1 flex-col justify-center p-4">
             <h2 className="text-3xl text-white">
               <Heading splitType="words">

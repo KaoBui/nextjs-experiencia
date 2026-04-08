@@ -13,10 +13,11 @@ const START_STROKE_WIDTH = 140;
 
 function getStrokeWidths() {
   const viewportDiagonal = Math.hypot(window.innerWidth, window.innerHeight);
+  const isMobile = window.innerWidth < 768;
 
   return {
-    mid: viewportDiagonal * 0.18,
-    end: viewportDiagonal * 0.04,
+    mid: viewportDiagonal * (isMobile ? 0.3 : 0.2),
+    end: viewportDiagonal * (isMobile ? 0.12 : 0.06),
   };
 }
 

@@ -80,7 +80,7 @@ export default function ServiceHeader({ service }: ServiceHeaderProps) {
 
   return (
     <div ref={containerRef}>
-      <section className="px-section-padding overflow-hidden py-4 relative">
+      <section className="px-section-padding relative overflow-hidden py-4">
         <HeaderWave
           className="pointer-events-none fixed top-0 right-0 h-auto w-1/2"
           pathClassName="header-wave__path"
@@ -102,7 +102,7 @@ export default function ServiceHeader({ service }: ServiceHeaderProps) {
                 OFFRE <strong>{service.name}</strong>{" "}
               </p>
             </div>
-            <h1 className="max-w-[28ch] text-4xl leading-[1.02] md:text-6xl">
+            <h1 className="max-w-[28ch] text-4xl leading-[1.02] md:text-5xl">
               Augmentez la fréquence d'achat de vos clients en moins de 3 mois
             </h1>
             <p className="text-secondary text-md max-w-[48ch] py-2 leading-7">
@@ -116,9 +116,9 @@ export default function ServiceHeader({ service }: ServiceHeaderProps) {
 
           <div className="md:mx-space-2x relative m-0 flex items-center justify-start md:justify-end">
             <PieChart className="absolute top-1/3 left-1/2 aspect-square w-[60%] -translate-x-1/2 rotate-8 shadow-lg/5" />
-            <Graph className="charts absolute bottom-0 left-1/5 aspect-square w-1/3 -rotate-10 shadow-lg/5" />
+            <Graph className="charts absolute bottom-0 left-0 aspect-square w-1/3 -rotate-10 shadow-lg/5" />
             <div className="gap-space-base absolute bottom-0 flex flex-col items-start md:items-end">
-              <div className="hidden h-20 w-20 items-center justify-center rounded-full bg-white/50 backdrop-blur-md md:flex">
+              {/* <div className="hidden h-20 w-20 items-center justify-center rounded-full bg-white/50 backdrop-blur-md md:flex">
                 <Image
                   src={service.icon}
                   alt=""
@@ -126,7 +126,7 @@ export default function ServiceHeader({ service }: ServiceHeaderProps) {
                   height={96}
                   className="h-auto w-12"
                 />
-              </div>{" "}
+              </div>{" "} */}
               <StatLabel label="Achats réguliers" />
               <StatLabel label="Réachat" stat="+42%" />
               <StatLabel label="Plus besoin d'acquisition massive" />

@@ -82,7 +82,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
       >
         <TopWave className="absolute -top-1 left-0 z-1 w-[110vw] rotate-180" />
         <TopWave className="absolute -bottom-1 left-0 z-1 w-[110vw] rotate-0" />
-        <div className="mx-site-margin rounded-[2rem] p-8 backdrop-blur-lg md:p-10">
+        <div className="mx-site-margin flex min-h-screen flex-col items-center justify-center rounded-[2rem] p-8 backdrop-blur-lg md:p-10">
           <div className="pb-space-2x flex flex-col items-center">
             <SectionLabel color="" light={true}>
               Comment ca se passe
@@ -128,8 +128,8 @@ export default async function ServicePage({ params }: ServicePageProps) {
       <section className="mx-site-margin py-[6vh]">
         <div className="gap-space-base mt-6 flex flex-col items-center">
           <SectionLabel color={service.color}>FAQ</SectionLabel>
-          <div className="pb-space-2x max-w-[48ch]">
-            <h2 className="text-center text-3xl leading-tight md:text-4xl">
+          <div className="pb-space-2x">
+            <h2 className="max-w-[24ch] text-center text-3xl leading-tight md:text-4xl">
               <Heading splitType="lines">
                 {" "}
                 Les questions les plus frequentes avant de prendre contact

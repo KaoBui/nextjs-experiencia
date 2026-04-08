@@ -127,21 +127,21 @@ function NavContent({ compact = false }: { compact?: boolean }) {
 
         <div
           id={compact ? "mobile-nav-sticky" : "mobile-nav-main"}
-          className={`absolute top-full left-0 right-0 mt-3 rounded-[1.75rem] border border-white/70 bg-white/92 p-3 shadow-[0_20px_60px_rgba(34,8,66,0.12)] backdrop-blur-md transition-all duration-300 md:hidden ${
+          className={`absolute top-full right-0 left-0 mt-3 rounded-[1.75rem] border border-white/70 bg-white/90 p-3 shadow-[0_20px_60px_rgba(34,8,66,0.12)] backdrop-blur-md transition-all duration-300 md:hidden ${
             isMenuOpen
               ? "pointer-events-auto translate-y-0 opacity-100"
               : "pointer-events-none -translate-y-2 opacity-0"
           }`}
         >
           <div className="flex flex-col gap-1">
-            <p className="px-3 pt-1 text-xs font-medium tracking-[0.16em] uppercase text-neutral-500">
+            <p className="px-3 pt-1 text-xs font-medium tracking-[0.16em] text-neutral-500 uppercase">
               Services
             </p>
             {serviceNavItems.map((item) => (
               <TransitionLink
                 key={item.href}
                 href={item.href}
-                className="rounded-[1rem] px-3 py-3 text-sm transition hover:bg-black/[0.03]"
+                className="rounded-[1rem] px-3 py-3 pl-8 text-sm transition hover:bg-black/[0.03]"
               >
                 {item.label}
               </TransitionLink>
@@ -150,7 +150,7 @@ function NavContent({ compact = false }: { compact?: boolean }) {
               <TransitionLink
                 key={item.href}
                 href={item.href}
-                className="rounded-[1rem] px-3 py-3 text-sm transition hover:bg-black/[0.03]"
+                className="rounded-[1rem] border-t border-black/5 px-3 py-3 text-sm transition hover:bg-black/[0.03]"
               >
                 {item.label}
               </TransitionLink>
