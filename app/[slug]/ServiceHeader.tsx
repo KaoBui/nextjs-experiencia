@@ -115,8 +115,8 @@ export default function ServiceHeader({ service }: ServiceHeaderProps) {
           </div>
 
           <div className="md:mx-space-2x relative m-0 flex items-center justify-start md:justify-end">
-            <PieChart className="absolute top-1/3 left-1/2 aspect-square w-[60%] -translate-x-1/2 rotate-8 shadow-lg/5" />
-            <Graph className="charts absolute bottom-0 left-0 aspect-square w-1/3 -rotate-10 shadow-lg/5" />
+            <PieChart className="absolute bottom-1/5 left-1/2 aspect-square w-[60%] -translate-x-1/2 rotate-8 shadow-lg/5" />
+            <Graph delay={1} className="charts absolute bottom-0 left-0 aspect-square w-1/3 -rotate-10 shadow-lg/5" />
             <div className="gap-space-base absolute bottom-0 flex flex-col items-start md:items-end">
               {/* <div className="hidden h-20 w-20 items-center justify-center rounded-full bg-white/50 backdrop-blur-md md:flex">
                 <Image

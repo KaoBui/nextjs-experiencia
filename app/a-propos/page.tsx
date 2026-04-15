@@ -12,10 +12,10 @@ const strengths = [
 export default function AboutPage() {
   return (
     <section className="px-section-padding py-[18vh]">
-      <div className="mx-site-margin gap-space-3x grid items-start lg:grid-cols-12">
+      <div className="mx-site-margin gap-space-3x pt-space-2x grid items-start lg:grid-cols-12">
         <div className="gap-space-2x flex flex-col lg:col-span-7">
           <div className="flex flex-col gap-6">
-            <div className="gap-space-sm flex w-fit items-center rounded-full bg-white/50 p-2 px-3">
+            <div className="gap-space-sm flex w-fit items-center rounded-full bg-white p-2 px-3 shadow-md/5">
               <div className="bg-indigo h-1 w-1 rounded-full"></div>
               <p className="text-xs uppercase">
                 À <strong> propos</strong>
@@ -65,13 +65,14 @@ export default function AboutPage() {
         </div>
 
         <div className="relative h-full lg:col-span-5">
-          <div className="absolute top-0 left-1/2 aspect-square w-1/2 max-w-[300px] -translate-x-1/4  overflow-hidden rounded-[2rem] border border-white bg-white/60 p-3 backdrop-blur-md">
+          <div className="absolute top-0 left-1/2 aspect-square w-1/2 max-w-[300px] -translate-x-1/4 overflow-hidden rounded-[2rem] border border-white bg-white/60 p-3 backdrop-blur-md">
             <Image
               src="/portrait.jpg"
               alt="Portrait de la fondatrice d'Experiencia Consulting"
               width={1000}
               height={1250}
               className="h-full w-full rounded-[1.5rem] object-cover"
+              loading="eager"
             />
           </div>
 

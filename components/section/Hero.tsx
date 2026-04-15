@@ -19,6 +19,8 @@ type HeroProps = {
   title?: string | null;
   subtitle?: string | null;
   availability?: string | null;
+  aboutTitle?: string | null;
+  aboutLines?: string[];
   heroImageUrl?: string | null;
   heroImageAlt?: string | null;
   heroImageWidth?: number;
@@ -29,11 +31,18 @@ const fallbackTitle =
   "Augmentez votre chiffre d'affaires sans vous épuiser à courir après des clients";
 const fallbackSubtitle =
   "Grâce à des stratégies de fidélisation structurées et mesurables, nous aidons les TPE et PME à maximiser la valeur de chaque client et à sécuriser leur croissance.";
+const fallbackAboutTitle = "À propos de moi";
+const fallbackAboutLines = [
+  "Bonjour, je suis Eva, fondatrice d'Experiencia Consulting.",
+  "J'aide les TPE et PME à être plus rentables en améliorant leur expérience client et leur stratégie de fidélisation.",
+];
 
 export default function Hero({
   title,
   subtitle,
   availability,
+  aboutTitle,
+  aboutLines,
   heroImageUrl,
   heroImageAlt,
   heroImageWidth = 1000,
@@ -48,6 +57,8 @@ export default function Hero({
   const heroTitle = title ?? fallbackTitle;
   const heroSubtitle = subtitle ?? fallbackSubtitle;
   const availabilityText = availability ?? "Mai 2026";
+  const aboutHeading = aboutTitle ?? fallbackAboutTitle;
+  const aboutContent = aboutLines?.length ? aboutLines : fallbackAboutLines;
 
   useGSAP(
     () => {
@@ -185,7 +196,7 @@ export default function Hero({
               label="Croissance"
               stat="+42%"
             />
-            <Graph className="charts absolute top-0 left-0 hidden h-30 w-30 rotate-0 md:top-1/3 md:-left-6 md:flex md:-rotate-4 2xl:top-1/2" />
+            <Graph delay={2.5}  className="charts absolute top-0 left-0 hidden h-30 w-30 rotate-0 md:top-1/3 md:-left-6 md:flex md:-rotate-4 2xl:top-1/2" />
             <NumberBlock className="charts absolute bottom-0 left-0 hidden rotate-0 gap-4 md:bottom-4 md:-left-4 md:flex md:-rotate-4" />
             <div
               ref={portraitRef}
@@ -206,19 +217,17 @@ export default function Hero({
       <div ref={aboutRef} className="mx-section-padding h-[50svh] md:h-screen">
         <div className="mx-site-margin gap-space-base flex h-full grid-cols-12 md:grid">
           <div className="gap-space-2x col-start-1 col-end-7 flex flex-col items-start justify-center">
-            <h2 className="">
+            <h2>
               <Heading className="text-primary text-4xl" splitType="lines">
-                À propos de <em>moi</em>
+                {aboutHeading}
               </Heading>
             </h2>
-            <p className="leading-body text-md flex flex-col gap-2">
-              <Heading splitType="lines">
-                Bonjour, je suis Eva, fondatrice d&apos;Experiencia Consulting.
-              </Heading>
-              <Heading splitType="lines">
-                J&apos;aide les TPE et PME à être plus rentables en améliorant
-                leur expérience client et leur stratégie de fidélisation .
-              </Heading>
+            <p className="leading-body text-md flex flex-col gap-2 max-w-[48ch]">
+              {aboutContent.map((line) => (
+                <Heading key={line} splitType="lines">
+                  {line}
+                </Heading>
+              ))}
             </p>
 
             <TransitionLink

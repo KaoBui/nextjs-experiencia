@@ -46,10 +46,13 @@ const clientLogos = [
 export default function ContactPage() {
   return (
     <section className="mx-site-margin px-section-padding gap-space-base flex grid-cols-1 flex-col pt-[18vh] pb-10 md:grid md:grid-cols-2">
-      <div className="gap-space-2x flex max-w-[70ch] flex-1 flex-col">
-        <p className="text-indigo text-sm font-semibold tracking-[0.2em] uppercase">
-          Contact
-        </p>
+      <div className="gap-space-2x pt-space-2x flex max-w-[70ch] flex-1 flex-col">
+        <div className="gap-space-sm flex w-fit items-center rounded-full bg-white p-2 px-3 shadow-md/5">
+          <div className="bg-indigo h-1 w-1 rounded-full"></div>
+          <p className="text-xs uppercase">
+            <strong>Contact</strong>
+          </p>
+        </div>
         <h1 className="text-5xl leading-[1.02] md:text-6xl">
           Parlons de vos objectifs et de ce qui bloque aujourd&apos;hui
         </h1>
@@ -113,7 +116,7 @@ export default function ContactPage() {
           {clientLogos.map((logo) => (
             <div
               key={logo.src}
-              className="flex h-16 w-32 items-center justify-center"
+              className="flex h-16 flex-1 items-center justify-center"
             >
               <Image
                 src={logo.src}

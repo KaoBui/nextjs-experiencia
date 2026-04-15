@@ -25,8 +25,16 @@ type HomePageData = {
   title?: string | null;
   subtitle?: string | null;
   availability?: string | null;
+  aboutTitle?: string | null;
+  aboutLines?: string[] | null;
   heroImage?: SanityImage | null;
 };
+
+const fallbackAboutTitle = "À propos de moi";
+const fallbackAboutLines = [
+  "Bonjour, je suis Eva, fondatrice d'Experiencia Consulting.",
+  "J'aide les TPE et PME à être plus rentables en améliorant leur expérience client et leur stratégie de fidélisation.",
+];
 
 function getDefaultAvailability() {
   const formatted = new Intl.DateTimeFormat("fr-FR", {
@@ -55,6 +63,11 @@ export default async function Home() {
         title={homePage?.title}
         subtitle={homePage?.subtitle}
         availability={availabilityText}
+        aboutTitle={homePage?.aboutTitle || fallbackAboutTitle}
+        aboutLines={
+          homePage?.aboutLines?.filter((line): line is string => Boolean(line?.trim())) ||
+          fallbackAboutLines
+        }
         heroImageUrl={heroImageUrl}
         heroImageAlt={heroImageAlt}
         heroImageWidth={heroImageWidth}

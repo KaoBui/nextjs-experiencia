@@ -5,6 +5,8 @@ export const homePageQuery = groq`
     title,
     subtitle,
     availability,
+    aboutTitle,
+    aboutLines,
     heroImage{
       alt,
       asset->{

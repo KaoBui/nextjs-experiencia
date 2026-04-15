@@ -169,7 +169,7 @@ export default function CalculatorCore() {
       </FieldSet>
       <Button
         type="button"
-        className="h-10 w-fit self-end rounded-full p-3 px-4 text-sm"
+        className="w-fit self-end rounded-full p-3 px-4 text-sm hover:cursor-pointer"
         onClick={() => {
           const parsedValue = Number.parseFloat(churnValue.replace(",", "."));
 
