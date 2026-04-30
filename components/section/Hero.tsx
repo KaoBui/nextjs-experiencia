@@ -1,9 +1,6 @@
 "use client";
 import { useRef } from "react";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import { DrawSVGPlugin } from "gsap/DrawSVGPlugin";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { gsap, useGSAP } from "@/lib/gsap";
 import Image from "next/image";
 import HeaderWave from "@/components/svg/HeaderWave";
 import StatLabel from "../components/StatLabel";
@@ -12,8 +9,6 @@ import Graph from "../components/Graph";
 import NumberBlock from "../components/NumberBlock";
 import Button from "../components/Button";
 import TransitionLink from "@/components/TransitionLink";
-
-gsap.registerPlugin(useGSAP, DrawSVGPlugin, ScrollTrigger);
 
 type HeroProps = {
   title?: string | null;
@@ -155,7 +150,7 @@ export default function Hero({
       />
       <div
         ref={heroRef}
-        className="px-section-padding relative isolate py-4 md:h-screen"
+        className="px-section-padding py-section-padding relative isolate md:h-screen"
       >
         <div className="bg-indigo/5 gap-space-base p-site-margin relative flex h-full grid-cols-12 flex-col rounded-4xl border-1 border-white backdrop-blur-md md:grid">
           <div
@@ -169,7 +164,9 @@ export default function Hero({
                   disponibilité - <strong>{availabilityText}</strong>
                 </p>
               </div>
-              <h1 className="text-6xl leading-[1.1]">{heroTitle}</h1>
+              <h1 className="max-w-[32ch] text-6xl leading-[1.1]">
+                {heroTitle}
+              </h1>
             </div>
             <p className="max-w-[56ch] text-base">{heroSubtitle}</p>
             <div className="flex flex-col items-start gap-4 md:flex-row">
@@ -184,7 +181,7 @@ export default function Hero({
           </div>
           <div
             ref={rightColRef}
-            className="md:px-space-3x pt-space-3x relative col-start-9 col-end-13 flex items-end justify-center"
+            className="pt-space-3x relative col-start-9 col-end-13 flex items-end justify-end"
           >
             <StatLabel
               className="charts absolute bottom-1/4 left-0 hidden rotate-2 md:flex"
@@ -196,11 +193,14 @@ export default function Hero({
               label="Croissance"
               stat="+42%"
             />
-            <Graph delay={2.5}  className="charts absolute top-0 left-0 hidden h-30 w-30 rotate-0 md:top-1/3 md:-left-6 md:flex md:-rotate-4 2xl:top-1/2" />
+            <Graph
+              delay={2.5}
+              className="charts absolute top-0 left-0 hidden h-30 w-30 rotate-0 md:top-1/3 md:-left-6 md:flex md:-rotate-4 2xl:top-1/2"
+            />
             <NumberBlock className="charts absolute bottom-0 left-0 hidden rotate-0 gap-4 md:bottom-4 md:-left-4 md:flex md:-rotate-4" />
             <div
               ref={portraitRef}
-              className="-z-1 aspect-4/5 h-auto w-1/2 max-w-md overflow-hidden rounded-3xl border-1 border-white bg-violet-50 p-2 md:w-full"
+              className="-z-1 aspect-4/5 h-auto w-1/2 max-w-md overflow-hidden rounded-3xl border-1 border-white bg-violet-50 p-2 md:w-2/3"
             >
               <Image
                 src={heroImageUrl ?? "/portrait.jpg"}
@@ -222,7 +222,7 @@ export default function Hero({
                 {aboutHeading}
               </Heading>
             </h2>
-            <p className="leading-body text-md flex flex-col gap-2 max-w-[48ch]">
+            <p className="leading-body text-md flex max-w-[48ch] flex-col gap-4">
               {aboutContent.map((line) => (
                 <Heading key={line} splitType="lines">
                   {line}

@@ -1,7 +1,7 @@
 "use client";
 
 import { type ComponentPropsWithoutRef, type MouseEvent, useRef } from "react";
-import gsap from "gsap";
+import { gsap } from "@/lib/gsap";
 import TransitionLink from "@/components/TransitionLink";
 import Arrow from "@/components/svg/Arrow";
 import { cn } from "@/lib/utils";

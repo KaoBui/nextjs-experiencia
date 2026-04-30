@@ -2,9 +2,7 @@
 
 import { useRef, useState } from "react";
 import Image from "next/image";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { gsap, useGSAP, ScrollTrigger } from "@/lib/gsap";
 import TransitionLink from "@/components/TransitionLink";
 import {
   NavigationMenu,
@@ -18,8 +16,6 @@ import {
 import { cn } from "@/lib/utils";
 import { servicePages, serviceSlugs } from "@/lib/service-pages";
 import Button from "./components/Button";
-
-gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 const navItems = [{ href: "/a-propos", label: "A propos" }];
 
@@ -141,7 +137,7 @@ function NavContent({ compact = false }: { compact?: boolean }) {
               <TransitionLink
                 key={item.href}
                 href={item.href}
-                className="rounded-[1rem] px-3 py-3 pl-8 text-sm transition hover:bg-black/[0.03]"
+                className="rounded-[1rem] px-3 py-3 pl-8 text-base transition hover:bg-black/[0.03]"
               >
                 {item.label}
               </TransitionLink>
@@ -150,7 +146,7 @@ function NavContent({ compact = false }: { compact?: boolean }) {
               <TransitionLink
                 key={item.href}
                 href={item.href}
-                className="rounded-[1rem] border-t border-black/5 px-3 py-3 text-sm transition hover:bg-black/[0.03]"
+                className="rounded-[1rem] border-t border-black/5 px-3 py-3 text-base transition hover:bg-black/[0.03]"
               >
                 {item.label}
               </TransitionLink>

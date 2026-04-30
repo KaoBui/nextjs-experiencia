@@ -1,8 +1,7 @@
 "use client";
 
 import { useRef, useState, type CSSProperties } from "react";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
+import { gsap, useGSAP } from "@/lib/gsap";
 
 type HoverCardProps = {
   heading: string;

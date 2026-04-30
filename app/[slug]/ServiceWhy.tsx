@@ -1,13 +1,9 @@
 "use client";
 
 import { useRef } from "react";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { gsap, useGSAP, ScrollTrigger } from "@/lib/gsap";
 import type { ServicePageData } from "@/lib/service-pages";
 import Heading from "@/components/components/Heading";
-
-gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 function SectionLabel({
   children,

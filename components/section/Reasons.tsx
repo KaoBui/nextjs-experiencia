@@ -1,15 +1,10 @@
 "use client";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
+import { gsap, useGSAP } from "@/lib/gsap";
 import { useRef } from "react";
-import { DrawSVGPlugin } from "gsap/DrawSVGPlugin";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import HoverCard from "../components/HoverCard";
 import Heading from "../components/Heading";
 import LongWave from "../svg/LongWave";
 import Image from "next/image";
-
-gsap.registerPlugin(useGSAP, DrawSVGPlugin, ScrollTrigger);
 
 export default function Reasons() {
   const reasonsRef = useRef<HTMLElement | null>(null);

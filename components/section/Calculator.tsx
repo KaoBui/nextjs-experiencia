@@ -1,16 +1,10 @@
 "use client";
 import { useRef } from "react";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import { DrawSVGPlugin } from "gsap/DrawSVGPlugin";
-import { MorphSVGPlugin } from "gsap/MorphSVGPlugin";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { gsap, useGSAP } from "@/lib/gsap";
 import DarkWave from "../svg/DarkWave";
 import TopWave, { TOP_WAVE_FLAT_PATH_ID } from "../svg/TopWave";
 import CalculatorCore from "../components/CalculatorCore";
 import Heading from "../components/Heading";
-
-gsap.registerPlugin(useGSAP, DrawSVGPlugin, MorphSVGPlugin, ScrollTrigger);
 
 export default function Calculator() {
   const sectionRef = useRef<HTMLElement | null>(null);
@@ -91,8 +85,8 @@ export default function Calculator() {
         pathRef={wavePathRef}
       />
       <div className="bg-indigo-dark py-space-2x px-section-padding flex h-[140vh] items-center justify-center">
-        <div className="gap-space-2x p-space-base flex md:h-[80vh] 2xl:h-[60vh] max-w-full flex-1 flex-col rounded-4xl border-1 border-white/25 bg-white/10 backdrop-blur-lg md:max-w-4xl md:flex-row xl:max-w-5xl">
-          <div className="gap-space-base flex flex-1 flex-col justify-center p-4">
+        <div className="gap-space-2x p-space-base flex max-w-full flex-1 flex-col rounded-4xl border-1 border-white/25 bg-white/10 backdrop-blur-lg md:max-w-4xl md:flex-row xl:max-w-7xl ">
+          <div className="gap-space-base relative flex flex-1 flex-col justify-center p-4">
             <h2 className="text-3xl text-white">
               <Heading splitType="words">
                 {" "}
@@ -106,6 +100,12 @@ export default function Calculator() {
                 <strong> ce que vous pourriez regagner</strong> si on travaille
                 ensemble !
               </Heading>
+            </p>
+            <p className="absolute bottom-4 left-4 text-sm text-neutral-200">
+              <em>
+                Pas de redirection ni collecte de données, vous obtenez votre
+                estimation en live !
+              </em>
             </p>
           </div>
           <div className="w-full rounded-2xl bg-white p-8 md:w-[55%]">

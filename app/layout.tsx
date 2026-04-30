@@ -8,6 +8,7 @@ import Footer from "@/components/Footer";
 import PageTransitionContent from "@/components/page-transition/PageTransitionContent";
 import PageTransitionProvider from "@/components/page-transition/PageTransitionProvider";
 import IntroOverlay from "@/components/IntroOverlay";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -45,6 +46,7 @@ export default function RootLayout({
       )}
     >
       <body className="bg-background">
+        <TooltipProvider>
         <IntroOverlay />
         <LenisProvider>
           <PageTransitionProvider>
@@ -55,6 +57,7 @@ export default function RootLayout({
             </PageTransitionContent>
           </PageTransitionProvider>
         </LenisProvider>
+        </TooltipProvider>
       </body>
     </html>
   );

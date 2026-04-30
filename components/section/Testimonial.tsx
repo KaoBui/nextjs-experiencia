@@ -1,12 +1,9 @@
 "use client";
 import Image from "next/image";
 import { useRef } from "react";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { gsap, useGSAP } from "@/lib/gsap";
 import Heading from "../components/Heading";
-
-gsap.registerPlugin(useGSAP, ScrollTrigger);
+import TestimonialCard from "../components/TestimonialCard";
 
 const clientLogos = [
   {
@@ -85,34 +82,14 @@ export default function Testimonials() {
           </Heading>
         </h1>
         <div className="relative flex w-full justify-center">
-          <div
+          <TestimonialCard
             ref={cardRef}
-            className="p-space-base pt-space-2x gap-space-base z-1 flex max-w-2xl flex-col items-end rounded-3xl bg-white/75 shadow-2xl/5 backdrop-blur-md"
-          >
-            <p className="text-secondary text-base">
-              Nous avions un bon chiffre d’affaires, mais une forte instabilité
-              client. Nous pensions que c’était "normal" dans notre secteur.
-              Experiencia nous a permis d’identifier les points de friction
-              invisibles dans notre parcours client. En 3 mois, notre taux de
-              rétention a augmenté de 18 %.
-            </p>
-            <div className="flex items-center gap-4">
-              <div className="flex flex-col items-end">
-                <p className="text-md font-head text-primary">Sophie Martin</p>
-                <p className="text-tertiary text-xs">
-                  Dirigeante de cabinet de conseil
-                </p>
-              </div>
-              <div className="aspect-square w-16 rounded-md">
-                <Image
-                  src="/client-photo.jpg"
-                  width={100}
-                  height={100}
-                  alt=""
-                />
-              </div>
-            </div>
-          </div>
+            name="Sophie Martin"
+            title="Dirigeante de cabinet de conseil"
+            score={5}
+            image="/client-photo.jpg"
+            feedback="Nous avions un bon chiffre d’affaires, mais une forte instabilité client. Nous pensions que c’était « normal » dans notre secteur. Experiencia nous a permis d’identifier les points de friction invisibles dans notre parcours client. En 3 mois, notre taux de rétention a augmenté de 18 %."
+          />
           <div className="gap-space-2x absolute top-1/2 flex -translate-y-1/2 items-center justify-between opacity-25">
             {clientLogos.map((logo) => (
               <div

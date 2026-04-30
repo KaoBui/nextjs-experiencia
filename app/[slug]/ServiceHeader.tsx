@@ -1,10 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import { DrawSVGPlugin } from "gsap/DrawSVGPlugin";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { gsap, useGSAP } from "@/lib/gsap";
 import Image from "next/image";
 import TransitionLink from "@/components/TransitionLink";
 import HeaderWave from "@/components/svg/HeaderWave";
@@ -16,8 +13,6 @@ import NumberBlock from "@/components/components/NumberBlock";
 import Button from "@/components/components/Button";
 import HoverCard from "@/components/components/HoverCard";
 import PieChart from "@/components/components/PieChart";
-
-gsap.registerPlugin(useGSAP, DrawSVGPlugin, ScrollTrigger);
 
 function SectionLabel({
   children,

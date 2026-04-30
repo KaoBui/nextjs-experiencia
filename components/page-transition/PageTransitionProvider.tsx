@@ -10,13 +10,9 @@ import {
   type ReactNode,
 } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import gsap from "gsap";
-import { DrawSVGPlugin } from "gsap/DrawSVGPlugin";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { gsap, ScrollTrigger } from "@/lib/gsap";
 import { useLenis } from "@/app/providers/lenis-provider";
 import { PageTransitionContext } from "@/components/page-transition/context";
-
-gsap.registerPlugin(DrawSVGPlugin, ScrollTrigger);
 
 const START_STROKE_WIDTH = 140;
 

@@ -2,12 +2,8 @@
 
 import { useRef } from "react";
 import Image from "next/image";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import { DrawSVGPlugin } from "gsap/DrawSVGPlugin";
+import { gsap, useGSAP } from "@/lib/gsap";
 import PageCover from "@/components/svg/PageCover";
-
-gsap.registerPlugin(useGSAP, DrawSVGPlugin);
 
 const START_STROKE_WIDTH = 140;
 

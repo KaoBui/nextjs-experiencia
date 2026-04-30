@@ -1,15 +1,10 @@
 "use client";
 
 import { useRef } from "react";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import { DrawSVGPlugin } from "gsap/DrawSVGPlugin";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { gsap, useGSAP } from "@/lib/gsap";
 import ServiceWave from "../svg/ServiceWave";
 import ServiceCard from "../components/ServiceCard";
 import Heading from "../components/Heading";
-
-gsap.registerPlugin(useGSAP, DrawSVGPlugin, ScrollTrigger);
 
 export default function Services() {
   const servicesRef = useRef<HTMLElement | null>(null);
@@ -53,7 +48,7 @@ export default function Services() {
       className="px-section-padding relative mb-[10vh] py-[15vh]"
     >
       <ServiceWave className="pointer-events-none absolute top-0 right-0 -z-10 h-full w-auto" />
-      <div className="mx-site-margin gap-space-2x flex flex-col md:grid grid-cols-12">
+      <div className="mx-site-margin gap-space-2x flex grid-cols-12 flex-col md:grid">
         <div className="pb-space-2x col-start-1 col-end-7 flex flex-col items-start">
           <p className="pb-2 text-lg">Vous sentez que ca coince?</p>
           <h2 className="text-primary max-w-[24ch] text-4xl">
@@ -62,17 +57,21 @@ export default function Services() {
               <em> ou, pourquoi et comment y remedier</em>
             </Heading>
           </h2>
-          <p className="pt-space-base max-w-[48ch] text-base">
-            <Heading className="" splitType="lines">
-              Aucune entreprise n&apos;est identique et par consequent aucune
-              strategie de fidelisation ne devrait l&apos;etre.
-            </Heading>
-            <Heading className="" splitType="lines">
-              Ce que je vous propose c&apos;est une solution sur mesure, adaptee
-              a vos problematiques pour stopper l&apos;hemorragie et accelerer
-              votre croissance.
-            </Heading>
-          </p>
+          <div>
+            <p className="pt-space-base max-w-[48ch] text-base">
+              <Heading className="" splitType="lines">
+                Aucune entreprise n&apos;est identique et par consequent aucune
+                strategie de fidelisation ne devrait l&apos;etre.
+              </Heading>
+            </p>
+            <p className="pt-2 max-w-[48ch] text-base">
+              <Heading className="" splitType="lines">
+                Ce que je vous propose c&apos;est une solution sur mesure,
+                adaptee a vos problematiques pour stopper l&apos;hemorragie et
+                accelerer votre croissance.
+              </Heading>
+            </p>
+          </div>
         </div>
         <div className="col-start-5 col-end-9">
           <ServiceCard

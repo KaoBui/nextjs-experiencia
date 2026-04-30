@@ -1,12 +1,7 @@
 "use client";
 
 import { forwardRef, useRef, type ReactNode } from "react";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { SplitText } from "gsap/SplitText";
-
-gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText);
+import { gsap, useGSAP, SplitText } from "@/lib/gsap";
 
 type HeadingProps = {
   children: ReactNode;
