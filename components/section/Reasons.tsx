@@ -82,7 +82,7 @@ export default function Reasons() {
   return (
     <section ref={reasonsRef} id="reasons" className="relative my-[6vh] px-4">
       <LongWave
-        className="pointer-events-none absolute -top-[10%] right-0 -z-10 w-full opacity-50"
+        className="pointer-events-none absolute top-[0%] right-0 -z-10 w-full opacity-50"
         pathRef={wavePathRef}
       />
       <div className="mx-site-margin py-space-base gap-space-base flex grid-cols-12 flex-col md:grid">
@@ -99,7 +99,7 @@ export default function Reasons() {
                 Mais j'ai surtout une méthode, une vision et un plan.{" "}
               </Heading>
             </p>
-            <div className="flex flex-col gap-4">
+            {/* <div className="flex flex-col gap-4">
               <div className="flex items-center gap-4">
                 <div className="h-20 w-20 overflow-hidden rounded-full">
                   <Image src="/portrait.jpg" width={100} height={100} alt="" />
@@ -136,12 +136,12 @@ export default function Reasons() {
               <p className="text-secondary text-sm">
                 Disponible en distanciel ou presentiel sur demande
               </p>
-            </div>
+            </div> */}
           </div>
         </div>
         <div
           ref={rightColRef}
-          className="gap-space-base pb-space-2x col-start-7 col-end-12 row-start-2 flex"
+          className="gap-space-base pb-space-2x col-start-7 col-end-12 flex"
         >
           <div className="gap-space-base flex flex-1 flex-col">
             <HoverCard

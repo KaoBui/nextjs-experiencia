@@ -1,5 +1,6 @@
 import Image from "next/image";
 import TransitionLink from "@/components/TransitionLink";
+import TopWave from "./svg/TopWave";
 
 const navigationLinks = [
   { href: "/", label: "Accueil" },
@@ -31,10 +32,13 @@ const legalLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-indigo-dark p-space-base pt-16 text-white">
-      <div className="mx-site-margin">
+    <footer className="overflow-hidden text-white">
+      <div className="bg-background -mb-0">
+        <TopWave fill="var(--color-indigo-dark)" className="w-screen" />
+      </div>
+      <div className="px-site-margin pb-space-base bg-indigo-dark pt-16">
         <div className="flex flex-col gap-12 border-b border-white/10 pb-10 md:grid md:grid-cols-2 xl:grid-cols-12">
-          <div className="col-start-1 col-end-6 flex max-w-md flex-col gap-4">
+          <div className="col-start-1 col-end-5 flex max-w-md flex-col gap-4">
             <TransitionLink href="/" className="flex justify-center">
               <Image
                 src="/logo-vertical.png"
@@ -49,7 +53,15 @@ export default function Footer() {
               performance durable.
             </p>
           </div>
-          <div className="col-start-6 col-end-13 flex flex-col md:flex-row justify-between gap-12">
+          <div className="col-start-5 col-end-13 flex flex-col justify-between gap-12 md:flex-row">
+            <div className="flex flex-1 flex-col gap-4">
+              <h3 className="text-md text-white/75">Contact</h3>
+              <div className="flex flex-col gap-3 text-sm text-white/80">
+                {contactDetails.map((detail) => (
+                  <p key={detail}>{detail}</p>
+                ))}
+              </div>
+            </div>
             <div className="flex flex-1 flex-col gap-4">
               <h3 className="text-md text-white/75">Navigation</h3>
               <div className="flex flex-col gap-3 text-sm text-white/80">
@@ -76,14 +88,6 @@ export default function Footer() {
                   >
                     {link.label}
                   </TransitionLink>
-                ))}
-              </div>
-            </div>
-            <div className="flex flex-1 flex-col gap-4">
-              <h3 className="text-md text-white/75">Contact</h3>
-              <div className="flex flex-col gap-3 text-sm text-white/80">
-                {contactDetails.map((detail) => (
-                  <p key={detail}>{detail}</p>
                 ))}
               </div>
             </div>

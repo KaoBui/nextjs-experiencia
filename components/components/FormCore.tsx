@@ -12,12 +12,32 @@ export default function FormCore() {
         <FieldGroup className="gap-4">
           <div className="grid gap-4 md:grid-cols-2">
             <Field>
-              <Input id="firstName" name="firstName" placeholder="Prenom" />
+              <Input
+                id="firstName"
+                name="firstName"
+                placeholder="Prenom *"
+                required
+              />
             </Field>
             <Field>
-              <Input id="lastName" name="lastName" placeholder="Nom" />
+              <Input
+                id="lastName"
+                name="lastName"
+                placeholder="Nom *"
+                required
+              />
             </Field>
           </div>
+
+          <Field>
+            <Input
+              id="email"
+              name="email"
+              type="email"
+              placeholder="Adresse email *"
+              required
+            />
+          </Field>
 
           <div className="grid gap-4 md:grid-cols-2">
             <Field>
@@ -38,26 +58,21 @@ export default function FormCore() {
           </div>
 
           <Field>
-            <Input
-              id="email"
-              name="email"
-              type="email"
-              placeholder="Adresse email"
-            />
-          </Field>
-
-          <Field>
             <Textarea
               id="message"
               name="message"
-              placeholder="Message"
+              placeholder="Message *"
               className="min-h-32"
+              required
             />
           </Field>
 
           <Button type="submit" className="w-full md:w-fit">
             Envoyer
           </Button>
+          <p className="text-tertiary text-sm">
+            Visio stratégique de 30 minutes, gratuite et sans engagement.
+          </p>
         </FieldGroup>
       </FieldSet>
     </form>

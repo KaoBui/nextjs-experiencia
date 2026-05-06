@@ -82,7 +82,7 @@ export default function ServiceHeader({ service }: ServiceHeaderProps) {
         />
 
         <header
-          className="px-site-margin grid h-[75vh] gap-8 rounded-[2rem] border border-white/70 p-8 backdrop-blur-md lg:grid-cols-[1.25fr_0.75fr]"
+          className="px-site-margin grid h-[95vh] gap-8 rounded-[2rem] border border-white/70 p-8 backdrop-blur-md lg:grid-cols-[1.25fr_0.75fr]"
           style={{
             backgroundImage: `linear-gradient(135deg, color-mix(in srgb, ${service.color} 10%, white) 0%, rgba(255,255,255,0.60) 90%)`,
           }}
@@ -100,7 +100,7 @@ export default function ServiceHeader({ service }: ServiceHeaderProps) {
             <h1 className="max-w-[28ch] text-4xl leading-[1.02] md:text-5xl">
               Augmentez la fréquence d'achat de vos clients en moins de 3 mois
             </h1>
-            <p className="text-secondary text-md max-w-[48ch] py-2 leading-7">
+            <p className="text-secondary py-space-base max-w-[48ch] text-base leading-7">
               Faites revenir vos clients plus souvent : transformez vos
               acheteurs ponctuels en clients réguliers
             </p>
@@ -111,18 +111,12 @@ export default function ServiceHeader({ service }: ServiceHeaderProps) {
 
           <div className="md:mx-space-2x relative m-0 flex items-center justify-start md:justify-end">
             <PieChart className="absolute bottom-1/5 left-1/2 aspect-square w-[60%] -translate-x-1/2 rotate-8 shadow-lg/5" />
-            <Graph delay={1} className="charts absolute bottom-0 left-0 aspect-square w-1/3 -rotate-10 shadow-lg/5" />
+            <Graph
+              delay={1}
+              className="charts absolute bottom-0 left-0 aspect-square w-1/3 -rotate-10 shadow-lg/5"
+            />
             <div className="gap-space-base absolute bottom-0 flex flex-col items-start md:items-end">
-              {/* <div className="hidden h-20 w-20 items-center justify-center rounded-full bg-white/50 backdrop-blur-md md:flex">
-                <Image
-                  src={service.icon}
-                  alt=""
-                  width={96}
-                  height={96}
-                  className="h-auto w-12"
-                />
-              </div>{" "} */}
-              <StatLabel label="Achats réguliers" />
+              <StatLabel label="Achats réguliers" className="text-base" />
               <StatLabel label="Réachat" stat="+42%" />
               <StatLabel label="Plus besoin d'acquisition massive" />
             </div>
@@ -136,16 +130,16 @@ export default function ServiceHeader({ service }: ServiceHeaderProps) {
         className="px-section-padding py-space-4x overflow-hidden"
       >
         <div className="mx-site-margin rounded-[2rem]">
-          <div className="flex flex-col items-start justify-between gap-2 md:flex-row md:items-end">
-            <div>
+          <div className="gap-space-2x flex flex-col items-center justify-between">
+            <div className="gap-space-base flex flex-col items-center">
               <SectionLabel color={service.color}>symptomes</SectionLabel>
-              <h2 className="max-w-[32ch] text-4xl">
+              <h2 className="max-w-[32ch] text-4xl text-center">
                 <Heading splitType="lines">
                   3 signes qui montrent que vous devriez travailler le réachat
                 </Heading>
               </h2>
             </div>
-            <p className="max-w-[48ch]">
+            <p className="max-w-[48ch] text-center">
               <Heading>
                 Vous ne saurez jamais si vos clients réalisent 100 % de leurs
                 achats chez vous, et honnêtement, ce n’est pas le plus
@@ -155,7 +149,7 @@ export default function ServiceHeader({ service }: ServiceHeaderProps) {
               </Heading>
             </p>
           </div>
-          <div className="gap-space-2x mt-space-4x flex flex-col justify-start md:flex-row">
+          <div className="gap-space-2x mt-space-4x flex flex-col justify-center md:flex-row">
             {service.symptoms.map((item) => (
               <HoverCard
                 key={item.title}

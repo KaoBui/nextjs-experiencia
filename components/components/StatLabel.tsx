@@ -21,7 +21,7 @@ export default function StatLabel({
 
   return (
     <div
-      className={`flex items-center gap-2 rounded-xl border-2 border-white bg-white/80 px-4 py-2 text-sm backdrop-blur-sm ${className}`.trim()}
+      className={`flex items-center gap-2 rounded-xl border-2 border-white bg-white/80 px-4 py-2 backdrop-blur-sm ${className}`.trim()}
     >
       <div className="h-2 w-2 rounded-full bg-green-800"></div>
       {label ? <p>{label}</p> : null}

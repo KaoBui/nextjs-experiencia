@@ -18,6 +18,7 @@ import ServiceWhy from "./ServiceWhy";
 import ServiceWhoFor from "./ServiceWhoFor";
 import Heading from "@/components/components/Heading";
 import Image from "next/image";
+import BasicButton from "@/components/components/BasicButton";
 import Reasons from "@/components/section/Reasons";
 import TopWave from "@/components/svg/TopWave";
 type ServicePageProps = {
@@ -75,10 +76,9 @@ export default async function ServicePage({ params }: ServicePageProps) {
     <>
       <ServiceHeader service={service} />
       <ServiceWhy service={service} />
-      <ServiceWhoFor service={service} />
       <section
         id="form"
-        className="px-section-padding bg-indigo-dark relative border-b border-white py-[8vh]"
+        className="px-section-padding bg-indigo-dark relative border-b border-white py-[15vh]"
       >
         <TopWave className="absolute -top-1 left-0 z-1 w-[110vw] rotate-180" />
         <TopWave className="absolute -bottom-1 left-0 z-1 w-[110vw] rotate-0" />
@@ -87,56 +87,99 @@ export default async function ServicePage({ params }: ServicePageProps) {
             <SectionLabel color="" light={true}>
               Comment ca se passe
             </SectionLabel>
-            <h2 className="mt-4 max-w-[40ch] text-center text-4xl leading-tight text-white">
+            <h2 className="mt-4 max-w-[36ch] text-center text-4xl leading-tight text-white">
               <Heading>
-                Dites-moi ce qui vous freine, <br /> je vous aide à le débloquer
+                si je vous aide à augmenter la fréquence d'achat de vos clients
               </Heading>
             </h2>
           </div>
-          <div className="gap-space-4x grid lg:grid-cols-[0.9fr_1.1fr]">
-            <div className="flex flex-col justify-center gap-0">
+          <div className="gap-space-2x px-space-4x flex w-full justify-center">
+            <div className="relative max-w-xl flex-1">
+              <Image
+                src="/comment-ca-se-passe.png"
+                fill
+                className="rounded-xl object-cover"
+                alt="Comment ca se passe"
+              />
+            </div>
+            <div className="flex max-w-xl flex-1 flex-col gap-0">
               {service.steps.map((step, index) => (
                 <div
                   key={step.title}
-                  className="gap-space-base grid rounded-[1.5rem] p-5 md:grid-cols-[56px_1fr]"
+                  className="p-space-base flex flex-col gap-2"
                 >
-                  <div className="flex items-center">
-                    <p className="font-head text-lg text-white">{`0${index + 1}.`}</p>
-                  </div>
-                  <div>
+                  <p className="font-head text-4xl text-white/25">{`0${index + 1}`}</p>
+                  <div className="flex flex-col">
                     <h3 className="text-md font-body text-white">
                       {step.title}
                     </h3>
-                    <p className="mt-2 text-sm leading-7 text-neutral-300">
+                    <p className="text-sm leading-7 text-neutral-300">
                       {step.description}
                     </p>
                   </div>
                 </div>
               ))}
             </div>
-            <div className="rounded-[1.75rem] border border-white/70 bg-white p-6 shadow-[0_20px_60px_rgba(34,8,66,0.08)]">
-              <div className="pb-space-base">
-                <h3 className="text-xl">{service.formTitle}</h3>
-                <p className="text-xs">{service.formNote}</p>
-              </div>
-              <FormCore />
-            </div>
           </div>
+          <BasicButton className="mt-space-2x" href="/contact">
+            Augmenter mon CA grâce au réachat
+          </BasicButton>
         </div>
       </section>
       <Reasons />
+      <ServiceWhoFor service={service} />
+
       <section className="mx-site-margin py-[6vh]">
-        <div className="gap-space-base mt-6 flex flex-col items-center">
-          <SectionLabel color={service.color}>FAQ</SectionLabel>
-          <div className="pb-space-2x">
-            <h2 className="max-w-[24ch] text-center text-3xl leading-tight md:text-4xl">
-              <Heading splitType="lines">
-                {" "}
-                Les questions les plus frequentes avant de prendre contact
-              </Heading>
+        <div className="gap-space-base grid grid-cols-12">
+          <div
+            id="col-left"
+            className="px-space-base col-start-2 col-end-7 w-full space-y-4"
+          >
+            <div className="flex flex-col gap-4">
+              <div className="flex items-center gap-4">
+                <div className="h-20 w-20 overflow-hidden rounded-full">
+                  <Image src="/portrait.jpg" width={100} height={100} alt="" />
+                </div>
+                <div>
+                  <p className="font-head text-xl">Eva Riccobene</p>
+                  <p className="text-tertiary text-sm">
+                    Experte en Fidelisation client
+                  </p>
+                </div>
+              </div>
+              <div className="gap-space-base flex">
+                <div className="flex items-end gap-2">
+                  <Image
+                    src="mail-icon.svg"
+                    width={50}
+                    height={50}
+                    alt=""
+                    className="h-5 w-5"
+                  />
+                  <p className="text-primary text-base font-bold">
+                    eva.experiencia@gmail.com
+                  </p>
+                </div>
+                <div className="flex items-end gap-2">
+                  <Image
+                    src="phone-icon.svg"
+                    width={50}
+                    height={50}
+                    alt=""
+                    className="h-5 w-5"
+                  />
+                  <p className="text-primary text-base font-bold">
+                    06 06 66 60 52
+                  </p>
+                </div>
+              </div>
+              <p className="text-secondary text-sm">
+                Disponible en distanciel ou presentiel sur demande
+              </p>
+            </div>
+            <h2 className="mt-space-2x text-4xl leading-tight">
+              Des questions?
             </h2>
-          </div>
-          <div className="w-full max-w-2xl">
             <Accordion
               type="single"
               collapsible
@@ -153,6 +196,14 @@ export default async function ServicePage({ params }: ServicePageProps) {
                 </AccordionItem>
               ))}
             </Accordion>
+          </div>
+          <div className="col-start-7 col-end-12">
+            <div className="p-space-base py-space-2x rounded-[1.75rem] border border-white/70 bg-white shadow-[0_20px_60px_rgba(34,8,66,0.05)]">
+              <p className="text-indigo mb-space-base text-xl font-bold">
+                Parlez-moi de votre projet
+              </p>
+              <FormCore />
+            </div>
           </div>
         </div>
       </section>

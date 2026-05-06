@@ -8,6 +8,7 @@ import Heading from "../components/Heading";
 import Graph from "../components/Graph";
 import NumberBlock from "../components/NumberBlock";
 import Button from "../components/Button";
+import BasicButton from "../components/BasicButton";
 import TransitionLink from "@/components/TransitionLink";
 
 type HeroProps = {
@@ -170,12 +171,9 @@ export default function Hero({
             </div>
             <p className="max-w-[56ch] text-base">{heroSubtitle}</p>
             <div className="flex flex-col items-start gap-4 md:flex-row">
-              <TransitionLink
-                href="#calculateur"
-                className="text-indigo border-indigo hover:bg-indigo/5 flex items-center rounded-full border px-5 py-3 text-sm transition md:text-base"
-              >
+              <BasicButton href="#calculateur" color="#4F46E5" variant="outline">
                 Calculer mon CA perdu
-              </TransitionLink>
+              </BasicButton>
               <Button href="/contact">Prendre rendez-vous</Button>
             </div>
           </div>

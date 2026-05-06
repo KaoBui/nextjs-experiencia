@@ -47,7 +47,7 @@ function ReasonCard({
       className="p-space-base col-span-full col-start-1 flex h-[50vh] min-h-[200px] flex-col justify-between rounded-[1.5rem] border border-white/70 md:col-span-4 md:col-start-4"
       style={{ backgroundColor: color }}
     >
-      <p className="font-head text-5xl text-white/60">{`0${index + 1}`}</p>
+      <p className="font-head text-6xl text-white/60">{`0${index + 1}`}</p>
       <div>
         <h2 className="font-body text-lg text-white">{title}</h2>
         <p className="mt-3 text-base leading-7 text-white/80">{description}</p>
@@ -152,7 +152,7 @@ export default function ServiceWhy({ service }: ServiceWhyProps) {
     <section
       ref={sectionRef}
       id="pourquoi"
-      className="px-section-padding overflow-hidden py-[18vh]"
+      className="px-section-padding overflow-hidden py-[12vh]"
     >
       <div className="mx-site-margin flex flex-col items-center">
         <div
@@ -161,10 +161,10 @@ export default function ServiceWhy({ service }: ServiceWhyProps) {
         >
           <div
             ref={titleRef}
-            className="col-span-10 flex flex-col items-center"
+            className="gap-space-base col-span-10 flex flex-col items-center"
           >
             <SectionLabel color={service.color}>objectifs</SectionLabel>
-            <h2 className="pb-space-2x text-4xl">
+            <h2 className="pb-space-base text-4xl">
               <Heading splitType="words">
                 Pourquoi vous faire accompagner
               </Heading>

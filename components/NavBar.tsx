@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
 import { servicePages, serviceSlugs } from "@/lib/service-pages";
-import Button from "./components/Button";
+import BasicButton from "./components/BasicButton";
 
 const navItems = [{ href: "/a-propos", label: "A propos" }];
 
@@ -89,7 +89,7 @@ function NavContent({ compact = false }: { compact?: boolean }) {
         </div>
 
         <div className="flex items-center gap-2">
-          <Button href="/contact">Prendre rendez-vous</Button>
+          <BasicButton href="/contact" color="#500BF4" variant="fill">Contact</BasicButton>
           <button
             type="button"
             aria-expanded={isMenuOpen}

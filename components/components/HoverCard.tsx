@@ -86,7 +86,7 @@ export default function HoverCard({
           className={`overflow-hidden whitespace-nowrap transition-all duration-300 ease-out ${
             isOpen
               ? "max-w-24 translate-x-0 pl-2 opacity-100"
-              : "max-w-0 -translate-x-2 opacity-0 group-hover:max-w-24 group-hover:translate-x-0 group-hover:opacity-100"
+              : "max-w-0 -translate-x-2 opacity-0 group-hover:max-w-24 pl-0 group-hover:pl-1 group-hover:translate-x-0 group-hover:opacity-100"
           }`}
         >
           {isOpen ? "Voir moins" : "Voir plus"}

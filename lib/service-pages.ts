@@ -82,19 +82,24 @@ export const servicePages: Record<ServiceSlug, ServicePageData> = {
     ],
     steps: [
       {
-        title: "Diagnostic",
+        title: "Prise de contact et cadrage",
         description:
-          "Lecture de la situation actuelle, des signaux d'inactivite et des segments a prioriser.",
+          "Vous m’expliquez votre situation via mon formulaire de contact.  Je vous propose ensuite une visio (offerte) pour creuser le sujet et identifier vos priorités.",
       },
       {
-        title: "Strategie de reactivation",
+        title: "Devis",
         description:
           "Definition des messages, offres et rythmes de relance selon votre activite.",
       },
       {
-        title: "Plan de deploiement",
+        title: "Déploiement",
         description:
           "Priorisation des actions rapides, des indicateurs a suivre et du cadre de test.",
+      },
+      {
+        title: "Debriefing",
+        description:
+          "Je vous présente les résultats et la stratégie à suivre pour performer → A la fin de notre point, vous savez quoi faire, quand, comment, et surtout pourquoi..!",
       },
     ],
     formTitle: "Ne laissez plus vos clients sortir du radar",

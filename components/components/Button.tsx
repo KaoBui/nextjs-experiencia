@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils";
 type ButtonProps = ComponentPropsWithoutRef<typeof TransitionLink> & {
   color?: string;
   iconClassName?: string;
+  showArrow?: boolean;
 };
 
 export default function Button({
@@ -16,6 +17,7 @@ export default function Button({
   className,
   color = "linear-gradient(90deg, #500BF4 0%, #733BF7 100%)",
   iconClassName,
+  showArrow = true,
   onMouseEnter,
   onMouseLeave,
   ...props
@@ -30,7 +32,7 @@ export default function Button({
   };
 
   const animateSwap = (isHovering: boolean) => {
-    if (!buttonRef.current || !textRef.current || !iconRef.current) return;
+    if (!showArrow || !buttonRef.current || !textRef.current || !iconRef.current) return;
 
     const buttonBounds = buttonRef.current.getBoundingClientRect();
     const textBounds = textRef.current.getBoundingClientRect();
@@ -77,19 +79,21 @@ export default function Button({
     >
       <span
         ref={textRef}
-        className="relative z-0 block text-right text-sm md:text-base will-change-transform"
+        className="relative z-0 block text-right text-sm will-change-transform md:text-base"
       >
         {children}
       </span>
-      <div
-        ref={iconRef}
-        className={cn(
-          "relative z-10 aspect-square w-6 md:w-10 rounded-full bg-white p-1 md:p-3 will-change-transform",
-          iconClassName,
-        )}
-      >
-        <Arrow stroke={iconStroke} />
-      </div>
+      {showArrow && (
+        <div
+          ref={iconRef}
+          className={cn(
+            "relative z-10 aspect-square w-6 rounded-full bg-white p-1 will-change-transform md:w-10 md:p-3",
+            iconClassName,
+          )}
+        >
+          <Arrow stroke={iconStroke} />
+        </div>
+      )}
     </TransitionLink>
   );
 }
