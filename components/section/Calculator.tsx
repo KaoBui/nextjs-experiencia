@@ -85,9 +85,9 @@ export default function Calculator() {
         pathRef={wavePathRef}
       />
       <div className="bg-indigo-dark py-space-2x px-section-padding flex h-[140vh] items-center justify-center">
-        <div className="gap-space-2x p-space-base flex max-w-full flex-1 flex-col rounded-4xl border-1 border-white/25 bg-white/10 backdrop-blur-lg md:max-w-4xl md:flex-row xl:max-w-7xl ">
+        <div className="gap-space-2x p-space-base flex max-w-full flex-1 flex-col rounded-4xl border-1 border-white/25 bg-white/10 backdrop-blur-lg md:max-w-4xl md:flex-row xl:max-w-7xl">
           <div className="gap-space-base relative flex flex-1 flex-col justify-center p-4">
-            <h2 className="text-3xl text-white">
+            <h2 className="max-w-[24ch] text-4xl text-white">
               <Heading splitType="words">
                 {" "}
                 Calculez le CA que vous perdez chaque mois{" "}
@@ -101,7 +101,7 @@ export default function Calculator() {
                 ensemble !
               </Heading>
             </p>
-            <p className="absolute bottom-4 left-4 text-sm text-neutral-200">
+            <p className="absolute bottom-4 left-4 max-w-[36ch] text-sm text-neutral-200">
               <em>
                 Pas de redirection ni collecte de données, vous obtenez votre
                 estimation en live !

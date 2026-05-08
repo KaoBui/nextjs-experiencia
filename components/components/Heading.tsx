@@ -18,36 +18,51 @@ const Heading = forwardRef<HTMLSpanElement, HeadingProps>(
       () => {
         if (!headingRef.current) return;
 
-        const split = SplitText.create(headingRef.current, {
-          type: splitType,
-        });
+        let animation: gsap.core.Tween | undefined;
+        let cancelled = false;
+        let split: SplitText | undefined;
 
-        const splitTargets =
-          split.lines.length > 0
-            ? split.lines
-            : split.words.length > 0
-              ? split.words
-              : split.chars;
+        const splitAfterFontsLoad = async () => {
+          await document.fonts?.ready;
 
-        gsap.from(splitTargets, {
-          yPercent: 100,
-          filter: "blur(12px)",
-          stagger: 0.06,
-          opacity: 0,
-          ease: "power1.out",
-          scrollTrigger: {
-            trigger: headingRef.current,
-            start: "top bottom",
-            end: "+=40%",
-            toggleActions: "play none none reverse",
-            scrub: true,
-          },
-        });
+          if (cancelled || !headingRef.current) return;
 
-        onSplit?.(split);
+          split = SplitText.create(headingRef.current, {
+            type: splitType,
+          });
+
+          const splitTargets =
+            split.lines.length > 0
+              ? split.lines
+              : split.words.length > 0
+                ? split.words
+                : split.chars;
+
+          animation = gsap.from(splitTargets, {
+            yPercent: 100,
+            filter: "blur(12px)",
+            stagger: 0.06,
+            opacity: 0,
+            ease: "power1.out",
+            scrollTrigger: {
+              trigger: headingRef.current,
+              start: "top bottom",
+              end: "+=40%",
+              toggleActions: "play none none reverse",
+              scrub: true,
+            },
+          });
+
+          onSplit?.(split);
+        };
+
+        splitAfterFontsLoad();
 
         return () => {
-          split.revert();
+          cancelled = true;
+          animation?.scrollTrigger?.kill();
+          animation?.kill();
+          split?.revert();
         };
       },
       { dependencies: [children, splitType, onSplit] },

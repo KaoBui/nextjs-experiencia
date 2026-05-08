@@ -1,8 +1,7 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
-import { gsap, useGSAP, ScrollTrigger } from "@/lib/gsap";
 import TransitionLink from "@/components/TransitionLink";
 import {
   NavigationMenu,
@@ -89,7 +88,14 @@ function NavContent({ compact = false }: { compact?: boolean }) {
         </div>
 
         <div className="flex items-center gap-2">
-          <BasicButton href="/contact" color="#500BF4" variant="fill">Contact</BasicButton>
+          <BasicButton
+            href="/contact"
+            color="var(--color-indigo)"
+            variant="fill"
+            shadow
+          >
+            Contact
+          </BasicButton>
           <button
             type="button"
             aria-expanded={isMenuOpen}
@@ -159,58 +165,9 @@ function NavContent({ compact = false }: { compact?: boolean }) {
 }
 
 export default function NavBar() {
-  const stickyHeaderRef = useRef<HTMLElement | null>(null);
-
-  useGSAP(() => {
-    if (!stickyHeaderRef.current) {
-      return;
-    }
-
-    gsap.set(stickyHeaderRef.current, {
-      yPercent: -100,
-      autoAlpha: 0,
-    });
-
-    const timeline = gsap.timeline({
-      paused: true,
-      defaults: {
-        duration: 0.2,
-        ease: "power2.out",
-      },
-    });
-
-    timeline.to(stickyHeaderRef.current, {
-      yPercent: 0,
-      autoAlpha: 1,
-    });
-
-    ScrollTrigger.create({
-      trigger: document.documentElement,
-      start: () => window.innerHeight * 0.5,
-      invalidateOnRefresh: true,
-      onEnter: () => timeline.play(),
-      onLeaveBack: () => timeline.reverse(),
-    });
-
-    return () => {
-      timeline.kill();
-    };
-  }, []);
-
   return (
-    <>
-      <header className="absolute top-8 left-1/2 z-50 w-full -translate-x-1/2">
-        <div className="mx-site-margin px-section-padding">
-          <NavContent />
-        </div>
-      </header>
-
-      <header
-        ref={stickyHeaderRef}
-        className="fixed top-4 left-1/2 z-60 w-full -translate-x-1/2"
-      >
-        <NavContent compact />
-      </header>
-    </>
+    <header className="fixed top-8 left-1/2 z-60 w-full -translate-x-1/2">
+      <NavContent compact />
+    </header>
   );
 }

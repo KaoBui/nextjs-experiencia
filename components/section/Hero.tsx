@@ -151,7 +151,7 @@ export default function Hero({
       />
       <div
         ref={heroRef}
-        className="px-section-padding py-section-padding relative isolate md:h-screen"
+        className="px-section-padding py-space-base relative isolate md:h-screen"
       >
         <div className="bg-indigo/5 gap-space-base p-site-margin relative flex h-full grid-cols-12 flex-col rounded-4xl border-1 border-white backdrop-blur-md md:grid">
           <div
@@ -165,13 +165,17 @@ export default function Hero({
                   disponibilité - <strong>{availabilityText}</strong>
                 </p>
               </div>
-              <h1 className="max-w-[32ch] text-6xl leading-[1.1]">
+              <h1 className="max-w-[32ch] pt-2 text-6xl leading-[1.1]">
                 {heroTitle}
               </h1>
             </div>
             <p className="max-w-[56ch] text-base">{heroSubtitle}</p>
             <div className="flex flex-col items-start gap-4 md:flex-row">
-              <BasicButton href="#calculateur" color="#4F46E5" variant="outline">
+              <BasicButton
+                href="#calculateur"
+                color="#4F46E5"
+                variant="outline"
+              >
                 Calculer mon CA perdu
               </BasicButton>
               <Button href="/contact">Prendre rendez-vous</Button>
@@ -198,14 +202,14 @@ export default function Hero({
             <NumberBlock className="charts absolute bottom-0 left-0 hidden rotate-0 gap-4 md:bottom-4 md:-left-4 md:flex md:-rotate-4" />
             <div
               ref={portraitRef}
-              className="-z-1 aspect-4/5 h-auto w-1/2 max-w-md overflow-hidden rounded-3xl border-1 border-white bg-violet-50 p-2 md:w-2/3"
+              className="-z-1 aspect-square h-auto w-1/2 max-w-md overflow-hidden rounded-3xl border-1 border-white bg-violet-50 p-2 md:w-2/3"
             >
               <Image
                 src={heroImageUrl ?? "/portrait.jpg"}
                 width={heroImageWidth}
                 height={heroImageHeight}
                 alt={heroImageAlt ?? ""}
-                className="h-full w-full rounded-2xl object-cover"
+                className="h-full w-full rounded-2xl object-cover object-top"
                 loading="eager"
               />
             </div>

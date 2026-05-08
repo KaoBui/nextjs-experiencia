@@ -87,7 +87,7 @@ export default function ServiceCard({
       <div className="absolute top-6 right-6 flex h-16 w-16 rounded-full bg-white p-4 shadow-2xl/10">
         <Image src={imgSrc} width={100} height={100} alt="" />
       </div>
-      <div className="gap-space-base flex flex-col items-start">
+      <div className="gap-space-sm flex flex-col items-start">
         <h3 className="text-3xl" style={{ color: "var(--service-card-color)" }}>
           {offerName}
         </h3>

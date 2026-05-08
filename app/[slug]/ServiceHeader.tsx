@@ -82,13 +82,13 @@ export default function ServiceHeader({ service }: ServiceHeaderProps) {
         />
 
         <header
-          className="px-site-margin grid h-[95vh] gap-8 rounded-[2rem] border border-white/70 p-8 backdrop-blur-md lg:grid-cols-[1.25fr_0.75fr]"
-          style={{
-            backgroundImage: `linear-gradient(135deg, color-mix(in srgb, ${service.color} 10%, white) 0%, rgba(255,255,255,0.60) 90%)`,
-          }}
+          className="px-site-margin bg-indigo/5 grid h-[95vh] gap-8 rounded-[2rem] border border-white/70 p-8 backdrop-blur-md lg:grid-cols-[1.25fr_0.75fr]"
+          // style={{
+          //   backgroundImage: `linear-gradient(135deg, color-mix(in srgb, ${service.color} 5%, white) 0%, rgba(255,255,255,0.50) 100%)`,
+          // }}
         >
-          <div className="gap-space-base flex flex-col items-start justify-end">
-            <div className="gap-space-sm flex w-fit items-center rounded-full bg-white/50 p-2 px-3">
+          <div className="gap-space-2x flex flex-col items-start justify-end">
+            {/* <div className="gap-space-sm flex w-fit items-center rounded-full bg-white/50 p-2 px-3">
               <div
                 className="bg-indigo h-1 w-1 rounded-full"
                 style={{ backgroundColor: service.color }}
@@ -96,29 +96,48 @@ export default function ServiceHeader({ service }: ServiceHeaderProps) {
               <p className="text-xs uppercase">
                 OFFRE <strong>{service.name}</strong>{" "}
               </p>
+            </div> */}
+            <div className="space-y-space-base">
+              <SectionLabel color={service.color}>
+                {" "}
+                OFFRE {service.name}
+              </SectionLabel>
+
+              <h1 className="max-w-[28ch] text-4xl leading-[1.02] md:text-6xl">
+                Augmentez la fréquence d'achat de vos clients en moins de 3 mois
+              </h1>
             </div>
-            <h1 className="max-w-[28ch] text-4xl leading-[1.02] md:text-5xl">
-              Augmentez la fréquence d'achat de vos clients en moins de 3 mois
-            </h1>
-            <p className="text-secondary py-space-base max-w-[48ch] text-base leading-7">
-              Faites revenir vos clients plus souvent : transformez vos
-              acheteurs ponctuels en clients réguliers
-            </p>
+            <div className="space-y-space-base py-4">
+              <p className="text-secondary max-w-[48ch] text-base leading-7">
+                Faites revenir vos clients plus souvent : transformez vos
+                acheteurs ponctuels en clients réguliers
+              </p>
+              <div className="gap-space-sm flex">
+                <StatLabel label="Achats réguliers" className="text-base" />
+                <StatLabel label="Réachat" stat="jusqu'à +30%" />
+                <StatLabel label="Plus besoin d'acquisition massive" />
+              </div>
+            </div>
             <Button href="/contact" color={service.color}>
               Prendre rendez-vous
             </Button>
           </div>
 
-          <div className="md:mx-space-2x relative m-0 flex items-center justify-start md:justify-end">
-            <PieChart className="absolute bottom-1/5 left-1/2 aspect-square w-[60%] -translate-x-1/2 rotate-8 shadow-lg/5" />
+          <div className="relative m-0 flex items-end justify-start md:justify-end">
+            <PieChart className="absolute bottom-1/5 left-1/2 aspect-square w-[40%] -translate-x-1/2 rotate-8 shadow-lg/5" />
             <Graph
               delay={1}
               className="charts absolute bottom-0 left-0 aspect-square w-1/3 -rotate-10 shadow-lg/5"
             />
-            <div className="gap-space-base absolute bottom-0 flex flex-col items-start md:items-end">
-              <StatLabel label="Achats réguliers" className="text-base" />
-              <StatLabel label="Réachat" stat="+42%" />
-              <StatLabel label="Plus besoin d'acquisition massive" />
+
+            <div className="relative -z-1 h-[65vh] overflow-hidden rounded-3xl border-1 border-white bg-violet-50 p-2 md:max-w-md">
+              <Image
+                src="/reactiver-header.jpg"
+                width={800}
+                height={800}
+                className="h-full w-full rounded-2xl object-cover object-top"
+                alt="Offre Reactiver"
+              />
             </div>
           </div>
         </header>
@@ -133,7 +152,7 @@ export default function ServiceHeader({ service }: ServiceHeaderProps) {
           <div className="gap-space-2x flex flex-col items-center justify-between">
             <div className="gap-space-base flex flex-col items-center">
               <SectionLabel color={service.color}>symptomes</SectionLabel>
-              <h2 className="max-w-[32ch] text-4xl text-center">
+              <h2 className="max-w-[32ch] text-center text-4xl">
                 <Heading splitType="lines">
                   3 signes qui montrent que vous devriez travailler le réachat
                 </Heading>
